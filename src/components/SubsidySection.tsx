@@ -110,7 +110,7 @@ const SubsidySection = () => {
               <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1">Time Sensitive</p>
               <h5 className="font-heading font-black text-xl leading-none">Act Now Before <br/>Subsidy Ends!</h5>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

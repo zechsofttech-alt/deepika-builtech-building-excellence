@@ -144,41 +144,6 @@ export default function HeroSection() {
               </motion.div>
             </div>
           ) : (
-
-              {/* Right: Modern Image Layout (Hidden on small screens, shown as feature on larger) */}
-              <motion.div 
-                key="image-content"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="relative hidden lg:block"
-              >
-                <div className="relative aspect-[4/5] w-full max-w-[540px] ml-auto">
-                  <div className="absolute inset-0 bg-carbon rounded-3xl -translate-x-6 translate-y-6 opacity-10" />
-                  <div className="absolute inset-0 bg-amber rounded-3xl translate-x-6 -translate-y-6 opacity-5" />
-                  
-                  <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl p-2 bg-gradient-to-br from-white/40 to-transparent backdrop-blur-sm border border-white/40">
-                    <img 
-                      src={peb} 
-                      alt="Industrial scale PEB structure" 
-                      className="w-full h-full object-cover rounded-[2rem] hover:scale-105 transition-all duration-1000 object-[60%_center]"
-                    />
-                  </div>
-                  
-                  {/* Stats Badge */}
-                  <div className="absolute -left-12 bottom-16 z-20 glass-panel p-8 rounded-[2.5rem] shadow-2xl border-white/40 animate-float">
-                    <div className="font-heading font-black text-5xl text-ink mb-1 gradient-text">150+</div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink-muted">Projects <br/>Delivered</div>
-                  </div>
-                  
-                  <div className="absolute -right-6 top-16 z-20 bg-carbon p-8 rounded-[2.5rem] shadow-2xl border-white/10 animate-float-delayed text-white">
-                    <div className="font-heading font-black text-5xl text-amber mb-1">15</div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50">Years of <br/>Engineering</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          ) : (
             <motion.div 
               key="video-player"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
