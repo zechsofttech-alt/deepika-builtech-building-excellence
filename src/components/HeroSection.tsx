@@ -25,7 +25,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-amber/5 mix-blend-color" />
       </div>
 
-      {/* Desktop Background Architectural Canvas - REMAINS SAME */}
+      {/* Desktop Background Architectural Canvas - REMAINS same */}
       <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
         <div 
           className="absolute inset-0 opacity-[0.03]"
@@ -56,26 +56,32 @@ export default function HeroSection() {
                   transition={{ delay: 0.2 }}
                   className="inline-flex items-center gap-3 px-6 py-2.5 glass-panel-dark rounded-full mb-8 border-white/10"
                 >
-                  <span className="w-2 h-2 rounded-full bg-amber animate-pulse" />
-                  <span className="text-[10px] font-black tracking-[0.25em] uppercase text-white/80 leading-none">Industrial Excellence</span>
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-[10px] font-black tracking-[0.25em] uppercase text-white leading-none">Limited Subsidy Opportunity</span>
                 </motion.div>
                 
-                <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] font-heading font-black text-white lg:text-ink leading-[1] md:leading-[0.95] tracking-tighter mb-8 max-w-4xl">
-                  Build with <br />
+                <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.5rem] font-heading font-black text-white lg:text-ink leading-[1.05] tracking-tighter mb-8 max-w-4xl">
+                  Build Your <br />
                   <span className="gradient-text relative inline-block drop-shadow-2xl">
-                    Absolute
+                    Industrial <br /> Warehouse
                   </span>
-                  <br />
-                  Integrity.
                 </h1>
 
-                <p className="text-base md:text-xl text-white/60 lg:text-ink-muted max-w-lg mb-10 leading-relaxed font-sans px-4 sm:px-0">
-                  Global leaders in PEB technology, delivering masterclass structures that define the modern industrial skyline.
-                </p>
+                <div className="mb-10 space-y-4">
+                  <div className="bg-red-600 inline-block px-6 py-3 rounded-lg transform -skew-x-12 shadow-xl shadow-red-600/20">
+                    <p className="text-xl md:text-3xl font-heading font-black text-white skew-x-12 uppercase tracking-tighter">
+                      Up to 50% Govt. Subsidy
+                    </p>
+                  </div>
+                  <p className="text-base md:text-xl text-white/60 lg:text-ink-muted max-w-lg leading-relaxed font-sans px-4 sm:px-0">
+                    Why invest full money when you can cut your cost by half? 
+                    <span className="block mt-2 font-bold text-amber">Expert Engineering for Warehouses & Agri Storage.</span>
+                  </p>
+                </div>
 
                 <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-5 md:gap-6 w-full sm:w-auto">
-                  <Link to="/projects" className="w-[85%] sm:w-auto inline-flex items-center justify-center gap-3 bg-amber hover:bg-amber-light text-carbon px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all group active:scale-95 shadow-2xl shadow-amber/20">
-                    Explore Our Work
+                  <Link to="/contact" className="w-[85%] sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-carbon px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all group active:scale-95 shadow-2xl">
+                    Check Eligibility
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <button 
@@ -85,22 +91,59 @@ export default function HeroSection() {
                     <div className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 lg:border-surface-mid group-hover:border-amber shadow-sm transition-all group-hover:scale-105 bg-white/10 lg:bg-white">
                       <Play className="w-4 h-4 ml-0.5 fill-white lg:fill-ink" />
                     </div>
-                    The Process
+                    How It Works
                   </button>
                 </div>
 
-                {/* Mobile-Only Stats Section - Dark Mode */}
-                <div className="mt-16 grid grid-cols-2 gap-4 w-full lg:hidden">
-                  <div className="glass-panel-dark p-6 rounded-3xl border-white/5 backdrop-blur-2xl">
-                    <div className="font-heading font-black text-3xl text-amber leading-none mb-1">150+</div>
-                    <div className="text-[9px] font-bold uppercase tracking-widest text-white/40 leading-tight">Projects Completed</div>
+                {/* Benefits List - Derived from Image */}
+                <div className="mt-12 hidden sm:grid grid-cols-2 gap-x-8 gap-y-4 text-left max-w-lg">
+                  {[
+                    "Subsidy Documentation",
+                    "Project Planning",
+                    "Expert Construction",
+                    "Fast Approvals"
+                  ].map(benefit => (
+                    <div key={benefit} className="flex items-center gap-3 text-white/80 lg:text-ink/80 text-xs font-bold uppercase tracking-widest leading-none">
+                      <div className="w-1.5 h-1.5 rounded-full bg-amber" />
+                      {benefit}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Right: Modern Image Layout */}
+              <motion.div 
+                key="image-content"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+                className="relative hidden lg:block"
+              >
+                <div className="relative aspect-[4/5] w-full max-w-[540px] ml-auto">
+                  <div className="absolute inset-0 bg-carbon rounded-3xl -translate-x-6 translate-y-6 opacity-10" />
+                  
+                  <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl p-2 bg-gradient-to-br from-white/40 to-transparent backdrop-blur-sm border border-white/40">
+                    <img 
+                      src={peb} 
+                      alt="Industrial Warehouse Construction" 
+                      className="w-full h-full object-cover rounded-[2rem] hover:scale-105 transition-all duration-1000 object-[60%_center]"
+                    />
                   </div>
-                  <div className="glass-panel-dark p-6 rounded-3xl border-white/5 backdrop-blur-2xl">
-                    <div className="font-heading font-black text-3xl text-white leading-none mb-1">15+</div>
-                    <div className="text-[9px] font-bold uppercase tracking-widest text-white/40 leading-tight">Years Excellence</div>
+                  
+                  {/* Subsidy Badge */}
+                  <div className="absolute -left-12 bottom-16 z-20 bg-red-600 p-8 rounded-[2.5rem] shadow-2xl border-white/20 animate-float text-white">
+                    <div className="font-heading font-black text-6xl leading-none mb-1">50%</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-white/80">Government <br/>Subsidy Support</div>
+                  </div>
+                  
+                  <div className="absolute -right-6 top-16 z-20 bg-carbon p-8 rounded-[2.5rem] shadow-2xl border-white/10 animate-float-delayed text-white">
+                    <div className="font-heading font-black text-3xl text-amber mb-1">SAVE LAKHS</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50">ON YOUR NEXT <br/>ENGINEERING PROJECT</div>
                   </div>
                 </div>
               </motion.div>
+            </div>
+          ) : (
 
               {/* Right: Modern Image Layout (Hidden on small screens, shown as feature on larger) */}
               <motion.div 
