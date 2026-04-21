@@ -102,7 +102,7 @@ export default function HeroSection() {
               <img src={peb} alt="PEB Facility" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110 hover:scale-100" />
               
               {/* Floating ROI Card */}
-              <div className="absolute top-10 left-10 right-10 bg-white p-8 shadow-2xl flex items-center gap-6 border-t-4 border-amber z-20">
+              <div className="absolute bottom-10 left-10 right-10 bg-white p-8 shadow-2xl flex items-center gap-6 border-b-4 border-amber z-20">
                 <div className="w-14 h-14 bg-surface rounded-none flex items-center justify-center shrink-0">
                    <Calculator className="w-6 h-6 text-amber" />
                 </div>
@@ -113,12 +113,12 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Bottom Floating Stats */}
-            <div className="absolute -right-8 bottom-0 translate-y-1/2 bg-amber p-8 shadow-2xl hidden lg:block">
-               <div className="flex items-center gap-4 text-carbon">
-                  <Users className="w-6 h-6" />
+            {/* Top Floating Stats - Relocated to avoid clipping */}
+            <div className="absolute -right-8 -top-8 bg-amber p-10 shadow-2xl hidden lg:block z-30">
+               <div className="flex items-center gap-6 text-carbon">
+                  <Users className="w-8 h-8" />
                   <div>
-                    <p className="text-[2rem] font-black leading-none">150+</p>
+                    <p className="text-[2.5rem] font-black leading-none">150+</p>
                     <p className="text-[10px] font-bold uppercase tracking-widest leading-none mt-2">Scale Clients</p>
                   </div>
                </div>
