@@ -81,12 +81,12 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: Architectural Offset Image (5 Columns) */}
+          {/* Right: Architectural Offset Image (5 Columns) - Hidden on Mobile */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "circOut" }}
-            className="lg:col-span-5 relative"
+            className="hidden lg:block lg:col-span-5 relative"
           >
             {/* Background Blue-Frame */}
             <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-8 translate-y-8" />
