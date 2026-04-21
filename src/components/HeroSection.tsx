@@ -24,14 +24,7 @@ export default function HeroSection() {
           
           {/* Left: Content Block (7 Columns) */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-4 bg-carbon text-white px-6 py-2.5 rounded-full mb-10 shadow-2xl shadow-carbon/20"
-            >
-              <div className="w-2 h-2 rounded-full bg-amber animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.25em]">Subsidy Documentation Experts</span>
-            </motion.div>
+
 
             <motion.h1 
               initial={{ opacity: 0, y: 40 }}
