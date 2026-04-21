@@ -1,77 +1,134 @@
-import { ShieldCheck, Clock, CheckSquare, Target, Settings, Building } from "lucide-react";
+import { Target, HardHat, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
-const features = [
+const REASONS = [
   {
-    icon: Settings,
-    title: "Precision Engineering",
-    description: "Every structure is engineered with millimeter precision using advanced CAD and structural analysis software."
-  },
-  {
-    icon: Clock,
-    title: "On-Time Delivery",
-    description: "We strictly adhere to project timelines, ensuring zero delays in your critical infrastructure setup."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Premium Quality Control",
-    description: "Rigorous quality checks at every phase, from raw material selection to final on-site erection."
-  },
-  {
+    num: "01",
+    stat: "98%",
+    title: "On-Time Project Delivery",
+    desc: "Strict adherence to project timelines with proactive site management, ensuring zero delays in your critical infrastructure setup.",
     icon: Target,
-    title: "Cost Effective Solutions",
-    description: "Optimized designs that reduce material waste and lower overall project costs without compromising strength."
-  }
+  },
+  {
+    num: "02",
+    stat: "150+",
+    title: "Heavy-Duty Projects",
+    desc: "From warehouses to aircraft hangars, spanning massive square footage across South India and beyond.",
+    icon: HardHat,
+  },
+  {
+    num: "03",
+    stat: "100%",
+    title: "ISO-Compliant Quality",
+    desc: "Every structure meets IS 800 & IS 1730 standards with rigorous quality verification from raw material to final installation.",
+    icon: ShieldCheck,
+  },
 ];
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="py-24 bg-slate-50 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-[2px] w-8 bg-gold" />
-            <span className="text-gold font-bold text-sm tracking-widest uppercase">The Deepika Advantage</span>
-            <div className="h-[2px] w-8 bg-gold" />
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-navy mb-6">
-            Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-600">Us</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
-            We don't just build structures; we build trust through reliable, high-performance engineering tailored to your industry.
-          </p>
-        </div>
+    <section id="why-us" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* Background Architectural Grid (subtle) */}
+      <div 
+        className="absolute inset-x-0 top-0 h-64 pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+          backgroundSize: '2.5rem 2.5rem'
+        }}
+      />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, idx) => {
-            const Icon = feature.icon;
-            return (
-              <div 
-                key={feature.title} 
-                className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 relative"
-              >
-                {/* Decorative fade for hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
-                
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-500 border border-navy/5 group-hover:border-gold/20">
-                    <Icon className="w-7 h-7 text-navy group-hover:text-yellow-600 transition-colors duration-500" />
-                  </div>
-                  <h3 className="text-xl font-bold font-heading text-navy mb-4 group-hover:text-navy transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-500 leading-relaxed text-sm">
-                    {feature.description}
-                  </p>
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          
+          {/* Left: Branding & Headline */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:w-[42%]"
+          >
+            <div className="lg:sticky lg:top-32">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-[2px] w-10 bg-amber" />
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber">The Deepika Standard</span>
+              </div>
+              
+              <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] font-heading font-black text-ink leading-[0.85] tracking-tighter mb-10">
+                Why <br />
+                <span className="text-transparent [-webkit-text-stroke:1px_#000] opacity-30 select-none">Partner</span> <br />
+                With Us?
+              </h2>
+
+              <div className="grid grid-cols-2 gap-8 py-10 border-y border-surface-mid/50">
+                <div className="group/stat">
+                  <div className="text-3xl font-heading font-black text-ink mb-1 group-hover/stat:text-amber transition-colors">15+</div>
+                  <div className="text-[10px] uppercase font-bold tracking-widest text-ink-muted">Years of Innovation</div>
+                </div>
+                <div className="group/stat">
+                  <div className="text-3xl font-heading font-black text-ink mb-1 group-hover/stat:text-amber transition-colors">750+</div>
+                  <div className="text-[10px] uppercase font-bold tracking-widest text-ink-muted">Tons Steel/Month</div>
                 </div>
               </div>
-            );
-          })}
+
+              <p className="text-lg text-ink-muted leading-relaxed font-sans max-w-sm mt-10 opacity-80">
+                Our structures are more than just steel; they are precisely engineered assets designed to optimize your industrial efficiency for decades.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right: Technical Blueprint Cards */}
+          <div className="lg:w-[58%] flex flex-col gap-4 md:gap-5">
+            {REASONS.map((reason, index) => {
+              const Icon = reason.icon;
+              return (
+                <motion.div 
+                  key={reason.num} 
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="group relative bg-[#fcfcfc] border border-surface-mid p-6 md:p-10 rounded-[1.5rem] transition-all duration-700 hover:bg-carbon hover:border-carbon shadow-sm hover:shadow-2xl hover:shadow-carbon/10 active:scale-[0.99]"
+                >
+                  {/* Technical Backdrop Number */}
+                  <div className="absolute right-10 top-8 font-heading font-black text-[100px] md:text-[140px] text-black/[0.02] group-hover:text-white/[0.03] select-none transition-colors duration-700 leading-none">
+                    {reason.num}
+                  </div>
+
+                  <div className="relative z-10">
+                    {/* Icon & Stat Header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-14 h-14 rounded-xl bg-white shadow-sm border border-surface-mid flex items-center justify-center group-hover:bg-amber transition-all duration-700 group-hover:scale-110">
+                        <Icon className="w-6 h-6 text-ink group-hover:text-carbon transition-colors" />
+                      </div>
+                      <div className="text-3xl md:text-4xl font-heading font-black text-transparent [-webkit-text-stroke:1px_#000] opacity-20 group-hover:opacity-100 group-hover:[-webkit-text-stroke:1px_#FFBF00] group-hover:text-amber transition-all duration-700">
+                        {reason.stat}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="max-w-xl">
+                      <h4 className="text-xl md:text-2xl font-heading font-black text-ink group-hover:text-white transition-colors duration-500 mb-2 tracking-tight">
+                        {reason.title}
+                      </h4>
+                      <p className="text-sm md:text-base text-ink-muted group-hover:text-surface/60 transition-colors duration-500 leading-relaxed font-sans font-medium">
+                        {reason.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Blueprint Detail Accent */}
+                  <div className="absolute bottom-8 right-8 flex gap-2 opacity-0 group-hover:opacity-40 transition-opacity duration-700 scale-75">
+                    <div className="w-10 h-[1px] bg-white" />
+                    <div className="w-1 h-1 rounded-full bg-white" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+          
         </div>
       </div>
-
-      {/* Decorative backdrops */}
-      <div className="absolute -left-32 top-20 w-96 h-96 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-navy/5 rounded-full blur-[120px] pointer-events-none" />
     </section>
   );
 };

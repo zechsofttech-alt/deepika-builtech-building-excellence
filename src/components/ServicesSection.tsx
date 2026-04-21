@@ -1,91 +1,81 @@
-import { ArrowRight } from "lucide-react";
-import pebImg from "@/assets/peb-building.jpg";
-import warehouseImg from "@/assets/warehouse.jpg";
-import coldStorageImg from "@/assets/cold-storage.jpg";
-import mezzanineImg from "@/assets/mezzanine.jpg";
-import eotCraneImg from "@/assets/eot-crane.jpg";
-
-const services = [
-  {
-    title: "PEB Building Structures",
-    description: "Custom-designed pre-engineered steel buildings for industrial and commercial use, built for durability and speed.",
-    image: pebImg,
-  },
-  {
-    title: "Warehousing Solutions",
-    description: "Large-scale storage facilities optimized for logistics operations with maximum space utilization.",
-    image: warehouseImg,
-  },
-  {
-    title: "Cold Storage",
-    description: "Temperature-controlled environments engineered for food processing, pharmaceuticals, and specialized industries.",
-    image: coldStorageImg,
-  },
-  {
-    title: "Mezzanine Floors",
-    description: "Steel-structured intermediate floors to double your usable space without expanding your building footprint.",
-    image: mezzanineImg,
-  },
-  {
-    title: "EOT Cranes",
-    description: "Design and installation of Electric Overhead Traveling cranes for efficient material handling.",
-    image: eotCraneImg,
-  },
-];
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { services } from "@/data/services";
+import { motion } from "framer-motion";
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-8 bg-gold" />
-            <span className="text-gold font-medium text-sm tracking-wider uppercase">What We Do</span>
-            <div className="h-px w-8 bg-gold" />
+    <section id="services" className="py-24 bg-carbon text-surface">
+      <div className="container mx-auto px-6 lg:px-12">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8"
+        >
+          <div className="max-w-2xl">
+            <h2 className="section-label mb-6">Core Capabilities</h2>
+            <h3 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black leading-none tracking-tighter text-white">
+              Bespoke Industrial <br />
+              <span className="gradient-text">Engineering.</span>
+            </h3>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-            Our Core <span className="text-gradient-gold">Services</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Comprehensive engineering solutions tailored to your industrial infrastructure needs.
+          <p className="text-surface-mid text-lg max-w-sm font-sans mb-2 border-l border-white/10 pl-8">
+            A comprehensive suite of heavy-duty engineering solutions built to weather the toughest conditions.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className={`group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 ${
-                index === 4 ? "md:col-span-2 lg:col-span-1" : ""
-              }`}
-            >
-              <div className="relative h-52 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-navy-dark/30 group-hover:bg-navy-dark/10 transition-colors duration-500" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-heading font-bold text-foreground mb-2 group-hover:text-gold transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center text-gold font-semibold text-sm hover:gap-3 gap-2 transition-all"
-                >
-                  Learn More <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[300px]">
+          {services.map((service, index) => {
+            let colSpan = "col-span-1";
+            let rowSpan = "row-span-1";
+
+            if (service.size === "large") {
+              colSpan = "md:col-span-2";
+              rowSpan = "md:row-span-2";
+            } else if (service.size === "horizontal") {
+              colSpan = "md:col-span-2";
+            }
+
+            return (
+              <Link
+                key={service.slug}
+                to={`/service/${service.slug}`}
+                className={`group relative overflow-hidden bg-carbon-mid border border-white/5 rounded-2xl ${colSpan} ${rowSpan}`}
+              >
+                <div className="absolute inset-0 w-full h-full">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent group-hover:from-carbon/40 transition-colors duration-700" />
+                </div>
+
+                <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                  <div className="self-end opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    <div className="w-12 h-12 glass-panel flex items-center justify-center rounded-xl bg-white/10 border-white/20 hover:bg-amber hover:text-carbon transition-colors duration-300">
+                      <ArrowUpRight className="w-5 h-5" />
+                    </div>
+                  </div>
+                  
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 tracking-tight text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-surface-subtle text-sm md:text-base max-w-xs group-hover:text-white transition-colors duration-500 font-sans font-medium">
+                      {service.shortDesc}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Subtle highlight line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -93,3 +83,4 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+

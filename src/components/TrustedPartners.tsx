@@ -11,32 +11,34 @@ const partners = [
   { name: "SummitEst", icon: Flame },
 ];
 
-const marqueePartners = [...partners, ...partners];
+const marqueePartners = [...partners, ...partners, ...partners];
 
 const TrustedPartners = () => {
   return (
-    <section className="bg-slate-100 py-8 border-b border-gray-200">
-      <div className="container mx-auto px-4 mb-6">
-        <p className="text-center text-xs font-semibold tracking-[0.3em] text-gray-400 uppercase">
-          Trusted by over 150+ companies worldwide
+    <section className="bg-white py-14 overflow-hidden relative">
+      <div className="container mx-auto px-6 mb-10">
+        <p className="text-center text-xs font-bold tracking-[0.2em] text-ink-muted uppercase opacity-60">
+          Trusted engineering partner for industry leaders
         </p>
       </div>
       
-      <div className="relative flex overflow-hidden w-full max-w-7xl mx-auto">
+      <div className="relative flex overflow-hidden w-full max-w-[100vw]">
         {/* Soft edge fade overlay */}
-        <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
         
-        <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center py-2">
+        <div className="flex w-max animate-marquee items-center py-2">
           {marqueePartners.map((partner, index) => {
             const Icon = partner.icon;
             return (
               <div
                 key={index}
-                className="flex items-center justify-center gap-2.5 w-52 h-16 mx-4 bg-white rounded-xl border border-slate-200 shadow-md text-gray-500 hover:text-navy hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                className="flex items-center gap-3 w-48 mx-8 text-ink-muted/50 hover:text-amber transition-all duration-500 hover:scale-105 group"
               >
-                <Icon className="w-5 h-5 stroke-[1.5]" />
-                <span className="text-base font-bold tracking-tight">
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-subtle group-hover:bg-amber/5 border border-transparent group-hover:border-amber/20 transition-all duration-500">
+                  <Icon className="w-5 h-5 stroke-[1.5]" />
+                </div>
+                <span className="text-xl font-bold font-heading tracking-tight">
                   {partner.name}
                 </span>
               </div>

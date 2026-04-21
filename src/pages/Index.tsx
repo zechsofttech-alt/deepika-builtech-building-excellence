@@ -3,10 +3,17 @@ import HeroSection from "@/components/HeroSection";
 import TrustedPartners from "@/components/TrustedPartners";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import FeaturedProjects from "@/components/FeaturedProjects";
+import PerformanceEdge from "@/components/PerformanceEdge";
+import SectorExpertise from "@/components/SectorExpertise";
+import MidPageCTA from "@/components/MidPageCTA";
 import StatsSection from "@/components/StatsSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import ProcessSection from "@/components/ProcessSection";
+import HomeBlogHighlight from "@/components/HomeBlogHighlight";
+import HomeProcess from "@/components/HomeProcess";
 import ContactSection from "@/components/ContactSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -17,9 +24,16 @@ const Index = () => {
       <TrustedPartners />
       <AboutSection />
       <ServicesSection />
+      <FeaturedProjects />
+      <PerformanceEdge />
+      <SectorExpertise />
+      <MidPageCTA />
       <StatsSection />
       <WhyChooseUsSection />
-      <ProcessSection />
+      <TestimonialsSection />
+      <HomeBlogHighlight />
+      <HomeProcess />
+      <FAQSection />
       <ContactSection />
       <Footer />
     </div>
