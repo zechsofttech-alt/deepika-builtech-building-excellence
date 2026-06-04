@@ -27,18 +27,16 @@ const HomeProcess = () => {
     offset: ["start start", "end end"]
   });
 
-  // Add spring physics for silky smooth motion
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
-  // Adjusted for smaller cards and more compact layout
   const x = useTransform(smoothProgress, [0, 1], ["0%", "-68%"]);
 
   return (
-    <section ref={targetRef} className="relative md:h-[250vh] bg-surface-subtle py-16 md:py-0">
+    <section ref={targetRef} className="relative md:h-[250vh] bg-surface-subtle py-16 md:py-0 border-t border-surface-mid">
       <div className="md:sticky md:top-0 md:h-screen flex flex-col justify-center overflow-hidden">
         
         {/* Section Header */}
@@ -75,30 +73,52 @@ const HomeProcess = () => {
         </div>
 
         {/* Swipe instructions for Mobile */}
-        <div className="md:hidden px-6 mb-4 flex items-center gap-3">
+        <div className="md:hidden px-6 mb-8 flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-amber animate-pulse" />
-          <span className="text-[10px] font-black uppercase tracking-widest text-ink-muted">Swipe left to Explore</span>
+          <span className="text-[10px] font-black uppercase tracking-widest text-ink-muted">Visual Project Workflow Timeline</span>
         </div>
 
-        {/* Cards Wrapper - Motion on Desktop, Native Scroll on Mobile */}
+        {/* Cards Wrapper - Timeline on Desktop, Vertical Stack on Mobile */}
         <div className="relative z-10 w-full">
-          {/* Desktop Version */}
-          <motion.div 
-            style={{ x }} 
-            className="hidden md:flex gap-6 pr-[35vw] pl-12"
-          >
-            {steps.map((step, idx) => (
-              <StepCard key={step.num} step={step} idx={idx} />
-            ))}
-          </motion.div>
+          {/* Desktop Version - Horizontal Connected Timeline */}
+          <div className="relative hidden md:block">
+            <motion.div 
+              style={{ x }} 
+              className="flex gap-6 pr-[35vw] pl-12 relative"
+            >
+              {/* Horizontal Connecting Timeline Line */}
+              <div className="absolute top-[76px] left-28 right-[40vw] h-[3px] bg-surface-mid -z-0" />
+              {steps.map((step, idx) => (
+                <StepCard key={step.num} step={step} idx={idx} />
+              ))}
+            </motion.div>
+          </div>
 
-          {/* Mobile Version - Native Horizontal Scroll */}
-          <div className="md:hidden flex gap-4 overflow-x-auto px-6 pb-8 snap-x snap-mandatory no-scrollbar">
-            {steps.map((step, idx) => (
-              <div key={step.num} className="snap-center">
-                <StepCard step={step} idx={idx} mobile />
-              </div>
-            ))}
+          {/* Mobile Version - Vertical Connected Timeline */}
+          <div className="md:hidden flex flex-col gap-8 px-6 pb-12 relative pl-12">
+            {/* Vertical Connecting Timeline Line */}
+            <div className="absolute left-6 top-6 bottom-16 w-[3px] bg-surface-mid" />
+            
+            {steps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.num} className="relative">
+                  {/* Timeline Node Icon Circle */}
+                  <div className="absolute -left-10 top-0.5 w-9 h-9 rounded-xl bg-amber text-carbon flex items-center justify-center z-10 shadow-md border-2 border-white">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  
+                  <div className="bg-white border border-surface-mid p-6 rounded-2xl shadow-sm">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-amber">Phase {step.num}</span>
+                      <span className="text-xs font-heading font-black text-ink-muted/30">{step.num}</span>
+                    </div>
+                    <h3 className="text-lg font-heading font-black text-ink mb-1 tracking-tight">{step.title}</h3>
+                    <p className="text-xs text-ink-muted leading-relaxed font-sans">{step.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -115,17 +135,19 @@ const HomeProcess = () => {
   );
 };
 
-const StepCard = ({ step, idx, mobile = false }: { step: any, idx: number, mobile?: boolean }) => {
+const StepCard = ({ step, idx }: { step: any, idx: number }) => {
   const Icon = step.icon;
   return (
-    <div className={`${mobile ? 'w-[280px]' : 'w-[300px] md:w-[380px]'} shrink-0 group/card relative`}>
+    <div className="w-[300px] md:w-[380px] shrink-0 group/card relative">
       <div className="bg-white border border-surface-mid p-8 md:p-10 rounded-[2.5rem] h-full transition-all duration-700 hover:bg-carbon group-hover/card:bg-carbon group-hover/card:border-carbon group-hover/card:shadow-2xl group-hover/card:shadow-carbon/20 relative overflow-hidden">
+        
         <div className="flex justify-between items-start mb-8 md:mb-10 relative z-10">
           <div className="flex flex-col gap-4">
-            <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-surface-subtle border border-surface-mid flex items-center justify-center group-hover/card:bg-amber group-hover/card:scale-110 transition-all duration-700">
+            {/* Timeline Node icon wrapper with higher z-index */}
+            <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-surface-subtle border border-surface-mid flex items-center justify-center group-hover/card:bg-amber group-hover/card:scale-110 transition-all duration-700 relative z-10">
               <Icon className="w-5 h-5 md:w-6 md:h-6 text-ink group-hover/card:text-carbon" />
             </div>
-            <div className={`flex items-center gap-2 transition-opacity duration-700 ${mobile ? 'opacity-100' : 'opacity-0 group-hover/card:opacity-100'}`}>
+            <div className="flex items-center gap-2 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700">
               <div className="w-4 h-[1px] bg-amber" />
               <span className="text-[10px] font-black uppercase tracking-widest text-amber">Phase {step.num}</span>
             </div>
@@ -144,8 +166,8 @@ const StepCard = ({ step, idx, mobile = false }: { step: any, idx: number, mobil
           </p>
         </div>
       </div>
-      {!mobile && idx !== steps.length - 1 && (
-        <div className="absolute top-1/2 -right-3 w-6 h-[1px] bg-amber/10 hidden md:block" />
+      {idx !== steps.length - 1 && (
+        <div className="absolute top-[76px] -right-3 w-6 h-[3px] bg-amber/30 hidden md:block z-0" />
       )}
     </div>
   );

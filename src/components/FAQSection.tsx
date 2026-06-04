@@ -15,6 +15,14 @@ const faqs = [
     answer: "Yes, all our primary and secondary steel members are treated with high-grade anti-corrosive primers and paints. We also offer specialized fire-resistant coatings and insulated sandwich panels for enhanced extreme weather protection."
   },
   {
+    question: "Do you offer a warranty on your structures?",
+    answer: "Yes, Deepika Builtech offers a comprehensive structural warranty of up to 10 years on all our pre-engineered building (PEB) frames and steel structures. We also provide warranties on cladding sheets and seals as per manufacturer specifications."
+  },
+  {
+    question: "What is your geographic service area?",
+    answer: "Our primary operations are centered in Chennai and Tamil Nadu. However, we also design and execute large-scale PEB construction projects across neighboring states including Andhra Pradesh, Karnataka, Telangana, and Kerala."
+  },
+  {
     question: "Do you handle the end-to-end project, including civil work?",
     answer: "While our core expertise is in the structural steel design, fabrication, and erection, we often partner with trusted civil contractors to provide a turnkey solution for our clients upon request."
   },

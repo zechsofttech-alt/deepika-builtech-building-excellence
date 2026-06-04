@@ -4,6 +4,8 @@ import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import ProcessSection from "@/components/ProcessSection";
 import TargetAudienceSection from "@/components/TargetAudienceSection";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect } from "react";
 
 const Services = () => {
@@ -13,7 +15,12 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO 
+        title="Our Services | PEB, Warehouse, Cold Storage Construction | Deepika Builtech"
+        description="Deepika Builtech is Chennai's trusted Pre-Engineered Building (PEB) company with 10+ years experience in steel structures, cold storage, warehouses, mezzanine floors, and EOT cranes. 150+ projects delivered. Call +91 96000 67611."
+      />
       <Navbar />
+      
       <div className="bg-surface-subtle py-16 border-b border-surface-mid">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink mb-4">
@@ -24,10 +31,16 @@ const Services = () => {
           </p>
         </div>
       </div>
-      <ServicesSection />
-      <ProcessSection />
-      <WhyChooseUsSection />
-      <TargetAudienceSection />
+
+      <Breadcrumbs items={[{ label: "Services" }]} />
+
+      <main id="content">
+        <ServicesSection />
+        <ProcessSection />
+        <WhyChooseUsSection />
+        <TargetAudienceSection />
+      </main>
+
       <Footer />
     </div>
   );

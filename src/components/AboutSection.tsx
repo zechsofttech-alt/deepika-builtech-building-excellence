@@ -64,7 +64,7 @@ const AboutSection = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-bold text-ink text-lg">Awarded</h4>
-                  <p className="text-sm text-ink-muted mt-1 leading-relaxed">Industry Choice 2023</p>
+                  <p className="text-sm text-ink-muted mt-1 leading-relaxed">Excellence Award 2025</p>
                 </div>
               </div>
               

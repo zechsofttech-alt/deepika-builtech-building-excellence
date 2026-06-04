@@ -232,3 +232,24 @@ footer {
 ::-webkit-scrollbar-track { background: hsl(var(--surface-subtle)); }
 ::-webkit-scrollbar-thumb { background: hsl(var(--surface-mid)); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: hsl(var(--amber)); }
+
+/* ── Skip Link & Focus Styles ──────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: hsl(var(--amber));
+  color: hsl(var(--carbon));
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.2s;
+  font-weight: bold;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid hsl(var(--amber)) !important;
+  outline-offset: 2px !important;
+}

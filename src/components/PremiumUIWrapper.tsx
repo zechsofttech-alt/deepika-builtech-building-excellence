@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 const PremiumUIWrapper = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const { scrollYProgress } = useScroll();
   
   const scaleX = useSpring(scrollYProgress, {
@@ -11,19 +8,6 @@ const PremiumUIWrapper = () => {
     damping: 30,
     restDelta: 0.001
   });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      
-      const target = e.target as HTMLElement;
-      const isClickable = target.closest('button, a, .cursor-pointer');
-      setIsHovering(!!isClickable);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <>
@@ -42,28 +26,6 @@ const PremiumUIWrapper = () => {
           <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
         </svg>
       </div>
-
-      {/* Industrial Custom Cursor */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber pointer-events-none z-[1000] hidden lg:block"
-        animate={{
-          x: mousePos.x - 16,
-          y: mousePos.y - 16,
-          scale: isHovering ? 2 : 1,
-          backgroundColor: isHovering ? "rgba(242, 166, 0, 0.1)" : "rgba(242, 166, 0, 0)",
-          borderColor: isHovering ? "rgba(242, 166, 0, 0.5)" : "rgba(242, 166, 0, 0.3)"
-        }}
-        transition={{ type: "spring", damping: 25, stiffness: 250, mass: 0.5, opacity: { duration: 0.2 } }}
-      />
-      
-      <motion.div
-        className="fixed top-0 left-0 w-1 h-1 bg-amber rounded-full pointer-events-none z-[1001] hidden lg:block"
-        animate={{
-          x: mousePos.x - 2,
-          y: mousePos.y - 2,
-        }}
-        transition={{ type: "spring", damping: 30, stiffness: 400, mass: 0.1 }}
-      />
     </>
   );
 };

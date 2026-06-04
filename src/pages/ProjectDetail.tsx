@@ -2,18 +2,33 @@ import { useParams, Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, MapPin, Ruler, Building, CheckCircle2, Play } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, ArrowUpRight, Clock, MapPin, Ruler, Building, CheckCircle2, Play, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Related projects: same category first, then others (exclude current)
+  const relatedProjects = projects
+    .filter((p) => p.slug !== slug)
+    .sort((a, b) => (a.category === project?.category ? -1 : 1))
+    .slice(0, 3);
+
+  useEffect(() => { window.scrollTo(0, 0); }, [slug]);
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface">
+        <SEO 
+          title="Project Not Found | Deepika Builtech" 
+          description="The requested construction project was not found in our portfolio."
+          robots="noindex, follow"
+        />
         <div className="text-center">
           <h1 className="text-4xl font-heading font-black mb-4">Project Not Found</h1>
           <Link to="/projects" className="text-amber hover:underline">Back to Portfolio</Link>
@@ -22,8 +37,66 @@ const ProjectDetail = () => {
     );
   }
 
+  // Structured schemas
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://deepikabuiltech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Projects",
+        "item": "https://deepikabuiltech.com/projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": project.title,
+        "item": `https://deepikabuiltech.com/project/${project.slug}`
+      }
+    ]
+  };
+
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.description,
+    "image": `https://deepikabuiltech.com${project.image}`,
+    "author": {
+      "@type": "LocalBusiness",
+      "name": "Deepika Builtech",
+      "url": "https://deepikabuiltech.com/"
+    },
+    "contentLocation": {
+      "@type": "Place",
+      "name": project.location
+    },
+    "keywords": project.metaKeywords
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO 
+        title={project.metaTitle} 
+        description={project.metaDescription} 
+        ogImage={project.image}
+      />
+
+      {/* Schema Injection */}
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(projectSchema)}
+      </script>
+
       <Navbar />
       
       {/* Cinematic Hero */}
@@ -36,7 +109,10 @@ const ProjectDetail = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 10, ease: "linear" }}
                 src={project.image} 
-                alt={project.title} 
+                alt={`Pre-engineered building: ${project.title}`} 
+                width={1920}
+                height={800}
+                loading="eager"
                 className="w-full h-full object-cover opacity-50" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
@@ -44,7 +120,8 @@ const ProjectDetail = () => {
               {project.videoUrl && (
                 <button 
                   onClick={() => setIsPlaying(true)}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-full"
+                  aria-label="Play Project Showcase Video"
                 >
                   <div className="w-24 h-24 rounded-full bg-amber/90 flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-amber transition-all duration-500">
                     <Play className="w-8 h-8 fill-carbon text-carbon ml-1" />
@@ -57,7 +134,7 @@ const ProjectDetail = () => {
             <iframe 
               className="w-full h-full"
               src={`${project.videoUrl}?autoplay=1`}
-              title={project.title}
+              title={`Project Showcase Video for ${project.title}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -66,7 +143,10 @@ const ProjectDetail = () => {
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <Link to="/projects" className="inline-flex items-center gap-2 text-white/60 hover:text-amber mb-8 transition-colors group">
+          <Link 
+            to="/projects" 
+            className="inline-flex items-center gap-2 text-white/60 hover:text-amber mb-8 transition-colors group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm"
+          >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="text-xs font-black uppercase tracking-widest">Back to Portfolio</span>
           </Link>
@@ -83,12 +163,20 @@ const ProjectDetail = () => {
                 {project.status}
               </span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.9] tracking-tighter mb-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-tight mb-4 tracking-tight">
               {project.title}.
             </h1>
           </motion.div>
         </div>
       </section>
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumbs 
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: project.title }
+        ]} 
+      />
 
       {/* Key Stats Bar */}
       <div className="bg-amber py-10 relative z-20">
@@ -171,6 +259,88 @@ const ProjectDetail = () => {
           </div>
         </div>
       </section>
+
+      {/* Quote CTA Banner */}
+      <section className="bg-carbon py-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber opacity-5 blur-[120px]" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div>
+              <span className="text-amber text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Start a Similar Project</span>
+              <h2 className="text-3xl md:text-5xl font-heading font-black text-white tracking-tight leading-tight">
+                Ready to Build Your<br />
+                <span className="text-amber">{project.category} Facility?</span>
+              </h2>
+              <p className="text-surface-subtle/60 font-sans mt-4 max-w-xl">
+                Talk directly with our engineering team. Get a site-specific quote within 24 hours.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-amber hover:bg-white text-carbon font-black px-8 py-4 rounded-xl transition-all shadow-xl shadow-amber/20 uppercase tracking-wider text-xs"
+              >
+                Request a Quote <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="tel:+919600067611"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-amber text-white font-black px-8 py-4 rounded-xl transition-all uppercase tracking-wider text-xs"
+              >
+                <Phone className="w-4 h-4" /> +91 96000 67611
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Projects */}
+      {relatedProjects.length > 0 && (
+        <section className="py-24 bg-surface-subtle border-t border-surface-mid">
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <span className="text-amber text-[10px] font-black uppercase tracking-[0.4em] mb-3 block">More From Our Portfolio</span>
+                <h2 className="text-3xl font-heading font-black text-ink tracking-tight">Related Projects</h2>
+              </div>
+              <Link
+                to="/projects"
+                className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-amber hover:text-ink transition-colors"
+              >
+                View All Projects <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {relatedProjects.map((rp) => (
+                <Link
+                  key={rp.slug}
+                  to={`/project/${rp.slug}`}
+                  className="group block bg-white border border-surface-mid rounded-[2rem] overflow-hidden shadow-sm hover:shadow-lg hover:border-amber/40 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={rp.image}
+                      alt={`${rp.title} – PEB project by Deepika Builtech`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-carbon/40 to-transparent" />
+                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur text-carbon text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                      {rp.category}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-heading font-bold text-lg text-ink group-hover:text-amber transition-colors mb-2 tracking-tight">{rp.title}</h3>
+                    <div className="flex items-center justify-between text-xs font-sans text-ink-muted">
+                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {rp.location}</span>
+                      <span className="flex items-center gap-1"><Ruler className="w-3 h-3" /> {rp.area}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>

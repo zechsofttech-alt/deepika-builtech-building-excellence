@@ -39,16 +39,30 @@ const ServicesSection = () => {
               colSpan = "md:col-span-2";
             }
 
+            const serviceAlts: Record<string, string> = {
+              "industrial-peb-construction-chennai": "Industrial PEB steel structure built by Deepika Builtech Chennai",
+              "construction-services-in-chennai": "Civil construction project completed by Deepika Builtech",
+              "cold-storage-solutions-chennai": "Cold storage facility construction by Deepika Builtech Chennai",
+              "mezzanine-floor-construction-chennai": "Industrial mezzanine floor with steel columns and safety railings",
+              "warehouse-construction-chennai": "Large warehouse construction project by Deepika Builtech",
+              "eot-crane-manufacturers-in-chennai": "EOT overhead crane manufactured by Deepika Builtech Chennai"
+            };
+
+            const imageAlt = serviceAlts[service.slug] || `${service.title} built by Deepika Builtech`;
+
             return (
               <Link
                 key={service.slug}
-                to={`/service/${service.slug}`}
-                className={`group relative overflow-hidden bg-carbon-mid border border-white/5 rounded-2xl ${colSpan} ${rowSpan}`}
+                to={`/${service.slug}`}
+                className={`group relative overflow-hidden bg-carbon-mid border border-white/5 rounded-2xl ${colSpan} ${rowSpan} focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber`}
               >
                 <div className="absolute inset-0 w-full h-full">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={imageAlt}
+                    width={640}
+                    height={480}
+                    loading="lazy"
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent group-hover:from-carbon/40 transition-colors duration-700" />

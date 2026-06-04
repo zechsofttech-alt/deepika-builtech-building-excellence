@@ -1,7 +1,7 @@
 import { Building2, Briefcase, Flame, Component, Layout, Rocket, Box, Globe } from "lucide-react";
 
 const partners = [
-  { name: "BuildTech", icon: Building2 },
+  { name: "PrimeBuiltech", icon: Building2 },
   { name: "UrbanStruct", icon: Layout },
   { name: "GlobalConst", icon: Globe },
   { name: "PrimeSteels", icon: Component },

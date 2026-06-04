@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blogs";
@@ -11,11 +13,15 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
+      <SEO 
+        title="Our Blog | Industrial Construction Insights | Deepika Builtech" 
+        description="Stay updated with structural engineering trends, warehouse construction checklists, and pre-engineered building guides from Deepika Builtech Chennai."
+      />
       <Navbar />
       
       {/* Editorial Header */}
-      <div className="bg-carbon pt-40 pb-24 border-b border-white/5 relative overflow-hidden">
+      <div className="bg-carbon py-16 border-b border-white/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber opacity-5 blur-[120px]" />
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-10">
@@ -32,6 +38,8 @@ const Blogs = () => {
           </div>
         </div>
       </div>
+
+      <Breadcrumbs items={[{ label: "Blogs" }]} />
 
       {/* High-Contrast Blog Grid */}
       <div className="py-24 bg-surface">

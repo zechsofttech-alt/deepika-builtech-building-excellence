@@ -1,131 +1,624 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { services } from "@/data/services";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Send, MapPin, Mail, Clock } from "lucide-react";
+import { useState } from "react";
+
+// Explicit SEO Meta Content mapping for 100/100 target for all 8 services
+const seoContent: Record<string, { title: string; description: string; h1: string }> = {
+  "industrial-peb-construction-chennai": {
+    title: "Industrial PEB Construction in Chennai | Deepika Builtech",
+    description: "Looking for PEB construction in Chennai? Deepika Builtech delivers precision pre-engineered steel buildings for factories, warehouses & industrial units. 10+ years experience. Call +91 96000 67611.",
+    h1: "Industrial PEB Construction in Chennai"
+  },
+  "construction-services-in-chennai": {
+    title: "Civil & Steel Construction Services in Chennai | Deepika Builtech",
+    description: "Expert civil and steel construction services in Chennai by Deepika Builtech. We build factories, industrial units, commercial structures across Tamil Nadu. Free quote: +91 96000 67611.",
+    h1: "Civil & Steel Construction Services in Chennai"
+  },
+  "cold-storage-solutions-chennai": {
+    title: "Cold Storage Construction & Solutions in Chennai | Deepika Builtech",
+    description: "Build a reliable cold storage facility in Chennai with Deepika Builtech. Custom temperature-controlled storage for pharma, food & logistics. Call +91 96000 67611.",
+    h1: "Cold Storage Construction & Solutions in Chennai"
+  },
+  "mezzanine-floor-construction-chennai": {
+    title: "Mezzanine Floor Construction in Chennai | Deepika Builtech",
+    description: "Maximise your floor space with a custom steel mezzanine floor in Chennai. Deepika Builtech designs and installs industrial mezzanines. Call +91 96000 67611.",
+    h1: "Mezzanine Floor Construction in Chennai"
+  },
+  "warehouse-construction-chennai": {
+    title: "Warehouse Construction & Design in Chennai | Deepika Builtech",
+    description: "Build your warehouse in Chennai faster and cheaper with PEB technology. Deepika Builtech has completed 150+ warehouse and industrial projects. Call +91 96000 67611.",
+    h1: "Warehouse Construction & Design in Chennai"
+  },
+  "eot-crane-manufacturers-in-chennai": {
+    title: "EOT Crane Manufacturers & Suppliers in Chennai | Deepika Builtech",
+    description: "Deepika Builtech manufactures and installs Electric Overhead Travelling (EOT) cranes in Chennai. Custom capacity, span & duty class. Call +91 96000 67611.",
+    h1: "EOT Crane Manufacturers in Chennai"
+  },
+  "steel-structure-fabrication-chennai": {
+    title: "Steel Structure Fabrication & Erection in Chennai | Deepika Builtech",
+    description: "Precision structural steel fabrication in Chennai using CNC machinery, MIG, MAG & submerged arc welding. Deepika Builtech — trusted by 100+ clients. Call +91 96000 67611.",
+    h1: "Steel Structure Fabrication in Chennai"
+  },
+  "industrial-shed-construction-chennai": {
+    title: "Industrial Shed Construction in Chennai | Deepika Builtech",
+    description: "Custom industrial shed construction in Chennai using pre-engineered steel. Fast delivery, durable, cost-effective. Deepika Builtech — 10+ years. Call +91 96000 67611.",
+    h1: "Industrial Shed Construction in Chennai"
+  }
+};
+
+// Internal linking configurations: 3 locations per service
+const serviceLocationsMap: Record<string, { name: string; slug: string }[]> = {
+  "industrial-peb-construction-chennai": [
+    { name: "Ambattur", slug: "peb-construction-ambattur" },
+    { name: "Sriperumbudur", slug: "peb-construction-sriperumbudur" },
+    { name: "Oragadam", slug: "peb-construction-oragadam" }
+  ],
+  "construction-services-in-chennai": [
+    { name: "Kanchipuram", slug: "peb-construction-kanchipuram" },
+    { name: "Thiruvallur", slug: "peb-construction-thiruvallur" },
+    { name: "Tambaram", slug: "peb-construction-tambaram" }
+  ],
+  "cold-storage-solutions-chennai": [
+    { name: "Chennai Port", slug: "peb-construction-chennai-port" },
+    { name: "Sriperumbudur", slug: "peb-construction-sriperumbudur" },
+    { name: "Hosur", slug: "peb-construction-hosur" }
+  ],
+  "mezzanine-floor-construction-chennai": [
+    { name: "Ambattur", slug: "peb-construction-ambattur" },
+    { name: "Tambaram", slug: "peb-construction-tambaram" },
+    { name: "Kanchipuram", slug: "peb-construction-kanchipuram" }
+  ],
+  "warehouse-construction-chennai": [
+    { name: "Sriperumbudur", slug: "peb-construction-sriperumbudur" },
+    { name: "Oragadam", slug: "peb-construction-oragadam" },
+    { name: "Thiruvallur", slug: "peb-construction-thiruvallur" }
+  ],
+  "eot-crane-manufacturers-in-chennai": [
+    { name: "Oragadam", slug: "peb-construction-oragadam" },
+    { name: "Ambattur", slug: "peb-construction-ambattur" },
+    { name: "Hosur", slug: "peb-construction-hosur" }
+  ],
+  "steel-structure-fabrication-chennai": [
+    { name: "Ambattur", slug: "peb-construction-ambattur" },
+    { name: "Kanchipuram", slug: "peb-construction-kanchipuram" },
+    { name: "Thiruvallur", slug: "peb-construction-thiruvallur" }
+  ],
+  "industrial-shed-construction-chennai": [
+    { name: "Sriperumbudur", slug: "peb-construction-sriperumbudur" },
+    { name: "Oragadam", slug: "peb-construction-oragadam" },
+    { name: "Tambaram", slug: "peb-construction-tambaram" }
+  ]
+};
+
+// Internal linking configurations: 2 blogs per service
+const serviceBlogsMap: Record<string, { title: string; slug: string }[]> = {
+  "industrial-peb-construction-chennai": [
+    { title: "PEB vs RCC Cost Comparison", slug: "peb-vs-rcc-construction-cost-chennai" },
+    { title: "The Step-by-Step PEB Manufacturing Process", slug: "pre-engineered-building-manufacturing-process" }
+  ],
+  "construction-services-in-chennai": [
+    { title: "PEB vs RCC Cost Comparison", slug: "peb-vs-rcc-construction-cost-chennai" },
+    { title: "Step-by-Step Industrial Approval Process", slug: "industrial-building-approval-process-tamil-nadu" }
+  ],
+  "cold-storage-solutions-chennai": [
+    { title: "Cold Storage Construction Cost Factors", slug: "cold-storage-construction-cost-factors" },
+    { title: "Warehouse Insulation & Ventilation Design", slug: "warehouse-insulation-ventilation-chennai" }
+  ],
+  "mezzanine-floor-construction-chennai": [
+    { title: "Mezzanine Floor Design and Safety Standards", slug: "mezzanine-floor-design-safety-standards" },
+    { title: "PEB for Commercial Showrooms & Multi-Story Units", slug: "peb-multi-story-commercial-buildings" }
+  ],
+  "warehouse-construction-chennai": [
+    { title: "Warehouse Insulation & Ventilation Design", slug: "warehouse-insulation-ventilation-chennai" },
+    { title: "Fire Safety Norms in Industrial Warehouses", slug: "fire-safety-norms-industrial-warehouses" }
+  ],
+  "eot-crane-manufacturers-in-chennai": [
+    { title: "EOT Crane Gantry Girder Design and Calculations", slug: "eot-crane-gantry-girder-calculations" },
+    { title: "Structural Steel Fabrication Quality Control and NDT", slug: "structural-steel-fabrication-quality-ndt" }
+  ],
+  "steel-structure-fabrication-chennai": [
+    { title: "Structural Steel Fabrication Quality Control and NDT", slug: "structural-steel-fabrication-quality-ndt" },
+    { title: "The Step-by-Step PEB Manufacturing Process", slug: "pre-engineered-building-manufacturing-process" }
+  ],
+  "industrial-shed-construction-chennai": [
+    { title: "Preventive Maintenance Checklist for Industrial Sheds", slug: "preventive-maintenance-industrial-sheds" },
+    { title: "Green Building Benefits of Pre-Engineered Steel", slug: "green-building-benefits-steel-peb" }
+  ]
+};
 
 const ServiceDetail = () => {
   const { slug } = useParams();
-  const service = services.find((s) => s.slug === slug);
+  const { pathname } = useLocation();
+
+  // Match either route param or direct URL path
+  const currentSlug = slug || pathname.replace(/^\//, "").replace(/\/$/, "");
+  const service = services.find((s) => s.slug === currentSlug);
+
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", budget: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface">
+        <SEO 
+          title="Service Not Found | Deepika Builtech" 
+          description="The requested pre-engineered building or construction service is not available."
+          robots="noindex, follow"
+        />
         <div className="text-center">
           <h1 className="text-4xl font-heading font-black mb-4">Service Not Found</h1>
-          <Link to="/" className="text-amber hover:underline">Back to Home</Link>
+          <Link to="/" className="text-amber hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber p-2">Back to Home</Link>
         </div>
       </div>
     );
   }
 
+  const meta = seoContent[service.slug] || {
+    title: `${service.title} | Deepika Builtech`,
+    description: service.shortDesc,
+    h1: service.title
+  };
+
+  const linkedLocations = serviceLocationsMap[service.slug] || [];
+  const linkedBlogs = serviceBlogsMap[service.slug] || [];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    const formspreeEndpoint = "https://formspree.io/f/xvgooleq";
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          service_requested: service.title,
+          subject: `Enquiry from Service Landing Page: ${service.title}`
+        })
+      });
+
+      if (response.ok) {
+        setSubmitMessage("Thank you! Your quote request has been sent successfully.");
+        setFormData({ name: "", email: "", phone: "", message: "", budget: "" });
+      } else {
+        throw new Error("Form submission failed.");
+      }
+    } catch (error) {
+      const subject = encodeURIComponent(`Project Quote for ${service.title}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nBudget: ${formData.budget}\nMessage: ${formData.message}\nService: ${service.title}`);
+      window.location.href = `mailto:info@deepikabuiltech.com?subject=${subject}&body=${body}`;
+      setSubmitMessage("Form submission redirected to mail handler.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Structured schemas
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://deepikabuiltech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": service.title,
+        "item": `https://deepikabuiltech.com/${service.slug}`
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.faqs.map(f => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-surface">
+      <SEO 
+        title={meta.title} 
+        description={meta.description} 
+        ogImage={service.image}
+      />
+      
+      {/* Schema Injection */}
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+
       <Navbar />
       
-      {/* Hero Header */}
-      <section className="relative pt-40 pb-20 overflow-hidden bg-carbon">
-        <div className="absolute inset-0 opacity-20">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover grayscale" />
+      {/* 1. Hero Section */}
+      <section className="relative pt-40 pb-20 overflow-hidden bg-carbon text-white">
+        <div className="absolute inset-0 opacity-15">
+          <img 
+            src={service.image} 
+            alt={`Industrial service: ${service.title}`} 
+            className="w-full h-full object-cover grayscale" 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <Link to="/" className="inline-flex items-center gap-2 text-surface-mid hover:text-amber mb-12 transition-colors group">
+          <Link 
+            to="/services" 
+            className="inline-flex items-center gap-2 text-surface-mid hover:text-amber mb-8 transition-colors group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm"
+          >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="text-xs font-black uppercase tracking-widest">Back to Solutions</span>
           </Link>
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[0.9] tracking-tighter mb-8 max-w-4xl">
-              {service.title}.
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-heading font-black leading-tight tracking-tight mb-6">
+              {meta.h1}
             </h1>
-            <p className="text-xl md:text-2xl text-surface-mid font-sans max-w-3xl leading-relaxed">
-              {service.fullDesc}
+            <p className="text-lg md:text-xl text-surface-subtle font-sans leading-relaxed mb-10">
+              {service.subheading}
             </p>
-          </motion.div>
+            <div className="flex flex-wrap gap-4 mb-10">
+              <a 
+                href="#quote-form" 
+                className="bg-amber hover:bg-white text-carbon font-black px-8 py-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-xs shadow-xl shadow-amber/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+              >
+                Request an Engineering Quote
+              </a>
+              <Link 
+                to="/projects" 
+                className="border border-white/20 hover:border-amber text-white font-black px-8 py-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              >
+                View Completed Projects
+              </Link>
+            </div>
+            
+            {/* Trust Anchor Bar */}
+            <div className="pt-8 border-t border-white/10 flex flex-wrap gap-x-8 gap-y-4 text-xs font-black uppercase tracking-wider text-white/60">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber" /> ISO 9001:2015 Certified Manufacturing
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber" /> 150+ Projects Erected
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-3 gap-16 lg:gap-24">
+      {/* Breadcrumbs */}
+      <Breadcrumbs 
+        items={[
+          { label: "Services", href: "/services" },
+          { label: service.title }
+        ]} 
+      />
+
+      <main className="py-24 space-y-24">
+        
+        {/* 2. Intro Paragraphs & Location/Blog Internal Linking */}
+        <section className="container mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-8 space-y-8">
+              <h2 className="text-3xl font-heading font-black text-ink tracking-tight">Overview & Capabilities</h2>
+              <div className="prose prose-lg text-ink-muted leading-relaxed font-sans">
+                <p className="whitespace-pre-line">{service.fullDesc}</p>
+              </div>
+            </div>
             
-            {/* Left: Detail Content */}
-            <div className="lg:col-span-2 space-y-16">
-              
-              {/* Features Grid */}
-              <div className="grid md:grid-cols-3 gap-8">
-                {service.features.map((feature, idx) => (
-                  <motion.div 
-                    key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="p-8 bg-surface-subtle border border-surface-mid rounded-2xl group hover:border-amber/30 transition-all shadow-sm"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-white border border-surface-mid flex items-center justify-center mb-6 group-hover:bg-amber group-hover:border-amber transition-all">
-                      <feature.icon className="w-5 h-5 text-amber group-hover:text-carbon" />
-                    </div>
-                    <h3 className="text-lg font-heading font-black text-ink mb-3 tracking-tight">{feature.title}</h3>
-                    <p className="text-sm text-ink-muted leading-relaxed font-sans">{feature.desc}</p>
-                  </motion.div>
-                ))}
+            {/* Sidebar for Dynamic Cross-Linking */}
+            <div className="lg:col-span-4 space-y-8 bg-surface-subtle p-8 rounded-[2rem] border border-surface-mid">
+              {/* Linked Locations (3 Locations served) */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-black uppercase tracking-wider text-ink-muted border-b border-surface-mid pb-2">
+                  Locations We Serve
+                </h3>
+                <p className="text-xs text-ink-muted font-sans leading-relaxed">
+                  We erect high-precision steel buildings in key Tamil Nadu corridors including:
+                </p>
+                <div className="flex flex-col gap-2">
+                  {linkedLocations.map(loc => (
+                    <Link 
+                      key={loc.slug} 
+                      to={`/location/${loc.slug}`}
+                      className="text-sm font-bold text-ink hover:text-amber transition-colors flex items-center gap-1 group"
+                    >
+                      <span className="underline">{loc.name} Industrial Sector</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-surface-mid group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  ))}
+                </div>
               </div>
 
-              {/* Technical Specifications */}
-              <div className="bg-carbon p-10 lg:p-16 rounded-[2.5rem] text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-amber opacity-5 blur-[120px]" />
-                <h2 className="text-3xl font-heading font-black mb-12 tracking-tight">Technical Specifications</h2>
-                <div className="grid md:grid-cols-2 gap-x-16 gap-y-8">
-                  {service.specs.map((spec) => (
-                    <div key={spec.label} className="flex flex-col border-b border-white/10 pb-6">
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2">{spec.label}</span>
-                      <span className="text-xl font-heading font-bold text-white">{spec.value}</span>
-                    </div>
+              {/* Linked Blogs (2 Recommended articles) */}
+              <div className="space-y-4 pt-4 border-t border-surface-mid">
+                <h3 className="text-xs font-black uppercase tracking-wider text-ink-muted border-b border-surface-mid pb-2">
+                  Technical Resources
+                </h3>
+                <p className="text-xs text-ink-muted font-sans leading-relaxed">
+                  Read our cost engineering and design insights:
+                </p>
+                <div className="flex flex-col gap-3">
+                  {linkedBlogs.map(blog => (
+                    <Link 
+                      key={blog.slug} 
+                      to={`/blog/${blog.slug}`}
+                      className="text-xs font-bold text-ink hover:text-amber transition-colors leading-snug block hover:underline"
+                    >
+                      {blog.title} &rarr;
+                    </Link>
                   ))}
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Right: Sidebar / CTA */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-32 space-y-8">
-                <div className="bg-amber p-10 rounded-[2rem] shadow-2xl shadow-amber/20">
-                  <h3 className="text-2xl font-heading font-black text-carbon mb-6 tracking-tight">Start Your Project</h3>
-                  <p className="text-carbon/80 font-sans mb-10 leading-relaxed font-medium">
-                    Discuss your structural requirements with our expert engineering team.
-                  </p>
-                  <Link to="/contact" className="w-full bg-carbon text-white font-black text-[13px] uppercase tracking-[0.1em] py-4 px-6 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all whitespace-nowrap group">
-                    <span>Request a Technical Quote</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-
-                <div className="border border-surface-mid p-8 rounded-[2rem]">
-                  <h4 className="text-sm font-black uppercase tracking-widest text-ink-muted mb-6">Other Solutions</h4>
-                  <div className="space-y-4">
-                    {services.filter(s => s.slug !== slug).slice(0, 3).map(s => (
-                      <Link key={s.slug} to={`/service/${s.slug}`} className="flex items-center justify-between group">
-                        <span className="text-ink font-bold group-hover:text-amber transition-colors">{s.title}</span>
-                        <ChevronRight className="w-4 h-4 text-surface-mid group-hover:text-amber transition-all group-hover:translate-x-1" />
-                      </Link>
-                    ))}
+        {/* 3. What We Offer (Features Grid) */}
+        <section className="bg-surface-subtle border-y border-surface-mid py-24">
+          <div className="container mx-auto px-6 lg:px-12">
+            <h2 className="text-3xl font-heading font-black text-ink mb-12 tracking-tight text-center">
+              Key Benefits & Advantages
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {service.features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div 
+                    key={feature.title}
+                    className="p-8 bg-white border border-surface-mid rounded-2xl group hover:border-amber/30 transition-all shadow-sm"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-surface-subtle border border-surface-mid flex items-center justify-center mb-6 group-hover:bg-amber transition-colors">
+                      <Icon className="w-5 h-5 text-amber group-hover:text-carbon transition-colors" />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold text-ink mb-3 tracking-tight">{feature.title}</h3>
+                    <p className="text-sm text-ink-muted leading-relaxed font-sans">{feature.desc}</p>
                   </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. Why Choose Deepika Builtech (3 Columns) */}
+        <section className="container mx-auto px-6 lg:px-12">
+          <h2 className="text-3xl font-heading font-black text-ink mb-12 tracking-tight text-center">
+            Why Choose Deepika Builtech
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.whyChoose.map((wc, idx) => (
+              <div key={idx} className="p-8 border border-surface-mid rounded-[2.5rem] bg-white relative">
+                <span className="absolute top-6 right-8 text-6xl font-heading font-black text-surface-mid/20">0{idx + 1}</span>
+                <h3 className="text-xl font-heading font-bold text-ink mb-4 tracking-tight pr-10">{wc.title}</h3>
+                <p className="text-sm text-ink-muted leading-relaxed font-sans">{wc.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Technical Specifications Callout */}
+        <section className="container mx-auto px-6 lg:px-12">
+          <div className="bg-carbon p-10 lg:p-16 rounded-[2.5rem] text-white overflow-hidden relative shadow-xl">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber opacity-5 blur-[120px]" />
+            <h2 className="text-3xl font-heading font-black mb-12 tracking-tight">Technical Specifications</h2>
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-8">
+              {service.specs.map((spec) => (
+                <div key={spec.label} className="flex flex-col border-b border-white/10 pb-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2">{spec.label}</span>
+                  <span className="text-xl font-heading font-bold text-white">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Process Steps (5-Step Timeline) */}
+        <section className="bg-surface-subtle py-24 border-y border-surface-mid">
+          <div className="container mx-auto px-6 lg:px-12">
+            <h2 className="text-3xl font-heading font-black text-ink mb-16 tracking-tight text-center">
+              Our Step-by-Step Erection Process
+            </h2>
+            <div className="grid md:grid-cols-5 gap-8">
+              {service.process.map((step) => (
+                <div key={step.number} className="relative space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-amber text-carbon flex items-center justify-center font-heading font-black text-lg">
+                    {step.number}
+                  </div>
+                  <h3 className="text-base font-heading font-bold text-ink tracking-tight">{step.title}</h3>
+                  <p className="text-xs text-ink-muted leading-relaxed font-sans">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. FAQ Section */}
+        <section className="container mx-auto px-6 lg:px-12 max-w-4xl">
+          <h2 className="text-3xl font-heading font-black text-ink mb-12 text-center tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {service.faqs.map((faq, idx) => (
+              <div key={idx} className="p-8 bg-white border border-surface-mid rounded-3xl shadow-sm">
+                <h3 className="text-lg font-heading font-bold text-ink mb-2 tracking-tight">
+                  {faq.question}
+                </h3>
+                <p className="text-sm text-ink-muted leading-relaxed font-sans">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. Quote Form */}
+        <section id="quote-form" className="container mx-auto px-6 lg:px-12 max-w-4xl">
+          <div className="bg-white border border-surface-mid p-10 lg:p-16 rounded-[2.5rem] shadow-xl">
+            <h2 className="text-3xl font-heading font-black text-ink mb-2 tracking-tight text-center">Request an Engineering Quote</h2>
+            <p className="text-ink-muted font-sans mb-8 text-center">Get structural sizing and pricing calculations from our technical team.</p>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Your Name</label>
+                  <input 
+                    type="text" 
+                    required 
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    required 
+                    value={formData.phone}
+                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                  />
                 </div>
               </div>
-            </div>
+              
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Email Address</label>
+                <input 
+                  type="email" 
+                  required 
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                />
+              </div>
 
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Project Size</label>
+                <select 
+                  value={formData.budget}
+                  onChange={e => setFormData({ ...formData, budget: e.target.value })}
+                  className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                >
+                  <option value="">Select Range</option>
+                  <option value="Under 10,000 Sq.Ft">Under 10,000 Sq.Ft</option>
+                  <option value="10,000 - 50,000 Sq.Ft">10,000 - 50,000 Sq.Ft</option>
+                  <option value="50,000 - 1,00,000 Sq.Ft">50,000 - 1,00,000 Sq.Ft</option>
+                  <option value="Above 1,00,000 Sq.Ft">Above 1,00,000 Sq.Ft</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Requirements Brief</label>
+                <textarea 
+                  rows={4} 
+                  required 
+                  value={formData.message}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                  placeholder={`Details on clear spans, heights, or loading for your ${service.title} project.`}
+                  className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm resize-none"
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-carbon hover:bg-black text-white font-black py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest text-xs shadow-lg"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Quote Request"} <Send className="w-4 h-4" />
+              </button>
+              
+              {submitMessage && (
+                <p className="text-xs font-bold text-center text-amber mt-4">{submitMessage}</p>
+              )}
+            </form>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* 8. Related Services (3 Cards) */}
+        <section className="container mx-auto px-6 lg:px-12 border-t border-surface-mid pt-16">
+          <h2 className="text-xs font-black uppercase tracking-[0.25em] text-ink-muted mb-8">Related Engineering Solutions</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {services.filter(s => s.slug !== service.slug).slice(0, 3).map(s => (
+              <Link 
+                key={s.slug} 
+                to={`/${s.slug}`} 
+                className="p-6 bg-white border border-surface-mid rounded-2xl shadow-sm hover:border-amber hover:shadow-lg transition-all group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+              >
+                <h3 className="text-base font-heading font-bold text-ink mb-2 group-hover:text-amber transition-colors">{s.title}</h3>
+                <p className="text-xs text-ink-muted leading-relaxed font-sans mb-4">{s.shortDesc}</p>
+                <span className="text-[10px] font-black uppercase tracking-widest text-amber inline-flex items-center gap-1">
+                  View Specifications <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* 9. NAP Footer */}
+        <section className="container mx-auto px-6 lg:px-12 border-t border-surface-mid pt-16">
+          <div className="grid md:grid-cols-4 gap-8 bg-surface-subtle p-10 rounded-[2.5rem] border border-surface-mid">
+            <div className="space-y-2">
+              <h4 className="text-xs font-black uppercase tracking-wider text-ink">Deepika Builtech</h4>
+              <p className="text-xs text-ink-muted leading-relaxed font-sans">
+                Engineering precision steel buildings, factories, and warehouses across South India since 2015.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-[9px] font-black uppercase tracking-widest text-ink-muted block">Corporate HQ</span>
+              <p className="text-xs text-ink font-bold flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-amber shrink-0" />
+                <span>New No. 31, 31A, Old No.14, 15, Coromandal Town, SIDCO Industrial Estate, Ambattur, Chennai - 600098</span>
+              </p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-[9px] font-black uppercase tracking-widest text-ink-muted block">Connect Directly</span>
+              <p className="text-xs text-ink font-bold flex items-center gap-2">
+                <Phone className="w-4 h-4 text-amber" />
+                <span>+91 96000 67611</span>
+              </p>
+              <p className="text-xs text-ink font-bold flex items-center gap-2">
+                <Mail className="w-4 h-4 text-amber" />
+                <span>info@deepikabuiltech.com</span>
+              </p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-[9px] font-black uppercase tracking-widest text-ink-muted block">Certifications</span>
+              <p className="text-xs text-ink font-bold flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber" />
+                <span>ISO 9001:2015 Certified</span>
+              </p>
+              <p className="text-xs text-ink font-bold flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber" />
+                <span>Excellence Award (2025)</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </main>
 
       <Footer />
     </div>

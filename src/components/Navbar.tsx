@@ -98,13 +98,17 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="lg:hidden relative z-10 flex items-center gap-2">
-          <a href="tel:+919600067611" className="w-10 h-10 flex items-center justify-center bg-surface-subtle text-amber rounded-full tap-target">
+          <a 
+            href="tel:+919600067611" 
+            className="w-10 h-10 flex items-center justify-center bg-surface-subtle text-amber rounded-full tap-target focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber" 
+            aria-label="Call Deepika Builtech"
+          >
             <Phone className="w-5 h-5" />
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 flex items-center justify-center text-ink hover:bg-surface-subtle rounded-full tap-target transition-transform active:rotate-90 duration-300"
-            aria-label="Toggle Menu"
+            className="w-10 h-10 flex items-center justify-center text-ink hover:bg-surface-subtle rounded-full tap-target transition-transform active:rotate-90 duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+            aria-label="Toggle Navigation Menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -122,7 +126,7 @@ const Navbar = () => {
                 <Link
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block py-4 text-center text-lg font-heading font-bold transition-all active:scale-95 ${
+                  className={`block py-4 text-center text-lg font-heading font-bold transition-all active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-md ${
                     pathname === link.href 
                       ? "text-amber" 
                       : "text-ink"
@@ -138,7 +142,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-3 bg-carbon text-white font-black text-sm uppercase tracking-widest py-5 rounded-2xl shadow-xl shadow-carbon/20 active:scale-95 transition-all"
+                className="w-full inline-flex items-center justify-center gap-3 bg-carbon text-white font-black text-sm uppercase tracking-widest py-5 rounded-2xl shadow-xl shadow-carbon/20 active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
               >
                 <Phone className="w-4 h-4" />
                 <span>Request Quotation</span>
@@ -148,18 +152,36 @@ const Navbar = () => {
             <div className="mt-12 text-center pb-2">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-6">Connect With Us</p>
               <div className="flex justify-center gap-6 mb-8">
-                 <a href="#" className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all">
+                 <a 
+                   href="https://facebook.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   aria-label="Visit our Facebook page" 
+                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+                 >
                     <Facebook className="w-5 h-5" />
                  </a>
-                 <a href="#" className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all">
+                 <a 
+                   href="https://instagram.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   aria-label="Visit our Instagram page" 
+                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+                 >
                     <Instagram className="w-5 h-5" />
                  </a>
-                 <a href="#" className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all">
+                 <a 
+                   href="https://linkedin.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   aria-label="Visit our LinkedIn page" 
+                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+                 >
                     <Linkedin className="w-5 h-5" />
                  </a>
               </div>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-2">Technical Support</p>
-              <a href="mailto:dbtechengg@gmail.com" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30">dbtechengg@gmail.com</a>
+              <a href="mailto:info@deepikabuiltech.com" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">info@deepikabuiltech.com</a>
             </div>
           </div>
         </div>

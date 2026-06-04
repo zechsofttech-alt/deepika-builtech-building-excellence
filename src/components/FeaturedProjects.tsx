@@ -34,10 +34,16 @@ const FeaturedProjects = () => {
               transition={{ delay: idx * 0.1 }}
               className="group"
             >
-              <Link to={`/project/${project.slug}`} className="block overflow-hidden rounded-[2.5rem] relative aspect-[4/5] mb-8 shadow-2xl shadow-carbon/5">
+              <Link 
+                to={`/project/${project.slug}`} 
+                className="block overflow-hidden rounded-[2.5rem] relative aspect-[4/5] mb-8 shadow-2xl shadow-carbon/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+              >
                 <img 
                   src={project.image} 
-                  alt={project.title} 
+                  alt={`${project.category} project completed by Deepika Builtech, Chennai`} 
+                  width={640}
+                  height={800}
+                  loading="lazy"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent opacity-60" />
@@ -46,7 +52,8 @@ const FeaturedProjects = () => {
                     <span className="w-2 h-2 rounded-full bg-amber" />
                     <p className="text-[10px] font-black uppercase tracking-widest">{project.category}</p>
                   </div>
-                  <h3 className="text-2xl font-heading font-black mb-4 leading-none tracking-tight">{project.title}</h3>
+                  <h3 className="text-2xl font-heading font-black mb-2 leading-none tracking-tight">{project.title}</h3>
+                  <p className="text-[11px] text-white/70 font-sans mb-3 font-medium">Completed: {project.year}</p>
                   <div className="flex items-center gap-6 pt-4 border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-3.5 h-3.5 text-amber" />

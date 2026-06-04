@@ -3,37 +3,37 @@ import { CheckCircle2, TrendingUp, Award, Building2, Cpu } from "lucide-react";
 
 const milestones = [
   {
-    year: "2008",
+    year: "2015",
     title: "The Foundation",
-    description: "Deepika Builtech was established with a singular vision: to bring world-class structural engineering to the local industrial landscape.",
+    description: "Deepika Builtech was established in Chennai with a singular vision: to bring world-class structural steel design and pre-engineered buildings to the local industrial landscape.",
     icon: Building2,
     stats: "First 10,000 Sq.Ft Project"
   },
   {
-    year: "2012",
+    year: "2018",
     title: "Regional Expansion",
-    description: "Expanded operations across South India, securing major contracts for large-scale logistics hubs and manufacturing units.",
+    description: "Expanded operations across South India, securing major contracts for large-scale logistics hubs, warehouses, and factory buildings.",
     icon: TrendingUp,
     stats: "50+ Projects Completed"
   },
   {
-    year: "2016",
+    year: "2020",
     title: "Quality Benchmarking",
-    description: "Achieved ISO certifications and launched a dedicated department for specialized Controlled Environment (Cold Storage) structures.",
+    description: "Achieved ISO 9001:2015 certifications and launched specialized departments for Controlled Environment (Cold Storage) structures.",
     icon: Award,
     stats: "ISO 9001:2015 Certified"
   },
   {
-    year: "2020",
+    year: "2022",
     title: "Digital Transformation",
-    description: "Integrated Building Information Modeling (BIM) and advanced CAD/CAM automation into our fabrication pipeline for zero-error delivery.",
+    description: "Integrated building information modeling (BIM) and advanced CAD/CAM automation into our fabrication pipeline for zero-error delivery.",
     icon: Cpu,
     stats: "Zero-Error Precision"
   },
   {
-    year: "2024",
-    title: "Industry Leadership",
-    description: "Recognized as a leading name in high-integrity PEB solutions, redefining the modern industrial skyline with sustainable engineering.",
+    year: "2025",
+    title: "Excellence Award Recipient",
+    description: "Recognized as a leading name in high-integrity PEB structures, receiving the industry Excellence Award (2025) in Chennai.",
     icon: CheckCircle2,
     stats: "150+ Success Stories"
   }
@@ -41,7 +41,7 @@ const milestones = [
 
 const TimelineSection = () => {
   return (
-    <section className="py-24 bg-surface overflow-hidden">
+    <section className="py-24 bg-surface overflow-hidden border-t border-surface-mid">
       <div className="container mx-auto px-6 lg:px-12">
         
         <div className="text-center max-w-3xl mx-auto mb-20">

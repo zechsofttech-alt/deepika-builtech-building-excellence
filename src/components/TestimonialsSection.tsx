@@ -9,25 +9,28 @@ import {
 
 const videoTestimonials = [
   {
-    name: "Murugan Swamy",
-    role: "Operational Head, Southern Logistics",
+    name: "Mr. K. Jayaraman",
+    company: "Jayaraman Auto Components",
+    city: "Kanchipuram",
     thumbnail: "/assets/testimonials/review_1.png",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder video
-    summary: "Deepika Builtech delivered our warehouse ahead of schedule with unparalleled precision and quality.",
+    summary: "Deepika Builtech's pre-engineered steel structure for our manufacturing unit was completed exactly on time. Their engineering team is highly skilled and precise.",
   },
   {
-    name: "Anjali Devi",
-    role: "Project Manager, Industrial Infra Corp",
+    name: "Mr. Rajesh Kumar",
+    company: "RK Logistics & Warehousing",
+    city: "Chennai",
     thumbnail: "/assets/testimonials/review_2.png",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    summary: "Their PEB design optimization was critical for our manufacturing workflow efficiency and space utilization.",
+    summary: "We contracted Deepika Builtech for our 80,000 sq.ft logistics warehouse. The column-free design and high-strength VDF flooring are outstanding. Highly recommended PEB experts in Chennai.",
   },
   {
-    name: "Robert Wilson",
-    role: "CEO, Global Cold Chain Solutions",
+    name: "Mr. S. Vignesh",
+    company: "Southern Cold Chain Solutions",
+    city: "Ambattur",
     thumbnail: "/assets/testimonials/review_3.png",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    summary: "Top-tier expertise in cold storage structural integrity. Their thermal solutions are state-of-the-art.",
+    summary: "The thermal efficiency of our new cold storage complex is excellent. Deepika Builtech's integration of PIR panels and dynamic structural framing made all the difference.",
   }
 ];
 
@@ -41,7 +44,7 @@ const TestimonialsSection = () => {
           <span className="w-8 h-[1px] bg-amber"></span>
         </div>
         <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink leading-[1.1] tracking-tighter">
-          Video <span className="gradient-text">Reviews.</span>
+          Client <span className="gradient-text">Testimonials.</span>
         </h3>
         <p className="mt-6 text-ink-muted text-lg max-w-2xl mx-auto font-sans">
           Hear directly from our partners about their experience building industrial excellence with Deepika Builtech.
@@ -57,7 +60,10 @@ const TestimonialsSection = () => {
                   <div className="relative aspect-video rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl hover:shadow-amber/20 transition-all duration-500 group-hover:-translate-y-2 border border-white/50">
                     <img 
                       src={item.thumbnail} 
-                      alt={item.name} 
+                      alt={`Deepika Builtech project review by ${item.name}`} 
+                      width={640}
+                      height={360}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-ink/40 group-hover:bg-ink/20 transition-colors duration-500 flex items-center justify-center">
@@ -68,7 +74,7 @@ const TestimonialsSection = () => {
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <p className="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-amber animate-pulse"></span>
-                        Watch Review
+                        Watch Video review
                       </p>
                     </div>
                   </div>
@@ -81,7 +87,7 @@ const TestimonialsSection = () => {
                     width="100%" 
                     height="100%" 
                     src={item.videoUrl} 
-                    title="YouTube video player" 
+                    title={`Video review by ${item.name} for Deepika Builtech`} 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowFullScreen
@@ -90,21 +96,15 @@ const TestimonialsSection = () => {
                 </DialogContent>
               </Dialog>
               
-              <div className="mt-8 px-4">
-                <p className="text-ink-muted leading-relaxed mb-6 text-base font-medium italic opacity-90">
-                  "{item.summary}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber to-amber-light flex items-center justify-center text-carbon font-heading font-black text-xl shadow-lg transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                    {item.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-black text-ink text-lg tracking-tight leading-none">{item.name}</h4>
-                    <p className="text-[10px] font-black text-amber uppercase tracking-[0.2em] mt-2 opacity-80">
-                      {item.role}
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-8 px-4 text-left">
+                <blockquote className="border-l-4 border-amber pl-5 py-2 mb-6">
+                  <p className="text-ink-muted leading-relaxed mb-4 text-base font-medium italic opacity-90">
+                    "{item.summary}"
+                  </p>
+                  <cite className="block text-[10px] font-black text-amber uppercase tracking-[0.2em] not-italic">
+                    — {item.name}, {item.company}, {item.city}
+                  </cite>
+                </blockquote>
               </div>
             </div>
           ))}
@@ -115,4 +115,3 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
-

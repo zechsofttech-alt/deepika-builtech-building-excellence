@@ -1,43 +1,49 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Plane, Package, ThermometerSnowflake, Factory, Car, ShoppingBag } from "lucide-react";
+import warehousingImg from "@/assets/sector-warehousing.png";
+import aviationImg from "@/assets/sector-aviation.png";
+import coldStorageImg from "@/assets/sector-cold-storage.png";
+import manufacturingImg from "@/assets/sector-manufacturing.png";
+import automotiveImg from "@/assets/sector-automotive.png";
+import retailImg from "@/assets/sector-retail.png";
 
 const audiences = [
   {
     icon: Package,
     name: "Warehousing & Logistics",
     desc: "Optimized clear-span designs for massive distribution centers and high-ceiling logistics hubs.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200"
+    image: warehousingImg
   },
   {
     icon: Plane,
     name: "Aviation & Hangars",
     desc: "Expertly engineered wide-span hangers for aircraft maintenance and airport infrastructure.",
-    image: "https://images.unsplash.com/photo-1540962351504-03099e0a75c3?auto=format&fit=crop&q=80&w=1200"
+    image: aviationImg
   },
   {
     icon: ThermometerSnowflake,
     name: "Cold Storage",
     desc: "Thermal-barrier structures designed for pharmaceutical and food-grade temperature control.",
-    image: "https://images.unsplash.com/photo-1588619491741-995085e54c8e?auto=format&fit=crop&q=80&w=1200"
+    image: coldStorageImg
   },
   {
     icon: Factory,
     name: "Manufacturing Plants",
     desc: "Heavy-duty industrial sheds designed for crane integration and high-vibration machinery.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
+    image: manufacturingImg
   },
   {
     icon: Car,
     name: "Automotive Facilities",
     desc: "Precision showrooms and service centers with premium architectural finishes.",
-    image: "https://images.unsplash.com/photo-1562141984-780c8975949e?auto=format&fit=crop&q=80&w=1200"
+    image: automotiveImg
   },
   {
     icon: ShoppingBag,
     name: "Commercial & Retail",
     desc: "Modern PEB solutions for multi-story shopping complexes and commercial high-rises.",
-    image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&q=80&w=1200"
+    image: retailImg
   }
 ];
 
