@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*?*
+Disallow: /*_escaped_fragment_
+
 Sitemap: https://deepikabuiltech.com/sitemap.xml
