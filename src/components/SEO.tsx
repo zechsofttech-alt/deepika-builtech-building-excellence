@@ -16,12 +16,12 @@ const SEO = ({
   description,
   robots = "index, follow",
   ogType = "website",
-  ogImage = "https://deepikabuiltech.com/assets/peb-building.jpg", // default hero image
+  ogImage = "https://www.deepikabuiltech.com/assets/peb-building.jpg", // default hero image
   ogTitle,
   ogDescription
 }: SEOProps) => {
   const location = useLocation();
-  const canonicalUrl = `https://deepikabuiltech.com${location.pathname}`;
+  const canonicalUrl = `https://www.deepikabuiltech.com${location.pathname}`;
 
   useEffect(() => {
     // Set document title

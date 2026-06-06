@@ -46,19 +46,19 @@ const ProjectDetail = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://deepikabuiltech.com/"
+        "item": "https://www.deepikabuiltech.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://deepikabuiltech.com/projects"
+        "item": "https://www.deepikabuiltech.com/projects"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": project.title,
-        "item": `https://deepikabuiltech.com/project/${project.slug}`
+        "item": `https://www.deepikabuiltech.com/project/${project.slug}`
       }
     ]
   };
@@ -68,11 +68,11 @@ const ProjectDetail = () => {
     "@type": "CreativeWork",
     "name": project.title,
     "description": project.description,
-    "image": `https://deepikabuiltech.com${project.image}`,
+    "image": `https://www.deepikabuiltech.com${project.image}`,
     "author": {
       "@type": "LocalBusiness",
       "name": "Deepika Builtech",
-      "url": "https://deepikabuiltech.com/"
+      "url": "https://www.deepikabuiltech.com/"
     },
     "contentLocation": {
       "@type": "Place",

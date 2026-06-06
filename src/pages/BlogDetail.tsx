@@ -127,19 +127,19 @@ const BlogDetail = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://deepikabuiltech.com/"
+        "item": "https://www.deepikabuiltech.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Journal",
-        "item": "https://deepikabuiltech.com/blogs"
+        "item": "https://www.deepikabuiltech.com/blogs"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://deepikabuiltech.com/blog/${post.slug}`
+        "item": `https://www.deepikabuiltech.com/blog/${post.slug}`
       }
     ]
   };

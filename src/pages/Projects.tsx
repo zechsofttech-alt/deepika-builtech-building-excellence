@@ -22,13 +22,13 @@ const Projects = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://deepikabuiltech.com/"
+        "item": "https://www.deepikabuiltech.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://deepikabuiltech.com/projects"
+        "item": "https://www.deepikabuiltech.com/projects"
       }
     ]
   };
@@ -38,12 +38,12 @@ const Projects = () => {
     "@type": "ItemList",
     "name": "Deepika Builtech Industrial Projects Portfolio",
     "description": "Completed pre-engineered buildings, warehouse structures, mezzanine floors, and cold storage facilities by Deepika Builtech in Chennai and across South India.",
-    "url": "https://deepikabuiltech.com/projects",
+    "url": "https://www.deepikabuiltech.com/projects",
     "numberOfItems": projects.length,
     "itemListElement": projects.map((p, idx) => ({
       "@type": "ListItem",
       "position": idx + 1,
-      "url": `https://deepikabuiltech.com/project/${p.slug}`,
+      "url": `https://www.deepikabuiltech.com/project/${p.slug}`,
       "name": p.title
     }))
   };

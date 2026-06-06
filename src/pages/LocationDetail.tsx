@@ -94,13 +94,13 @@ const LocationDetail = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://deepikabuiltech.com/"
+        "item": "https://www.deepikabuiltech.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": `PEB Construction in ${locationProfile.name}`,
-        "item": `https://deepikabuiltech.com/location/${locationProfile.slug}`
+        "item": `https://www.deepikabuiltech.com/location/${locationProfile.slug}`
       }
     ]
   };
@@ -109,7 +109,7 @@ const LocationDetail = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Deepika Builtech - ${locationProfile.name} Office`,
-    "image": "https://deepikabuiltech.com/assets/peb-building.jpg",
+    "image": "https://www.deepikabuiltech.com/assets/peb-building.jpg",
     "telephone": "+91 96000 67611",
     "email": "info@deepikabuiltech.com",
     "address": {
@@ -124,7 +124,7 @@ const LocationDetail = () => {
       "@type": "Place",
       "name": `${locationProfile.name}, Tamil Nadu`
     },
-    "url": `https://deepikabuiltech.com/location/${locationProfile.slug}`
+    "url": `https://www.deepikabuiltech.com/location/${locationProfile.slug}`
   };
 
   const faqSchema = {

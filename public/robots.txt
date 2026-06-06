@@ -1,8 +1,11 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
-Disallow: /*?*
-Disallow: /*_escaped_fragment_
 
-Sitemap: https://deepikabuiltech.com/sitemap.xml
+Sitemap: https://www.deepikabuiltech.com/sitemap_index.xml
+
+# Block WordPress admin from indexing
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /?s=
+Disallow: /search/

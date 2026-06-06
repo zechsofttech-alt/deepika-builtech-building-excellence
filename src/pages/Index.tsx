@@ -26,7 +26,7 @@ const Index = () => {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Deepika Builtech Engineering",
-      "url": "https://deepikabuiltech.com",
+      "url": "https://www.deepikabuiltech.com",
       "telephone": "+919600067611",
       "email": "dbtechengg@gmail.com",
       "address": {
