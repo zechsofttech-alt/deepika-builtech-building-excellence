@@ -289,7 +289,7 @@ const BlogDetail = () => {
                 className="rounded-[2rem] my-8"
                 style={{
                   background: "#f8fafc",
-                  borderLeft: "4px solid #e07b39",
+                  borderLeft: "4px solid #c25e1f",
                   padding: "20px 24px"
                 }}
               >
@@ -304,7 +304,7 @@ const BlogDetail = () => {
                     to="/contact" 
                     className="inline-block text-white font-semibold hover:opacity-90 transition-opacity"
                     style={{
-                      background: "#e07b39",
+                      background: "#c25e1f",
                       padding: "10px 22px",
                       borderRadius: "6px",
                       textDecoration: "none"
@@ -373,6 +373,8 @@ const BlogDetail = () => {
                   <p className="text-ink-muted text-sm mb-8">Quarterly insights on PEB fabrication & logistics structural trends.</p>
                   <form onSubmit={handleSidebarSubmit} className="space-y-4">
                     <input 
+                      id="newsletter-email"
+                      aria-label="Email Address for Technical Newsletter"
                       type="email" 
                       required
                       placeholder="Email Address" 

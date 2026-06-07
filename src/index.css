@@ -284,3 +284,69 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float { animation: none; }
 }
+
+/* Testimonial Cards styling */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  border-left: 4px solid #e07b39;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.testimonial-card .stars {
+  color: #f59e0b;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.testimonial-card blockquote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #334155;
+  font-style: italic;
+  margin: 0;
+}
+.testimonial-card .client-info strong {
+  display: block;
+  font-size: 14px;
+  color: #0d1b2a;
+}
+.testimonial-card .client-info span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #e07b39;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100000;
+  border-radius: 0 0 6px 0;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #e07b39;
+  outline-offset: 2px;
+}
+
+/* Remove outline only for mouse users */
+.js-focus-visible a:focus:not(.focus-visible),
+.js-focus-visible button:focus:not(.focus-visible) {
+  outline: none;
+}

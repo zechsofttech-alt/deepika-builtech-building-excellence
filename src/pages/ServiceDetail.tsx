@@ -132,6 +132,65 @@ const serviceBlogsMap: Record<string, { title: string; slug: string }[]> = {
   ]
 };
 
+const serviceTestimonialsMap: Record<string, { quote: string; name: string; designation: string; company: string; city: string }> = {
+  "industrial-peb-construction-chennai": {
+    name: "Mr. K. Jayaraman",
+    designation: "Managing Director",
+    company: "Jayaraman Auto Components",
+    city: "Kanchipuram",
+    quote: "Deepika Builtech delivered an outstanding PEB steel structure for our manufacturing facility in Kanchipuram. The entire design, fabrication, and erection process was handled with extreme professionalism and completed exactly on our tight schedule."
+  },
+  "construction-services-in-chennai": {
+    name: "Mr. Rajesh Kumar",
+    designation: "Head of Operations",
+    company: "RK Logistics & Warehousing",
+    city: "Chennai",
+    quote: "We contracted Deepika Builtech for our new 80,000 sq.ft logistics warehouse in Chennai. The column-free structural layout and heavy-duty VDF flooring they built have significantly optimized our daily operations. Their PEB expertise is truly top-notch."
+  },
+  "cold-storage-solutions-chennai": {
+    name: "Mr. S. Vignesh",
+    designation: "Technical Director",
+    company: "Southern Cold Chain Solutions",
+    city: "Ambattur",
+    quote: "The thermal efficiency and structural integrity of our cold storage complex in Ambattur are excellent. Deepika Builtech perfectly integrated the thick PIR insulation panels and dynamic framing, proving themselves as the best industrial builders in Chennai."
+  },
+  "mezzanine-floor-construction-chennai": {
+    name: "Mr. T. N. Venkatesan",
+    designation: "Plant Manager",
+    company: "Alpha Precision Tools",
+    city: "Chennai",
+    quote: "The structural steel mezzanine floor built by Deepika Builtech has doubled our workshop floor space. Erection was completed within 3 weeks with zero disruption to our ongoing assembly lines. A highly professional engineering team."
+  },
+  "warehouse-construction-chennai": {
+    name: "Mr. M. R. Swaminathan",
+    designation: "VP Supply Chain",
+    company: "Greenways Agro Logistics",
+    city: "Sriperumbudur",
+    quote: "Our new logistics warehouse in Sriperumbudur has exceeded all expectations in terms of ventilation and floor flatwear. Deepika Builtech delivered a premium PEB warehouse under budget and ahead of time. Highly recommend their warehouse construction services."
+  },
+  "eot-crane-manufacturers-in-chennai": {
+    name: "Mr. D. Christopher",
+    designation: "Chief Engineer",
+    company: "Apex Heavy Castings",
+    city: "Oragadam",
+    quote: "Deepika Builtech manufactured and erected a 25-ton double-girder EOT crane and runways for our foundry. Runway alignment is incredibly precise, and the crane runs smoothly under heavy loads daily. Their crane engineering expertise is exceptional."
+  },
+  "steel-structure-fabrication-chennai": {
+    name: "Mr. A. B. Rahman",
+    designation: "Director",
+    company: "Chennai Heavy Fabricators",
+    city: "Ambattur",
+    quote: "We regularly outsource our heavy steel structure fabrication to Deepika Builtech. Their CNC cutting accuracy, SAW weld quality, and shot-blasting standards are exemplary. The best fabrication partner in Tamil Nadu."
+  },
+  "industrial-shed-construction-chennai": {
+    name: "Mr. G. Muthuvel",
+    designation: "Managing Director",
+    company: "Muthuvel Engineering Works",
+    city: "Thiruvallur",
+    quote: "Deepika Builtech constructed our pre-engineered industrial shed in Thiruvallur. The shed has withstood heavy monsoon rains and high coastal winds with zero issues. Their speed of erection and structural design quality are top-notch."
+  }
+};
+
 const ServiceDetail = () => {
   const { slug } = useParams();
   const { pathname } = useLocation();
@@ -326,7 +385,7 @@ const ServiceDetail = () => {
         ]} 
       />
 
-      <main className="py-24 space-y-24">
+      <main id="content" className="py-24 space-y-24">
         
         {/* 2. Intro Paragraphs & Location/Blog Internal Linking */}
         <section className="container mx-auto px-6 lg:px-12">
@@ -463,6 +522,29 @@ const ServiceDetail = () => {
             </div>
           </div>
         </section>
+
+        {/* Testimonial Section */}
+        {(() => {
+          const testimonial = serviceTestimonialsMap[service.slug];
+          if (!testimonial) return null;
+          return (
+            <section className="container mx-auto px-6 lg:px-12 max-w-2xl">
+              <h2 className="text-3xl font-heading font-black text-ink mb-12 text-center tracking-tight">
+                What Our Clients Say
+              </h2>
+              <div className="testimonial-card">
+                <div className="stars">★★★★★</div>
+                <blockquote>
+                  <p>"{testimonial.quote}"</p>
+                </blockquote>
+                <div className="client-info">
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.designation} — {testimonial.company}, {testimonial.city}</span>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* 6. FAQ Section */}
         <section className="container mx-auto px-6 lg:px-12 max-w-4xl">

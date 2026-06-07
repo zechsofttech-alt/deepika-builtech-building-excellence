@@ -26,7 +26,11 @@ const Index = () => {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Deepika Builtech Engineering",
+      "alternateName": "Deepika Builtech",
       "url": "https://www.deepikabuiltech.com",
+      "logo": "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-logo.png",
+      "image": "https://www.deepikabuiltech.com/wp-content/uploads/hero-peb-warehouse-chennai.jpg",
+      "description": "Chennai's leading Pre-Engineered Building (PEB) contractor specialising in steel structures, warehouses, cold storage, mezzanine floors, and EOT cranes across Tamil Nadu.",
       "telephone": "+919600067611",
       "email": "infoadmin@deepikabuiltech.in",
       "address": {
@@ -42,14 +46,85 @@ const Index = () => {
         "latitude": 13.0977,
         "longitude": 80.1534
       },
-      "openingHours": "Mo-Sa 09:00-18:00",
-      "description": "Pre-Engineered Building company in Chennai specialising in PEB structures, cold storage, warehouse construction, mezzanine floors, and EOT cranes.",
-      "areaServed": "Chennai, Tamil Nadu",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "areaServed": [
+        "Chennai", "Ambattur", "Sriperumbudur", "Kanchipuram",
+        "Thiruvallur", "Oragadam", "Tambaram", "Hosur", "Tamil Nadu"
+      ],
+      "priceRange": "₹₹",
+      "award": "Excellence Award 2025",
       "foundingDate": "2015",
-      "numberOfEmployees": {
-        "@type": "QuantitativeValue",
-        "value": "50+"
-      }
+      "numberOfEmployees": {"@type":"QuantitativeValue","value":"50"},
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Construction Services",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"PEB Building Structure Construction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Warehouse Construction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cold Storage Construction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mezzanine Floor Construction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"EOT Crane Manufacturing"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Civil and Steel Construction"}}
+        ]
+      },
+      "sameAs": [
+        "https://www.facebook.com/deepikabuiltech",
+        "https://www.linkedin.com/company/deepikabuiltech",
+        "https://www.youtube.com/@deepikabuiltech"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mr. K. Jayaraman"
+          },
+          "reviewBody": "Deepika Builtech delivered an outstanding PEB steel structure for our manufacturing facility in Kanchipuram. The entire design, fabrication, and erection process was handled with extreme professionalism and completed exactly on our tight schedule.",
+          "datePublished": "2024-11-15"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mr. Rajesh Kumar"
+          },
+          "reviewBody": "We contracted Deepika Builtech for our new 80,000 sq.ft logistics warehouse in Chennai. The column-free structural layout and heavy-duty VDF flooring they built have significantly optimized our daily operations. Their PEB expertise is truly top-notch.",
+          "datePublished": "2024-11-15"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mr. S. Vignesh"
+          },
+          "reviewBody": "The thermal efficiency and structural integrity of our cold storage complex in Ambattur are excellent. Deepika Builtech perfectly integrated the thick PIR insulation panels and dynamic framing, proving themselves as the best industrial builders in Chennai.",
+          "datePublished": "2024-11-15"
+        }
+      ]
     };
 
     const script = document.createElement("script");

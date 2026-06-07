@@ -137,7 +137,11 @@ const AIChatBot = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 text-white/60">
+              <button 
+                onClick={() => setIsOpen(false)} 
+                aria-label="Close Chatbot"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 text-white/60"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -191,6 +195,8 @@ const AIChatBot = () => {
             {/* Input Area */}
             <form onSubmit={handleSend} className="p-6 bg-white border-t border-surface-mid flex gap-3">
               <input
+                id="chatbot-input-field"
+                aria-label="Secure Chat Message"
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -199,6 +205,7 @@ const AIChatBot = () => {
               />
               <button 
                 type="submit"
+                aria-label="Send Message"
                 className="w-14 h-14 rounded-2xl bg-carbon text-white flex items-center justify-center hover:bg-amber hover:text-carbon transition-all shadow-lg active:scale-95"
               >
                 <Send className="w-5 h-5" />
@@ -230,6 +237,7 @@ const AIChatBot = () => {
             setIsOpen(!isOpen);
             setShowAutoBubble(false);
           }}
+          aria-label={isOpen ? "Close Chatbot Window" : "Open Chatbot Window"}
           className="w-16 h-16 rounded-2xl bg-carbon text-white flex items-center justify-center shadow-2xl hover:bg-amber hover:text-carbon transition-all duration-500 transform hover:rotate-6 active:scale-90 relative"
         >
           {isOpen ? <X className="w-8 h-8" /> : <MessageSquare className="w-8 h-8" />}

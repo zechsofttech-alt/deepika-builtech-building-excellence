@@ -34,7 +34,7 @@ const TestimonialsSection = () => {
           <span className="w-8 h-[1px] bg-amber"></span>
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink leading-[1.1] tracking-tighter">
-          What Our <span className="gradient-text">Clients Say.</span>
+          What Our Clients Say About Deepika Builtech
         </h2>
         <p className="mt-6 text-ink-muted text-lg max-w-2xl mx-auto font-sans">
           Hear directly from our partners about their experience building industrial excellence with Deepika Builtech.
@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       </div>
       
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {testimonials.map((item, idx) => (
             <motion.div 
               key={idx} 
@@ -50,26 +50,15 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 }}
-              className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-l-[6px] border-[#e07b39] rounded-[8px] text-left flex flex-col justify-between"
-              style={{ padding: "20px 24px" }}
+              className="testimonial-card"
             >
-              <div>
-                {/* 5 orange stars */}
-                <div className="text-[#e07b39] text-xl mb-4 font-sans leading-none">
-                  ★★★★★
-                </div>
-                <blockquote className="m-0">
-                  <p className="text-ink-muted leading-relaxed mb-6 text-base font-sans font-medium">
-                    "{item.quote}"
-                  </p>
-                  <footer className="mt-4">
-                    <cite className="block text-sm not-italic font-sans text-ink">
-                      <strong className="text-ink font-bold text-base block mb-0.5">{item.name}</strong>
-                      <span className="text-ink-muted/80 text-xs block leading-tight">{item.designation}, {item.company}</span>
-                      <span className="text-amber text-xs font-semibold uppercase tracking-wider block mt-1">{item.city}</span>
-                    </cite>
-                  </footer>
-                </blockquote>
+              <div className="stars">★★★★★</div>
+              <blockquote>
+                <p>"{item.quote}"</p>
+              </blockquote>
+              <div className="client-info">
+                <strong>{item.name}</strong>
+                <span>{item.designation} — {item.company}, {item.city}</span>
               </div>
             </motion.div>
           ))}

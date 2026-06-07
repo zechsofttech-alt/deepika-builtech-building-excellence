@@ -221,7 +221,7 @@ const LocationDetail = () => {
         ]} 
       />
 
-      <main className="py-24 space-y-24">
+      <main id="content" className="py-24 space-y-24">
         {/* 2. Location Context Section */}
         <section className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-16 items-center">

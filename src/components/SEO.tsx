@@ -48,8 +48,11 @@ const SEO = ({
     // Set Open Graph tags
     const ogTags: Record<string, string> = {
       "og:type": ogType,
-      "og:site_name": "Deepika Builtech",
-      "og:image": ogImage,
+      "og:site_name": "Deepika Builtech Engineering",
+      "og:image": ogImage || "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-og-image.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "628",
+      "og:locale": "en_IN",
       "og:title": ogTitle || title,
       "og:description": ogDescription || description,
       "og:url": canonicalUrl
@@ -65,6 +68,24 @@ const SEO = ({
       metaTag.setAttribute("content", content);
     });
 
+    // Set Twitter card tags
+    const twitterTags: Record<string, string> = {
+      "twitter:card": "summary_large_image",
+      "twitter:title": ogTitle || title,
+      "twitter:description": ogDescription || description,
+      "twitter:image": ogImage || "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-og-image.jpg"
+    };
+
+    Object.entries(twitterTags).forEach(([name, content]) => {
+      let metaTag = document.querySelector(`meta[name="${name}"]`);
+      if (!metaTag) {
+        metaTag = document.createElement("meta");
+        metaTag.setAttribute("name", name);
+        document.head.appendChild(metaTag);
+      }
+      metaTag.setAttribute("content", content);
+    });
+
     // Set canonical link element
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -74,7 +95,44 @@ const SEO = ({
     }
     canonicalLink.setAttribute("href", canonicalUrl);
 
-  }, [title, description, robots, ogType, ogImage, ogTitle, ogDescription, canonicalUrl]);
+    // Dynamic BreadcrumbList JSON-LD for inner pages
+    if (location.pathname !== "/") {
+      const pageName = title.split(" | ")[0] || "Page";
+      const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.deepikabuiltech.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": pageName,
+            "item": canonicalUrl
+          }
+        ]
+      };
+
+      let breadcrumbScript = document.getElementById("dynamic-breadcrumb-schema");
+      if (!breadcrumbScript) {
+        breadcrumbScript = document.createElement("script");
+        breadcrumbScript.setAttribute("type", "application/ld+json");
+        breadcrumbScript.setAttribute("id", "dynamic-breadcrumb-schema");
+        document.head.appendChild(breadcrumbScript);
+      }
+      breadcrumbScript.innerHTML = JSON.stringify(breadcrumbData);
+    } else {
+      const breadcrumbScript = document.getElementById("dynamic-breadcrumb-schema");
+      if (breadcrumbScript) {
+        breadcrumbScript.remove();
+      }
+    }
+
+  }, [title, description, robots, ogType, ogImage, ogTitle, ogDescription, canonicalUrl, location.pathname]);
 
   return null;
 };
