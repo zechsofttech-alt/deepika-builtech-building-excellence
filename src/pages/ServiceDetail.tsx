@@ -6,7 +6,7 @@ import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, ChevronRight, Phone, Send, MapPin, Mail, Clock } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Explicit SEO Meta Content mapping for 100/100 target for all 8 services
 const seoContent: Record<string, { title: string; description: string; h1: string }> = {
