@@ -14,11 +14,17 @@ const Logo: React.FC<LogoProps> = ({ className = "w-12 h-12", showText = true, v
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <div className="relative w-12 h-12 lg:w-14 lg:h-14 shrink-0 overflow-hidden rounded-full shadow-lg border border-surface-mid">
-        <img 
-          src="/assets/logo%20background%20blue.png" 
-          alt="Deepika Builtech Logo" 
-          className="w-full h-full object-cover"
-        />
+        <picture>
+          <source srcSet="/assets/logo-bg-blue.webp" type="image/webp" />
+          <img 
+            src="/assets/logo-bg-blue.png" 
+            alt="Deepika Builtech Engineering logo" 
+            width="56"
+            height="56"
+            loading="eager"
+            className="w-full h-full object-cover"
+          />
+        </picture>
       </div>
       
       {showText && (

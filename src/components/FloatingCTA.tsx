@@ -2,44 +2,45 @@ import { Phone } from "lucide-react";
 
 const FloatingCTA = () => {
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-4 md:gap-3 pointer-events-none select-none">
-      {/* Phone Floating Button */}
-      <a
-        href="tel:+919600067611"
-        className="pointer-events-auto w-14 h-14 bg-carbon text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 hover:bg-amber hover:text-carbon hover:scale-110 active:scale-95 transition-all duration-300 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-        aria-label="Call Deepika Builtech"
-      >
-        <Phone className="w-6 h-6 animate-pulse group-hover:rotate-12 transition-transform" />
-        {/* Tooltip */}
-        <span className="absolute left-16 bg-carbon text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl">
-          Call Now
-        </span>
-      </a>
-
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/919600067611?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="pointer-events-auto w-14 h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-emerald-500/20 hover:scale-110 active:scale-95 transition-all duration-300 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-600"
-        aria-label="Chat on WhatsApp"
-      >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
-          fill="currentColor" 
-          viewBox="0 0 16 16"
-          className="w-6 h-6 group-hover:scale-110 transition-transform"
+    <>
+      <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-4 md:gap-3 pointer-events-none select-none">
+        {/* Floating WhatsApp Button */}
+        <a 
+          href="https://wa.me/919600067611?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services.%20Please%20share%20more%20details."
+          className="whatsapp-float pointer-events-auto relative group"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with Deepika Builtech on WhatsApp"
         >
-          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-        </svg>
-        {/* Tooltip */}
-        <span className="absolute left-16 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl">
-          WhatsApp Chat
-        </span>
-      </a>
-    </div>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            width="30" 
+            height="30" 
+            fill="white"
+          >
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          {/* Tooltip */}
+          <span className="absolute left-16 bg-carbon text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl">
+            Chat with us
+          </span>
+        </a>
+
+        {/* Phone Floating Button */}
+        <a
+          href="tel:+919600067611"
+          className="relative pointer-events-auto w-14 h-14 bg-carbon text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 hover:bg-amber hover:text-carbon hover:scale-110 active:scale-95 transition-all duration-300 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+          aria-label="Call Deepika Builtech"
+        >
+          <Phone className="w-6 h-6 animate-pulse group-hover:rotate-12 transition-transform" />
+          {/* Tooltip */}
+          <span className="absolute left-16 bg-carbon text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl">
+            Call Now
+          </span>
+        </a>
+      </div>
+    </>
   );
 };
 

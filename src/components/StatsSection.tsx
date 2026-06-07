@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Trophy, Building2, Users, Clock } from "lucide-react";
+import { Factory, Building2, Users, Clock } from "lucide-react";
 
 const stats = [
-  { icon: Clock, value: 15, suffix: "+", label: "Years Experience", desc: "Delivering world-class structure." },
-  { icon: Building2, value: 150, suffix: "+", label: "Projects Completed", desc: "Across diverse industries." },
-  { icon: Users, value: 100, suffix: "+", label: "Enterprise Clients", desc: "Long-term forged partnerships." },
-  { icon: Trophy, value: 5, suffix: "", label: "Industry Awards", desc: "Recognized for innovation." },
+  { icon: Clock, value: 10, suffix: "+", label: "Years of Experience", desc: "Proven track record in pre-engineered buildings." },
+  { icon: Building2, value: 150, suffix: "+", label: "Projects Completed", desc: "Industrial and structural sites delivered." },
+  { icon: Users, value: 100, suffix: "+", label: "Happy Clients", desc: "Unmatched customer satisfaction across South India." },
+  { icon: Factory, value: 3, suffix: "", label: "Manufacturing Units", desc: "In Chennai, Kanchipuram, and Thiruvallur." },
 ];
 
 const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string }) => {

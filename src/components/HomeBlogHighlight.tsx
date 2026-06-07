@@ -34,7 +34,18 @@ const HomeBlogHighlight = () => {
               className="bg-white p-6 rounded-[2.5rem] flex flex-col md:flex-row gap-8 shadow-xl shadow-carbon/5 hover:shadow-2xl transition-all border border-surface-mid group"
             >
               <div className="md:w-1/3 aspect-square rounded-2xl overflow-hidden relative">
-                <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+                <picture>
+                  <source srcSet={post.webpImage} type="image/webp" />
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    {...{ fetchpriority: "low" }}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
+                  />
+                </picture>
               </div>
               <div className="md:w-2/3 flex flex-col justify-center">
                 <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-amber mb-4">

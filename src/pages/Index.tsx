@@ -28,7 +28,7 @@ const Index = () => {
       "name": "Deepika Builtech Engineering",
       "url": "https://www.deepikabuiltech.com",
       "telephone": "+919600067611",
-      "email": "dbtechengg@gmail.com",
+      "email": "infoadmin@deepikabuiltech.in",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "New No. 31,31A, Old No.14,15, Coromandal Town, SIDCO Industrial Estate",

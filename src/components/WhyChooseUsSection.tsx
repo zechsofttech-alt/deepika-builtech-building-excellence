@@ -1,27 +1,34 @@
-import { Target, HardHat, ShieldCheck } from "lucide-react";
+import { Factory, ShieldCheck, Clock, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const REASONS = [
   {
     num: "01",
-    stat: "98%",
-    title: "On-Time Project Delivery",
-    desc: "Strict adherence to project timelines with proactive site management, ensuring zero delays in your critical infrastructure setup.",
-    icon: Target,
+    stat: "100%",
+    title: "In-House Fabrication",
+    desc: "We own and operate our fabrication facilities — no outsourcing. CNC profiling, MIG, MAG and submerged arc welding all done in-house at our Ambattur and Kanchipuram units.",
+    icon: Factory,
   },
   {
     num: "02",
-    stat: "150+",
-    title: "Heavy-Duty Projects",
-    desc: "From warehouses to aircraft hangars, spanning massive square footage across South India and beyond.",
-    icon: HardHat,
+    stat: "IS-Code",
+    title: "IS Code Compliant Engineering",
+    desc: "Every structure is engineered to IS 800 and IS 801 standards. Structural drawings, BOQ, and approval documentation prepared by our in-house engineering team.",
+    icon: ShieldCheck,
   },
   {
     num: "03",
-    stat: "100%",
-    title: "ISO-Compliant Quality",
-    desc: "Every structure meets IS 800 & IS 1730 standards with rigorous quality verification from raw material to final installation.",
-    icon: ShieldCheck,
+    stat: "45-75 Days",
+    title: "On-Time Delivery",
+    desc: "Our integrated design-fabricate-erect model means no dependency on third-party vendors. Average PEB project delivered in 45–75 days from design approval to handover.",
+    icon: Clock,
+  },
+  {
+    num: "04",
+    stat: "Pan-TN",
+    title: "Pan-Tamil Nadu Service",
+    desc: "We serve all major industrial zones: Chennai, Ambattur, Sriperumbudur, Oragadam, Kanchipuram, Thiruvallur, Hosur, Coimbatore, and beyond. Free site visit anywhere in Tamil Nadu.",
+    icon: MapPin,
   },
 ];
 
@@ -62,7 +69,7 @@ const WhyChooseUsSection = () => {
 
               <div className="grid grid-cols-2 gap-8 py-10 border-y border-surface-mid/50">
                 <div className="group/stat">
-                  <div className="text-3xl font-heading font-black text-ink mb-1 group-hover/stat:text-amber transition-colors">15+</div>
+                  <div className="text-3xl font-heading font-black text-ink mb-1 group-hover/stat:text-amber transition-colors">10+</div>
                   <div className="text-[10px] uppercase font-bold tracking-widest text-ink-muted">Years of Innovation</div>
                 </div>
                 <div className="group/stat">

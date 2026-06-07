@@ -1,51 +1,41 @@
-import { Play } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 
-const videoTestimonials = [
+const testimonials = [
   {
     name: "Mr. K. Jayaraman",
+    designation: "Managing Director",
     company: "Jayaraman Auto Components",
     city: "Kanchipuram",
-    thumbnail: "/assets/testimonials/review_1.png",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder video
-    summary: "Deepika Builtech's pre-engineered steel structure for our manufacturing unit was completed exactly on time. Their engineering team is highly skilled and precise.",
+    quote: "Deepika Builtech delivered an outstanding PEB steel structure for our manufacturing facility in Kanchipuram. The entire design, fabrication, and erection process was handled with extreme professionalism and completed exactly on our tight schedule.",
   },
   {
     name: "Mr. Rajesh Kumar",
+    designation: "Head of Operations",
     company: "RK Logistics & Warehousing",
     city: "Chennai",
-    thumbnail: "/assets/testimonials/review_2.png",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    summary: "We contracted Deepika Builtech for our 80,000 sq.ft logistics warehouse. The column-free design and high-strength VDF flooring are outstanding. Highly recommended PEB experts in Chennai.",
+    quote: "We contracted Deepika Builtech for our new 80,000 sq.ft logistics warehouse in Chennai. The column-free structural layout and heavy-duty VDF flooring they built have significantly optimized our daily operations. Their PEB expertise is truly top-notch.",
   },
   {
     name: "Mr. S. Vignesh",
+    designation: "Technical Director",
     company: "Southern Cold Chain Solutions",
     city: "Ambattur",
-    thumbnail: "/assets/testimonials/review_3.png",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    summary: "The thermal efficiency of our new cold storage complex is excellent. Deepika Builtech's integration of PIR panels and dynamic structural framing made all the difference.",
+    quote: "The thermal efficiency and structural integrity of our cold storage complex in Ambattur are excellent. Deepika Builtech perfectly integrated the thick PIR insulation panels and dynamic framing, proving themselves as the best industrial builders in Chennai.",
   }
 ];
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-24 bg-surface-subtle overflow-hidden">
+    <section className="py-24 bg-surface-subtle overflow-hidden border-t border-surface-mid">
       <div className="container mx-auto px-6 lg:px-12 text-center mb-16">
         <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-amber mb-6">
           <span className="w-8 h-[1px] bg-amber"></span>
           Success Stories
           <span className="w-8 h-[1px] bg-amber"></span>
         </div>
-        <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink leading-[1.1] tracking-tighter">
-          Client <span className="gradient-text">Testimonials.</span>
-        </h3>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink leading-[1.1] tracking-tighter">
+          What Our <span className="gradient-text">Clients Say.</span>
+        </h2>
         <p className="mt-6 text-ink-muted text-lg max-w-2xl mx-auto font-sans">
           Hear directly from our partners about their experience building industrial excellence with Deepika Builtech.
         </p>
@@ -53,60 +43,35 @@ const TestimonialsSection = () => {
       
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-          {videoTestimonials.map((item, idx) => (
-            <div key={idx} className="group flex flex-col animate-fade-up" style={{ animationDelay: `${idx * 150}ms` }}>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="relative aspect-video rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl hover:shadow-amber/20 transition-all duration-500 group-hover:-translate-y-2 border border-white/50">
-                    <img 
-                      src={item.thumbnail} 
-                      alt={`Deepika Builtech project review by ${item.name}`} 
-                      width={640}
-                      height={360}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-ink/40 group-hover:bg-ink/20 transition-colors duration-500 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center group-hover:bg-amber group-hover:scale-110 transition-all duration-500 border border-white/30 shadow-2xl">
-                        <Play className="w-6 h-6 text-white fill-current translate-x-0.5" />
-                      </div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <p className="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-amber animate-pulse"></span>
-                        Watch Video review
-                      </p>
-                    </div>
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl p-0 aspect-video bg-black border-none overflow-hidden sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                  <DialogHeader className="sr-only">
-                    <DialogTitle>Video Review by {item.name}</DialogTitle>
-                  </DialogHeader>
-                  <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src={item.videoUrl} 
-                    title={`Video review by ${item.name} for Deepika Builtech`} 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowFullScreen
-                    className="w-full h-full"
-                  ></iframe>
-                </DialogContent>
-              </Dialog>
-              
-              <div className="mt-8 px-4 text-left">
-                <blockquote className="border-l-4 border-amber pl-5 py-2 mb-6">
-                  <p className="text-ink-muted leading-relaxed mb-4 text-base font-medium italic opacity-90">
-                    "{item.summary}"
+          {testimonials.map((item, idx) => (
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15 }}
+              className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-l-[6px] border-[#e07b39] rounded-[8px] text-left flex flex-col justify-between"
+              style={{ padding: "20px 24px" }}
+            >
+              <div>
+                {/* 5 orange stars */}
+                <div className="text-[#e07b39] text-xl mb-4 font-sans leading-none">
+                  ★★★★★
+                </div>
+                <blockquote className="m-0">
+                  <p className="text-ink-muted leading-relaxed mb-6 text-base font-sans font-medium">
+                    "{item.quote}"
                   </p>
-                  <cite className="block text-[10px] font-black text-amber uppercase tracking-[0.2em] not-italic">
-                    — {item.name}, {item.company}, {item.city}
-                  </cite>
+                  <footer className="mt-4">
+                    <cite className="block text-sm not-italic font-sans text-ink">
+                      <strong className="text-ink font-bold text-base block mb-0.5">{item.name}</strong>
+                      <span className="text-ink-muted/80 text-xs block leading-tight">{item.designation}, {item.company}</span>
+                      <span className="text-amber text-xs font-semibold uppercase tracking-wider block mt-1">{item.city}</span>
+                    </cite>
+                  </footer>
                 </blockquote>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

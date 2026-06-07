@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Target, Eye, ArrowUpRight } from "lucide-react";
 import peb from "@/assets/peb-building.jpg";
 import warehouse from "@/assets/warehouse.jpg";
+import pebWebp from "@/assets/peb-building.webp";
+import warehouseWebp from "@/assets/warehouse.webp";
 
 const MissionVision = () => {
   return (
@@ -11,7 +13,18 @@ const MissionVision = () => {
         {/* Mission Side */}
         <div className="lg:w-1/2 relative min-h-[500px] flex items-center group">
           <div className="absolute inset-0 z-0">
-            <img src={peb} alt="Mission" className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" />
+            <picture>
+              <source srcSet={pebWebp} type="image/webp" />
+              <img 
+                src={peb} 
+                alt="Mission" 
+                width="800"
+                height="500"
+                loading="lazy"
+                {...{ fetchpriority: "low" }}
+                className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+              />
+            </picture>
             <div className="absolute inset-0 bg-carbon/60 mix-blend-multiply" />
           </div>
           
@@ -42,7 +55,18 @@ const MissionVision = () => {
         {/* Vision Side */}
         <div className="lg:w-1/2 relative min-h-[500px] flex items-center group border-t lg:border-t-0 lg:border-l border-white/10">
           <div className="absolute inset-0 z-0">
-            <img src={warehouse} alt="Vision" className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" />
+            <picture>
+              <source srcSet={warehouseWebp} type="image/webp" />
+              <img 
+                src={warehouse} 
+                alt="Vision" 
+                width="800"
+                height="500"
+                loading="lazy"
+                {...{ fetchpriority: "low" }}
+                className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+              />
+            </picture>
             <div className="absolute inset-0 bg-amber/20 mix-blend-overlay" />
           </div>
 

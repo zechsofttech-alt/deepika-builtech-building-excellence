@@ -1,8 +1,13 @@
 import peb from "@/assets/peb-building.jpg";
+import pebWebp from "@/assets/peb-building.webp";
 import warehouse from "@/assets/warehouse.jpg";
+import warehouseWebp from "@/assets/warehouse.webp";
 import coldStorage from "@/assets/cold-storage.jpg";
+import coldStorageWebp from "@/assets/cold-storage.webp";
 import mezzanine from "@/assets/mezzanine.jpg";
+import mezzanineWebp from "@/assets/mezzanine.webp";
 import eotCrane from "@/assets/eot-crane.jpg";
+import eotCraneWebp from "@/assets/eot-crane.webp";
 
 export interface Project {
   slug: string;
@@ -10,6 +15,7 @@ export interface Project {
   location: string;
   category: string;
   image: string;
+  webpImage: string;
   area: string;
   year: string;
   description: string;
@@ -30,6 +36,7 @@ export const projects: Project[] = [
     location: "Chennai, Tamil Nadu",
     category: "Warehousing",
     image: warehouse,
+    webpImage: warehouseWebp,
     area: "1,20,000 Sq.Ft",
     year: "2023",
     client: "Global Logistics Solutions",
@@ -53,6 +60,7 @@ export const projects: Project[] = [
     location: "Kanchipuram, TN",
     category: "PEB Structure",
     image: peb,
+    webpImage: pebWebp,
     area: "85,000 Sq.Ft",
     year: "2022",
     client: "Auto Parts Manufacturing Ltd",
@@ -76,6 +84,7 @@ export const projects: Project[] = [
     location: "Ambattur, Chennai",
     category: "Cold Storage",
     image: coldStorage,
+    webpImage: coldStorageWebp,
     area: "45,000 Sq.Ft",
     year: "2023",
     client: "Fresh Foods Distribution",
@@ -99,6 +108,7 @@ export const projects: Project[] = [
     location: "Sriperumbudur, TN",
     category: "Mezzanine Floor",
     image: mezzanine,
+    webpImage: mezzanineWebp,
     area: "30,000 Sq.Ft",
     year: "2021",
     client: "Express Cargo Hub",
@@ -122,6 +132,7 @@ export const projects: Project[] = [
     location: "Oragadam, Chennai",
     category: "EOT Crane Installation",
     image: eotCrane,
+    webpImage: eotCraneWebp,
     area: "60,000 Sq.Ft",
     year: "2023",
     client: "Precision Forge Works",

@@ -7,43 +7,55 @@ import coldStorageImg from "@/assets/sector-cold-storage.png";
 import manufacturingImg from "@/assets/sector-manufacturing.png";
 import automotiveImg from "@/assets/sector-automotive.png";
 import retailImg from "@/assets/sector-retail.png";
+import warehousingImgWebp from "@/assets/sector-warehousing.webp";
+import aviationImgWebp from "@/assets/sector-aviation.webp";
+import coldStorageImgWebp from "@/assets/sector-cold-storage.webp";
+import manufacturingImgWebp from "@/assets/sector-manufacturing.webp";
+import automotiveImgWebp from "@/assets/sector-automotive.webp";
+import retailImgWebp from "@/assets/sector-retail.webp";
 
-const audiences = [
+const audiences: { icon: any; name: string; desc: string; image: string; webpImage: string; }[] = [
   {
     icon: Package,
     name: "Warehousing & Logistics",
     desc: "Optimized clear-span designs for massive distribution centers and high-ceiling logistics hubs.",
-    image: warehousingImg
+    image: warehousingImg,
+    webpImage: warehousingImgWebp
   },
   {
     icon: Plane,
     name: "Aviation & Hangars",
     desc: "Expertly engineered wide-span hangers for aircraft maintenance and airport infrastructure.",
-    image: aviationImg
+    image: aviationImg,
+    webpImage: aviationImgWebp
   },
   {
     icon: ThermometerSnowflake,
     name: "Cold Storage",
     desc: "Thermal-barrier structures designed for pharmaceutical and food-grade temperature control.",
-    image: coldStorageImg
+    image: coldStorageImg,
+    webpImage: coldStorageImgWebp
   },
   {
     icon: Factory,
     name: "Manufacturing Plants",
     desc: "Heavy-duty industrial sheds designed for crane integration and high-vibration machinery.",
-    image: manufacturingImg
+    image: manufacturingImg,
+    webpImage: manufacturingImgWebp
   },
   {
     icon: Car,
     name: "Automotive Facilities",
     desc: "Precision showrooms and service centers with premium architectural finishes.",
-    image: automotiveImg
+    image: automotiveImg,
+    webpImage: automotiveImgWebp
   },
   {
     icon: ShoppingBag,
     name: "Commercial & Retail",
     desc: "Modern PEB solutions for multi-story shopping complexes and commercial high-rises.",
-    image: retailImg
+    image: retailImg,
+    webpImage: retailImgWebp
   }
 ];
 
@@ -74,7 +86,18 @@ const TargetAudienceSection = () => {
                     hoveredIdx === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-110 z-0'
                   }`}
                 >
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  <picture>
+                    <source srcSet={item.webpImage} type="image/webp" />
+                    <img 
+                      src={item.image} 
+                      alt={item.name} 
+                      width="600"
+                      height="600"
+                      loading="lazy"
+                      {...{ fetchpriority: "low" }}
+                      className="w-full h-full object-cover" 
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent" />
                   
                   <div 

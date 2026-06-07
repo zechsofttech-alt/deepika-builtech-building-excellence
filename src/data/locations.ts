@@ -1,6 +1,9 @@
 import pebImg from "@/assets/peb-building.jpg";
+import pebWebp from "@/assets/peb-building.webp";
 import warehouseImg from "@/assets/warehouse.jpg";
+import warehouseWebp from "@/assets/warehouse.webp";
 import coldStorageImg from "@/assets/cold-storage.jpg";
+import coldStorageWebp from "@/assets/cold-storage.webp";
 
 export interface LocationProject {
   title: string;
@@ -28,6 +31,7 @@ export interface LocationProfile {
   subheading: string;
   intro: string;
   image: string;
+  webpImage: string;
   stats: LocationStat[];
   projects: LocationProject[];
   faqs: LocationFAQ[];
@@ -44,6 +48,7 @@ export const locations: LocationProfile[] = [
     subheading: "Premium pre-engineered steel buildings and turnkey civil construction in SIDCO Industrial Estate, Ambattur.",
     intro: "Ambattur is one of South India's oldest and most prestigious industrial hubs, housing thousands of manufacturing, automotive, and IT units. At Deepika Builtech, we specialize in high-end PEB construction in Ambattur, delivering turnkey steel buildings tailored to the narrow footprints and heavy-load demands of the SIDCO zone. Ambattur's soil profile generally consists of stiff clayey silt, requiring precise structural pedestal foundation engineering. We design our industrial sheds, mezzanine floors, and EOT crane runways to comply with strict safety parameters. By fabricating key steel columns and trusses at our local workshops, we ensure that projects are erected rapidly, minimizing disruption to surrounding operating facilities in this dense industrial corridor.",
     image: warehouseImg,
+    webpImage: warehouseWebp,
     stats: [
       { label: "Projects Completed", value: "45+" },
       { label: "Fabrication Unit", value: "SIDCO Ambattur" },
@@ -72,6 +77,7 @@ export const locations: LocationProfile[] = [
     subheading: "Turnkey PEB steel structures and logistics warehouse construction in the Sriperumbudur industrial belt.",
     intro: "Sriperumbudur has emerged as the electronics and automotive manufacturing capital of South India. The demand for massive warehouses and high-bay factories requires structural engineering of the highest caliber. Deepika Builtech delivers world-class industrial PEB construction in Sriperumbudur, utilizing column-free spans of up to 90 meters to optimize assembly line layouts and storage volumes. Sriperumbudur's soil characteristics vary from hard clay to gravelly soil, requiring dynamic foundation designs like pile foundations or isolated footings. We utilize Tekla and STAAD.Pro to ensure our structures are optimized for heavy wind speeds and crane load vibrations, meeting the international standards of Fortune 500 companies operating in the region.",
     image: pebImg,
+    webpImage: pebWebp,
     stats: [
       { label: "Projects Completed", value: "38+" },
       { label: "Clear Spans Offered", value: "Up to 90 Meters" },
@@ -100,6 +106,7 @@ export const locations: LocationProfile[] = [
     subheading: "High-yield pre-engineered steel buildings and heavy-duty factory construction in Kanchipuram district.",
     intro: "Kanchipuram, traditionally famous for culture, has rapidly converted into a major industrial zone hosting silk weaving, textile printing, chemical, and heavy engineering plants. Deepika Builtech is a trusted partner for PEB construction in Kanchipuram, offering tailored steel solutions that blend speed, structural reliability, and cost-efficiency. Soils in Kanchipuram often comprise sandy loam and clay loam, demanding robust civil sub-grade preparation and Tremix flooring. We deliver turn-key industrial structures featuring high-tensile main frames, anti-corrosive epoxy treatments, and optimal ventilation systems. Our designs maximize usable interior space, allowing local textile and manufacturing industries to expand production capacity without structural setbacks.",
     image: coldStorageImg,
+    webpImage: coldStorageWebp,
     stats: [
       { label: "Projects Completed", value: "22+" },
       { label: "Fabrication Unit", value: "Vaiyavur Kanchipuram" },
@@ -128,6 +135,7 @@ export const locations: LocationProfile[] = [
     subheading: "Precision steel sheds, mezzanine floors, and heavy storage warehouses in Thiruvallur district.",
     intro: "Thiruvallur's industrial corridors are home to heavy metal fabrication, machinery manufacturing, and extensive logistics hubs. Deepika Builtech is the premier provider for industrial PEB construction in Thiruvallur, specializing in high-load structural steel frames and expansive warehouses. With a clayey loam and sandy silt soil matrix, Thiruvallur sites require solid structural engineering for heavy-capacity pile foundations. Our manufacturing unit in Thirumullaivoyal (Ambattur Taluk, Thiruvallur District) operates with high-precision CNC machinery, fabricating customized columns, rafters, and gantry girders. We ensure all steel frames comply with IS 800 standards, providing absolute structural stability for high-impact industrial operations.",
     image: warehouseImg,
+    webpImage: warehouseWebp,
     stats: [
       { label: "Projects Completed", value: "28+" },
       { label: "Fabrication Unit", value: "Thirumullaivoyal Unit" },
@@ -156,6 +164,7 @@ export const locations: LocationProfile[] = [
     subheading: "Turn-key structural steel and warehouse construction services in Tambaram, MEP layouts, and civil works.",
     intro: "Tambaram acts as a key gateway to southern Chennai, linking the city to the major industrial zones of GST Road. The area's commercial growth has spiked the demand for local retail showrooms, logistics warehouses, and distribution centers. Deepika Builtech is a leading contractor for PEB construction in Tambaram, delivering premium modular steel buildings that optimize floor layouts. Tambaram's clayey sand soil demands deep excavation and robust concrete foundation pedestals. We provide a full package, from technical site surveys and Tekla detailing to CNC manufacturing and on-site assembly, ensuring local commercial developers obtain premium, space-efficient, and long-lasting industrial structures.",
     image: pebImg,
+    webpImage: pebWebp,
     stats: [
       { label: "Projects Completed", value: "19+" },
       { label: "Key Segments", value: "Commercial Showrooms, Logistics" },
@@ -184,6 +193,7 @@ export const locations: LocationProfile[] = [
     subheading: "Turnkey PEB factory sheds, EOT crane gantries, and heavy-duty concrete foundations in Oragadam.",
     intro: "Oragadam is known as the auto hub of South Asia, hosting massive manufacturing plants for global automotive giants. Setting up operations in this corridor requires structural infrastructure that can support heavy dynamic loads, high-duty EOT cranes, and continuous assembly processes. Deepika Builtech is a premier engineering partner for industrial PEB construction in Oragadam, specialized in designing reinforced factory sheds. Oragadam's clayey soil demands rigorous geotechnical soil stabilization and pile foundations. We manufacture our heavy columns, gantry crane brackets, and truss frames using high-yield steel, conducting NDT testing to ensure flawless quality before dispatching to site.",
     image: warehouseImg,
+    webpImage: warehouseWebp,
     stats: [
       { label: "Projects Completed", value: "34+" },
       { label: "Heavy Cranes Built For", value: "Up to 100 Tons" },
@@ -212,6 +222,7 @@ export const locations: LocationProfile[] = [
     subheading: "Corrosion-resistant steel warehousing, port transit sheds, and cargo structures near Chennai Port.",
     intro: "The proximity to Chennai Port makes it the primary export-import logistics hub of Tamil Nadu. The marine environment near Chennai Port is highly corrosive due to salinity, demanding specialized steel coatings and roofing configurations. Deepika Builtech constructs high-performance port warehouses and transit cargo sheds, utilizing advanced anti-corrosive structural steel components. Chennai Port's coastal soils are sandy silt and sand with a high water table, necessitating pile foundations or deep raft foundations. We apply hot-dip galvanizing and high-build polyurethane coatings to our steel frames to prevent rust, ensuring that customs cargo zones, shipping depots, and port warehouses operate safely for decades.",
     image: pebImg,
+    webpImage: pebWebp,
     stats: [
       { label: "Projects Completed", value: "15+" },
       { label: "Anti-Corrosion Standard", value: "SA 2.5 + Galvanization" },
@@ -240,6 +251,7 @@ export const locations: LocationProfile[] = [
     subheading: "Turnkey manufacturing sheds, automotive factories, and logistics warehouses in Hosur.",
     intro: "Hosur is a major industrial hub bordering Karnataka, hosting automotive assembly, machining, electronics, and heavy-duty manufacturing. Hosur's elevated terrain has hard rock and gravel soil layers, providing excellent soil bearing capacity but demanding special attention during pedestal anchor bolt drilling. Deepika Builtech is a trusted partner for industrial PEB construction in Hosur, delivering highly rigid steel factory sheds and EOT crane gantries. We design pre-engineered structures that withstand local load patterns, integrating daylighting, high-load concrete flooring, and dynamic ventilation systems. Our Hosur projects are constructed under strict quality parameters, ensuring long-term operational success for industrial developers.",
     image: coldStorageImg,
+    webpImage: coldStorageWebp,
     stats: [
       { label: "Projects Completed", value: "24+" },
       { label: "Average Soil Bearing", value: "High (Hard Gravel/Rock)" },

@@ -52,10 +52,10 @@ const Footer = () => {
               {[
                 { label: 'PEB Building Structure', href: '/industrial-peb-construction-chennai' },
                 { label: 'Civil & Steel Construction', href: '/construction-services-in-chennai' },
-                { label: 'Cold Storage Solutions', href: '/cold-storage-solutions-chennai' },
-                { label: 'Mezzanine Floor Construction', href: '/mezzanine-floor-construction-chennai' },
+                { label: 'Cold Storage Construction', href: '/cold-storage-solutions-chennai' },
+                { label: 'Mezzanine Floor', href: '/mezzanine-floor-construction-chennai' },
                 { label: 'Warehouse Construction', href: '/warehouse-construction-chennai' },
-                { label: 'EOT Crane Fabrication', href: '/eot-crane-manufacturers-in-chennai' },
+                { label: 'EOT Cranes', href: '/eot-crane-manufacturers-in-chennai' },
                 { label: 'Steel Structure Fabrication', href: '/steel-structure-fabrication-chennai' },
                 { label: 'Industrial Shed Construction', href: '/industrial-shed-construction-chennai' }
               ].map((link) => (
@@ -92,47 +92,19 @@ const Footer = () => {
             </ul>
           </div>
  
-          <div>
-            <h5 className="font-heading font-semibold text-sm uppercase tracking-widest text-amber mb-6">Connect</h5>
-            <ul className="space-y-3">
+          <div className="col-span-2 md:col-span-1">
+            <h5 className="font-heading font-semibold text-sm uppercase tracking-widest text-amber mb-6">Contact Info</h5>
+            <ul className="space-y-3 text-surface-subtle/70 text-sm font-sans leading-relaxed">
+              <li className="font-bold text-white text-base">Deepika Builtech Engineering</li>
               <li>
-                <a href="tel:+919600067611" className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-base font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
-                  +91 96000 67611
-                </a>
+                New No. 31,31A, Old No.14,15, Coromandal Town,<br />
+                SIDCO Industrial Estate, Ambattur, Chennai - 600098
               </li>
               <li>
-                <a href="mailto:info@deepikabuiltech.com" className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-base font-medium block focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
-                  info@deepikabuiltech.com
-                </a>
+                <strong>Phone:</strong> <a href="tel:+919600067611" className="hover:text-amber transition-colors">+91 96000 67611</a> | 044-26256416
               </li>
-              <li className="pt-6 flex gap-4">
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="Facebook" 
-                  className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-surface-subtle hover:bg-amber hover:text-carbon hover:border-amber cursor-pointer transition-all duration-500 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="Instagram" 
-                  className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-surface-subtle hover:bg-amber hover:text-carbon hover:border-amber cursor-pointer transition-all duration-500 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="LinkedIn" 
-                  className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-surface-subtle hover:bg-amber hover:text-carbon hover:border-amber cursor-pointer transition-all duration-500 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
+              <li>
+                <strong>Email:</strong> <a href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors">infoadmin@deepikabuiltech.in</a>
               </li>
             </ul>
           </div>
@@ -152,9 +124,9 @@ const Footer = () => {
 
       {/* Massive Bottom Text */}
       <div className="w-full mt-auto flex justify-center items-center pointer-events-none select-none overflow-hidden pt-4 pb-20">
-        <h1 className="text-[10.5vw] font-heading font-black whitespace-nowrap leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.35)] group-hover:[-webkit-text-stroke:1px_rgba(255,191,0,0.5)] transition-all duration-1000">
+        <div className="text-[10.5vw] font-heading font-black whitespace-nowrap leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.35)] group-hover:[-webkit-text-stroke:1px_rgba(255,191,0,0.5)] transition-all duration-1000">
           DEEPIKA BUILTECH
-        </h1>
+        </div>
       </div>
     </footer>
   );

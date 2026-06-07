@@ -104,17 +104,25 @@ const ProjectDetail = () => {
         <div className="absolute inset-0 z-0">
           {!isPlaying ? (
             <>
-              <motion.img 
+               <motion.div
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 10, ease: "linear" }}
-                src={project.image} 
-                alt={`Pre-engineered building: ${project.title}`} 
-                width={1920}
-                height={800}
-                loading="eager"
-                className="w-full h-full object-cover opacity-50" 
-              />
+                className="w-full h-full absolute inset-0"
+              >
+                <picture>
+                  <source srcSet={project.webpImage} type="image/webp" />
+                  <img 
+                    src={project.image} 
+                    alt={`Pre-engineered building: ${project.title} completed by Deepika Builtech`} 
+                    width="1920"
+                    height="800"
+                    loading="eager"
+                    {...{ fetchpriority: "high" }}
+                    className="w-full h-full object-cover opacity-50" 
+                  />
+                </picture>
+              </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
               
               {project.videoUrl && (
@@ -317,12 +325,18 @@ const ProjectDetail = () => {
                   className="group block bg-white border border-surface-mid rounded-[2rem] overflow-hidden shadow-sm hover:shadow-lg hover:border-amber/40 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={rp.image}
-                      alt={`${rp.title} – PEB project by Deepika Builtech`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
+                    <picture>
+                      <source srcSet={rp.webpImage} type="image/webp" />
+                      <img
+                        src={rp.image}
+                        alt={`${rp.title} – PEB project by Deepika Builtech`}
+                        width="640"
+                        height="480"
+                        loading="lazy"
+                        {...{ fetchpriority: "low" }}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </picture>
                     <div className="absolute inset-0 bg-gradient-to-t from-carbon/40 to-transparent" />
                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur text-carbon text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                       {rp.category}

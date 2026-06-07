@@ -57,14 +57,18 @@ const ServicesSection = () => {
                 className={`group relative overflow-hidden bg-carbon-mid border border-white/5 rounded-2xl ${colSpan} ${rowSpan} focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber`}
               >
                 <div className="absolute inset-0 w-full h-full">
-                  <img
-                    src={service.image}
-                    alt={imageAlt}
-                    width={640}
-                    height={480}
-                    loading="lazy"
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
-                  />
+                  <picture>
+                    <source srcSet={service.webpImage} type="image/webp" />
+                    <img
+                      src={service.image}
+                      alt={imageAlt}
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      {...{ fetchpriority: "low" }}
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent group-hover:from-carbon/40 transition-colors duration-700" />
                 </div>
 

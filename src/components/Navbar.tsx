@@ -150,38 +150,8 @@ const Navbar = () => {
             </div>
 
             <div className="mt-12 text-center pb-2">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-6">Connect With Us</p>
-              <div className="flex justify-center gap-6 mb-8">
-                 <a 
-                   href="https://facebook.com" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   aria-label="Visit our Facebook page" 
-                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                 >
-                    <Facebook className="w-5 h-5" />
-                 </a>
-                 <a 
-                   href="https://instagram.com" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   aria-label="Visit our Instagram page" 
-                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                 >
-                    <Instagram className="w-5 h-5" />
-                 </a>
-                 <a 
-                   href="https://linkedin.com" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   aria-label="Visit our LinkedIn page" 
-                   className="w-12 h-12 flex items-center justify-center bg-surface-subtle text-ink rounded-full active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
-                 >
-                    <Linkedin className="w-5 h-5" />
-                 </a>
-              </div>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-2">Technical Support</p>
-              <a href="mailto:info@deepikabuiltech.com" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">info@deepikabuiltech.com</a>
+              <a href="mailto:infoadmin@deepikabuiltech.in" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">infoadmin@deepikabuiltech.in</a>
             </div>
           </div>
         </div>

@@ -1,8 +1,13 @@
 import pebImg from "@/assets/peb-building.jpg";
+import pebWebp from "@/assets/peb-building.webp";
 import warehouseImg from "@/assets/warehouse.jpg";
+import warehouseWebp from "@/assets/warehouse.webp";
 import coldStorageImg from "@/assets/cold-storage.jpg";
+import coldStorageWebp from "@/assets/cold-storage.webp";
 import mezzanineImg from "@/assets/mezzanine.jpg";
+import mezzanineWebp from "@/assets/mezzanine.webp";
 import eotCraneImg from "@/assets/eot-crane.jpg";
+import eotCraneWebp from "@/assets/eot-crane.webp";
 import { 
   Factory, 
   Shield, 
@@ -58,6 +63,7 @@ export interface Service {
   shortDesc: string;
   fullDesc: string;
   image: string;
+  webpImage: string;
   size: "large" | "horizontal" | "normal";
   features: ServiceFeature[];
   specs: ServiceSpec[];
@@ -70,11 +76,12 @@ export const services: Service[] = [
   {
     slug: "industrial-peb-construction-chennai",
     title: "PEB Building Structure",
+    webpImage: pebWebp,
     metaTitle: "Industrial PEB Construction in Chennai | Deepika Builtech",
     metaDesc: "Looking for PEB construction in Chennai? Deepika Builtech delivers precision pre-engineered steel buildings for factories, warehouses & industrial units. 10+ years experience. Call +91 96000 67611.",
     h1: "Industrial PEB Construction in Chennai",
     subheading: "Premium pre-engineered steel building construction serving Chennai, Ambattur, Sriperumbudur, and industrial corridors across Tamil Nadu.",
-    shortDesc: "Custom pre-engineered steel buildings with advanced design parameters.",
+    shortDesc: "Design, fabrication and erection of Pre-Engineered Buildings for factories, warehouses and industrial complexes. Faster than RCC — completed in 45–90 days.",
     fullDesc: "Deepika Builtech specializes in world-class industrial PEB construction in Chennai, providing durable and high-precision steel structures. With over 10 years of experience, we cater to factories, warehouses, and manufacturing plants in industrial hubs like Ambattur, Sriperumbudur, and Oragadam. By utilizing pre-engineered building technology, we optimize raw steel consumption, lower foundations requirements, and expedite site erection by up to 50%. Our design team utilizes Tekla and STAAD.Pro to verify loading capabilities against severe wind speeds and seismic forces, strictly conforming to Indian Standards IS 800 and IS 875. As a leading firm for industrial PEB construction in Chennai, we handle the entire project lifecycle in-house, from structural blueprinting and CNC factory fabrication to secure on-site assembly, ensuring maximum quality control and timely handover.",
     image: pebImg,
     size: "large",
@@ -114,12 +121,13 @@ export const services: Service[] = [
   },
   {
     slug: "construction-services-in-chennai",
-    title: "Construction",
+    title: "Civil & Steel Construction",
+    webpImage: pebWebp,
     metaTitle: "Civil & Steel Construction Services in Chennai | Deepika Builtech",
     metaDesc: "Expert civil and steel construction services in Chennai by Deepika Builtech. We build factories, industrial units, commercial structures across Tamil Nadu. Free quote: +91 96000 67611.",
     h1: "Civil & Steel Construction Services in Chennai",
     subheading: "Comprehensive turn-key civil and structural steel construction services in Chennai, Ambattur, and surrounding industrial zones.",
-    shortDesc: "Turnkey civil and structural steel construction for industrial projects.",
+    shortDesc: "Comprehensive civil and structural steel construction for industrial, commercial and institutional projects across Chennai and Tamil Nadu.",
     fullDesc: "Deepika Builtech delivers high-quality civil & steel construction services in Chennai, combining engineering expertise with robust foundation building. Our teams manage projects from excavation and reinforced concrete pile foundations to heavy structural steel frame erection. In industrial zones like Ambattur and Sriperumbudur, proper sub-base prep and concrete grade selection are essential. We specialize in Vacuum Dewatered Flooring (VDF) or Tremix flooring systems, built to carry heavy racking loads of up to 10 tons/sqm. By integrating our civil & steel construction services in Chennai under one engineering team, we ensure perfect alignment between foundation anchor bolts and structural steel column bases, avoiding scheduling delays and budget overflows.",
     image: pebImg,
     size: "horizontal",
@@ -159,12 +167,13 @@ export const services: Service[] = [
   },
   {
     slug: "cold-storage-solutions-chennai",
-    title: "Cold Storage",
+    title: "Cold Storage Construction",
+    webpImage: coldStorageWebp,
     metaTitle: "Cold Storage Construction & Solutions in Chennai | Deepika Builtech",
     metaDesc: "Build a reliable cold storage facility in Chennai with Deepika Builtech. Custom temperature-controlled storage for pharma, food & logistics. Call +91 96000 67611.",
     h1: "Cold Storage Construction & Solutions in Chennai",
     subheading: "Custom cold storage construction and insulated warehouse solutions built in Chennai for pharma, food processing, and logistics.",
-    shortDesc: "Temperature-controlled facilities with zero thermal bridging.",
+    shortDesc: "Custom temperature-controlled cold storage facilities for pharma, food processing, logistics and agriculture sectors.",
     fullDesc: "Deepika Builtech provides top-tier cold storage construction & solutions in Chennai, catering to the growing pharmaceutical and food processing sectors. Thermal integrity is vital in cold chain operations. We design pre-engineered steel frames specifically structured to support heavy PIR (Polyisocyanurate) and PUF (Polyurethane) sandwich insulation panels up to 200mm thick. Our structural detailing ensures zero thermal bridging at joints, preventing ice buildup and energy leaks. Whether you need a walk-in chiller or a large -40°C deep freeze facility, our cold storage construction & solutions in Chennai deliver highly energy-efficient environments, reducing power consumption and maintaining exact temperature control.",
     image: coldStorageImg,
     size: "normal",
@@ -205,11 +214,12 @@ export const services: Service[] = [
   {
     slug: "mezzanine-floor-construction-chennai",
     title: "Mezzanine Floor",
+    webpImage: mezzanineWebp,
     metaTitle: "Mezzanine Floor Construction in Chennai | Deepika Builtech",
     metaDesc: "Maximise your floor space with a custom steel mezzanine floor in Chennai. Deepika Builtech designs and installs industrial mezzanines. Call +91 96000 67611.",
     h1: "Mezzanine Floor Construction in Chennai",
     subheading: "High-capacity structural steel mezzanine floor construction in Chennai to double your industrial workspace footprint without expanding outward.",
-    shortDesc: "High-capacity intermediate flooring to maximize vertical space.",
+    shortDesc: "Structural steel mezzanine floors that double your usable floor space at a fraction of new construction cost. Load-rated to your specification.",
     fullDesc: "Deepika Builtech is a premier contractor for mezzanine floor construction in Chennai, helping businesses maximize their vertical space. By building a structural steel mezzanine within your factory or warehouse, we can double or triple your usable floor area. In Chennai's commercial hubs, expanding a building's footprint is costly. Our modular mezzanine systems offer a cost-effective, high-capacity alternative. We design mezzanines for loads ranging from 250 kg/sqm for office extensions to 2,000+ kg/sqm for heavy machinery or bulk storage. By fabricating column grid layouts at our units, our mezzanine floor construction in Chennai ensures rapid bolt-on installation on-site with zero welding, keeping your facility fully operational during setup.",
     image: mezzanineImg,
     size: "normal",
@@ -249,12 +259,13 @@ export const services: Service[] = [
   },
   {
     slug: "warehouse-construction-chennai",
-    title: "Warehouse",
+    title: "Warehouse Construction",
+    webpImage: warehouseWebp,
     metaTitle: "Warehouse Construction & Design in Chennai | Deepika Builtech",
     metaDesc: "Build your warehouse in Chennai faster and cheaper with PEB technology. Deepika Builtech has completed 150+ warehouse and industrial projects. Call +91 96000 67611.",
     h1: "Warehouse Construction & Design in Chennai",
     subheading: "Turn-key warehouse construction and design services in Chennai, Sriperumbudur, and key Tamil Nadu logistics hubs using advanced PEB technology.",
-    shortDesc: "Large-scale storage optimization with column-free clear spans.",
+    shortDesc: "Pre-engineered steel warehouses built for logistics, FMCG, e-commerce and manufacturing. Large clear spans, fast delivery, IS-code compliant.",
     fullDesc: "Deepika Builtech is Chennai's premier contractor for large-scale warehouse construction & design. We build high-performance logistics hubs and distribution centers that maximize storage volume and pallet throughput. In Sriperumbudur, Ambattur, and Tambaram, warehouse construction & design must focus on space efficiency. We specialize in wide, column-free clear spans (up to 90 meters), allowing for optimized racking layouts, conveyor setups, and easy forklift navigation. Our warehouses feature ridge ventilators, wall louvers, and polycarbonate daylight panels to reduce energy costs. The flooring is built using high-hardness Vacuum Dewatered Flooring (VDF) designed to carry intense wheel loads of up to 10 tons/sqm, ensuring long-term operational durability.",
     image: warehouseImg,
     size: "horizontal",
@@ -295,11 +306,12 @@ export const services: Service[] = [
   {
     slug: "eot-crane-manufacturers-in-chennai",
     title: "EOT Cranes",
+    webpImage: eotCraneWebp,
     metaTitle: "EOT Crane Manufacturers & Suppliers in Chennai | Deepika Builtech",
     metaDesc: "Deepika Builtech manufactures and installs Electric Overhead Travelling (EOT) cranes in Chennai. Custom capacity, span & duty class. Call +91 96000 67611.",
     h1: "EOT Crane Manufacturers in Chennai",
     subheading: "Custom EOT crane manufacturer and runway structural engineering serving Chennai, Ambattur, Sriperumbudur, and Kanchipuram factories.",
-    shortDesc: "Heavy material handling infrastructure and dynamic crane gantries.",
+    shortDesc: "Electric Overhead Travelling (EOT) cranes manufactured and installed for factories, fabrication units and heavy industry. Custom capacity and span.",
     fullDesc: "Deepika Builtech is one of the leading EOT crane manufacturers in Chennai, specializing in heavy material handling infrastructure. Overhead cranes introduce massive dynamic forces, shear stresses, and structural vibrations. Our engineering team designs factory sheds with reinforced columns, runway gantries, and bracket connections built to absorb these dynamic impacts. As custom EOT crane manufacturers in Chennai, we design and install systems with lifting capacities from 5 tons to 100 tons. Our runway rail alignments are laser-guided and verified down to millimeter precision, guaranteeing smooth crane travel, preventing crab-like movements, and reducing wheel wear.",
     image: eotCraneImg,
     size: "horizontal",
@@ -339,7 +351,8 @@ export const services: Service[] = [
   },
   {
     slug: "steel-structure-fabrication-chennai",
-    title: "Steel Fabrication",
+    title: "Steel Structure Fabrication",
+    webpImage: pebWebp,
     metaTitle: "Steel Structure Fabrication & Erection in Chennai | Deepika Builtech",
     metaDesc: "Precision structural steel fabrication in Chennai using CNC machinery, MIG, MAG & submerged arc welding. Deepika Builtech — trusted by 100+ clients. Call +91 96000 67611.",
     h1: "Steel Structure Fabrication in Chennai",
@@ -384,7 +397,8 @@ export const services: Service[] = [
   },
   {
     slug: "industrial-shed-construction-chennai",
-    title: "Industrial Shed",
+    title: "Industrial Shed Construction",
+    webpImage: pebWebp,
     metaTitle: "Industrial Shed Construction in Chennai | Deepika Builtech",
     metaDesc: "Custom industrial shed construction in Chennai using pre-engineered steel. Fast delivery, durable, cost-effective. Deepika Builtech — 10+ years. Call +91 96000 67611.",
     h1: "Industrial Shed Construction in Chennai",

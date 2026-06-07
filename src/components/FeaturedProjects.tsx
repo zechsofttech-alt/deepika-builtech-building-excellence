@@ -38,14 +38,18 @@ const FeaturedProjects = () => {
                 to={`/project/${project.slug}`} 
                 className="block overflow-hidden rounded-[2.5rem] relative aspect-[4/5] mb-8 shadow-2xl shadow-carbon/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
               >
-                <img 
-                  src={project.image} 
-                  alt={`${project.category} project completed by Deepika Builtech, Chennai`} 
-                  width={640}
-                  height={800}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" 
-                />
+                <picture>
+                  <source srcSet={project.webpImage} type="image/webp" />
+                  <img 
+                    src={project.image} 
+                    alt={`PEB ${project.category.toLowerCase()} construction project ${project.location} by Deepika Builtech, ${project.area.toLowerCase().replace(' ', '')}, ${project.year}`} 
+                    width="640"
+                    height="800"
+                    loading="lazy"
+                    {...{ fetchpriority: "low" }}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" 
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent opacity-60" />
                 <div className="absolute bottom-8 left-8 right-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="flex items-center gap-2 mb-3">

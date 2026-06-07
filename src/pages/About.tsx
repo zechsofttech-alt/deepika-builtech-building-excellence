@@ -10,7 +10,9 @@ import TrustedPartners from "@/components/TrustedPartners";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import directorImg from "@/assets/director.jpg";
+import directorImgWebp from "@/assets/director.webp";
 import awardImg from "@/assets/excellence-award-2025.jpg";
+import awardImgWebp from "@/assets/excellence-award-2025.webp";
 import { useEffect } from "react";
 import { Users, Globe, Building, Award } from "lucide-react";
 
@@ -52,14 +54,18 @@ const About = () => {
               <div className="lg:col-span-5 relative">
                 <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-4 translate-y-4" />
                 <div className="relative z-10 aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-surface-subtle border border-surface-mid">
-                  <img 
-                    src={directorImg} 
-                    alt="Siva Adithya, Managing Director of Deepika Builtech Engineering" 
-                    width={500}
-                    height={625}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+                  <picture>
+                    <source srcSet={directorImgWebp} type="image/webp" />
+                    <img 
+                      src={directorImg} 
+                      alt="Siva Adithya, Managing Director of Deepika Builtech Engineering" 
+                      width="500"
+                      height="625"
+                      loading="lazy"
+                      {...{ fetchpriority: "low" }}
+                      className="w-full h-full object-cover"
+                    />
+                  </picture>
                   <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
                     <h3 className="font-heading font-black text-2xl">Siva Adithya</h3>
                     <p className="text-amber text-xs uppercase tracking-widest font-bold mt-1">Managing Director / Founder</p>
@@ -147,14 +153,18 @@ const About = () => {
             
             <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-surface-mid bg-white p-4">
               <figure>
-                <img 
-                  src={awardImg} 
-                  alt="Deepika Builtech Excellence Award 2025 ceremony certificate photo" 
-                  width={800}
-                  height={600}
-                  loading="lazy"
-                  className="w-full h-auto rounded-2xl object-cover border border-surface-mid"
-                />
+                <picture>
+                  <source srcSet={awardImgWebp} type="image/webp" />
+                  <img 
+                    src={awardImg} 
+                    alt="Deepika Builtech Excellence Award 2025 ceremony certificate photo" 
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    {...{ fetchpriority: "low" }}
+                    className="w-full h-auto rounded-2xl object-cover border border-surface-mid"
+                  />
+                </picture>
                 <figcaption className="text-sm font-heading font-bold text-ink-muted mt-6 uppercase tracking-wider">
                   Deepika Builtech receives Excellence Award, 2025
                 </figcaption>

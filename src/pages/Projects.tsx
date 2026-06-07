@@ -106,14 +106,18 @@ const Projects = () => {
                 className="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-3xl p-2"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] mb-8 shadow-2xl shadow-carbon/5">
-                  <img 
-                    src={project.image} 
-                    alt={`Deepika Builtech steel construction project: ${project.title}`}
-                    width={640}
-                    height={480}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
-                  />
+                  <picture>
+                    <source srcSet={project.webpImage} type="image/webp" />
+                    <img 
+                      src={project.image} 
+                      alt={`PEB ${project.category.toLowerCase()} construction project ${project.location} by Deepika Builtech, ${project.area.toLowerCase().replace(' ', '')}, ${project.year}`}
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      {...{ fetchpriority: "low" }}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon/40 to-transparent opacity-60" />
                   <div className="absolute top-6 left-6 flex gap-2">
                     <span className="bg-white/90 backdrop-blur-md text-carbon text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg">

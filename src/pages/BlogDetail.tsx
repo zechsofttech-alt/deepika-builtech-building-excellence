@@ -111,7 +111,7 @@ const BlogDetail = () => {
       }
     } catch (error) {
       // Fallback
-      window.location.href = `mailto:info@deepikabuiltech.com?subject=Subscription&body=Email: ${formData.email}`;
+      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=Subscription&body=Email: ${formData.email}`;
       setSubmitMessage("Request processed via email.");
     } finally {
       setIsSubmitting(false);
@@ -209,13 +209,16 @@ const BlogDetail = () => {
               {post.title}
             </h1>
             
-            <div className="flex items-center gap-4 py-8 border-t border-surface-mid">
-              <div className="w-12 h-12 rounded-full bg-carbon flex items-center justify-center text-white font-black">
-                {post.author.charAt(0)}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 py-8 border-t border-surface-mid">
+              <div className="w-12 h-12 rounded-full bg-carbon flex items-center justify-center text-white font-black shrink-0">
+                DB
               </div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-ink-muted mb-1">Written By</p>
-                <p className="text-lg font-heading font-bold text-ink leading-none">{post.author}</p>
+                <p className="text-lg font-heading font-bold text-ink leading-none mb-2">{post.author}</p>
+                <p className="text-sm text-ink-muted leading-relaxed font-sans max-w-2xl">
+                  Deepika Builtech is Chennai's leading Pre-Engineered Building contractor with 10+ years experience in PEB construction, steel structures, warehouses, cold storage, mezzanine floors, and EOT cranes across Tamil Nadu.
+                </p>
               </div>
             </div>
           </div>
@@ -229,12 +232,24 @@ const BlogDetail = () => {
             
             <div className="lg:col-span-8 space-y-16">
               <div className="aspect-video w-full overflow-hidden rounded-[2.5rem] shadow-2xl">
-                <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                <picture>
+                  <source srcSet={post.webpImage} type="image/webp" />
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    {...{ fetchpriority: "low" }}
+                    className="w-full h-full object-cover" 
+                  />
+                </picture>
               </div>
               
-              <div className="prose prose-xl max-w-none text-ink-muted font-sans leading-relaxed whitespace-pre-line">
-                {post.content}
-              </div>
+              <div 
+                className="prose prose-xl max-w-none text-ink-muted font-sans leading-relaxed whitespace-pre-line"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
 
               {/* Related Services Links (Links to 2 Service Pages) */}
               <div className="bg-surface-subtle p-8 rounded-[2rem] border border-surface-mid">
@@ -270,25 +285,47 @@ const BlogDetail = () => {
               )}
 
               {/* Get a Free Quote CTA Callout Box */}
-              <div className="bg-amber p-10 lg:p-16 rounded-[2.5rem] shadow-xl text-carbon relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 blur-[120px]" />
-                <h3 className="text-3xl font-heading font-black mb-4 tracking-tight">Looking to Build an Industrial Shed or Warehouse?</h3>
-                <p className="text-carbon/80 font-sans mb-8 max-w-2xl leading-relaxed">
-                  Partner with Deepika Builtech for high-precision turn-key PEB erection. Our engineering experts provide optimized material sizing and cost estimates.
+              <div 
+                className="rounded-[2rem] my-8"
+                style={{
+                  background: "#f8fafc",
+                  borderLeft: "4px solid #e07b39",
+                  padding: "20px 24px"
+                }}
+              >
+                <h3 className="font-heading font-bold text-ink mb-2" style={{ margin: "0 0 8px", fontSize: "18px" }}>
+                  Looking for {post.ctaService} in Chennai?
+                </h3>
+                <p className="font-sans text-sm text-[#475569] mb-4" style={{ margin: "0 0 16px" }}>
+                  Deepika Builtech has completed 150+ projects across Tamil Nadu. Get a free detailed quote for your project — our team responds within 2 hours.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-3">
                   <Link 
                     to="/contact" 
-                    className="bg-carbon hover:bg-black text-white font-black px-8 py-4 rounded-xl transition-colors uppercase tracking-wider text-xs shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-carbon"
+                    className="inline-block text-white font-semibold hover:opacity-90 transition-opacity"
+                    style={{
+                      background: "#e07b39",
+                      padding: "10px 22px",
+                      borderRadius: "6px",
+                      textDecoration: "none"
+                    }}
                   >
-                    Request an Engineering Quote
+                    Request a Free Quote →
                   </Link>
-                  <Link 
-                    to="/services" 
-                    className="border border-carbon/20 hover:border-carbon text-carbon font-black px-8 py-4 rounded-xl transition-all uppercase tracking-wider text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-carbon"
+                  <a 
+                    href={`https://wa.me/919600067611?text=Hi%2C%20I%20read%20your%20blog%20on%20${encodeURIComponent(post.ctaService)}%20and%20need%20a%20quote.`}
+                    className="inline-block text-white font-semibold hover:opacity-90 transition-opacity"
+                    style={{
+                      background: "#25d366",
+                      padding: "10px 22px",
+                      borderRadius: "6px",
+                      textDecoration: "none"
+                    }}
+                    target="_blank" 
+                    rel="noopener noreferrer"
                   >
-                    View All Services
-                  </Link>
+                    💬 WhatsApp Us
+                  </a>
                 </div>
               </div>
 

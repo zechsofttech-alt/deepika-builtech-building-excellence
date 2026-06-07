@@ -29,9 +29,9 @@ const LocationDetail = () => {
   const currentSlug = slug || pathname.replace(/^\//, "").replace(/\/$/, "");
   const locationProfile = locations.find((l) => l.slug === currentSlug);
 
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", budget: "" });
+  const [formData, setFormData] = useState({ name: "", phone: "", service: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   if (!locationProfile) {
     return (
@@ -52,9 +52,7 @@ const LocationDetail = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitMessage("");
 
-    // Setup action targeting Formspree
     const formspreeEndpoint = "https://formspree.io/f/xvgooleq";
 
     try {
@@ -64,22 +62,19 @@ const LocationDetail = () => {
         body: JSON.stringify({
           ...formData,
           source_location: locationProfile.name,
-          subject: `Enquiry from Local Landing Page: ${locationProfile.name}`
+          subject: `New Location Quote Request — ${locationProfile.name} — deepikabuiltech.com`
         })
       });
 
       if (response.ok) {
-        setSubmitMessage("Thank you! Your request has been sent successfully.");
-        setFormData({ name: "", email: "", phone: "", message: "", budget: "" });
+        setIsSubmitted(true);
       } else {
         throw new Error("Form submission failed.");
       }
     } catch (error) {
-      // Fallback to mailto
       const subject = encodeURIComponent(`Project Quote for ${locationProfile.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nBudget: ${formData.budget}\nMessage: ${formData.message}\nLocation: ${locationProfile.name}`);
-      window.location.href = `mailto:info@deepikabuiltech.com?subject=${subject}&body=${body}`;
-      setSubmitMessage("Form submission redirected to mail handler.");
+      const body = encodeURIComponent(`Name: ${formData.name}\nPhone: ${formData.phone}\nMessage: ${formData.message}\nService: ${formData.service}\nLocation: ${locationProfile.name}`);
+      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=${subject}&body=${body}`;
     } finally {
       setIsSubmitting(false);
     }
@@ -111,7 +106,7 @@ const LocationDetail = () => {
     "name": `Deepika Builtech - ${locationProfile.name} Office`,
     "image": "https://www.deepikabuiltech.com/assets/peb-building.jpg",
     "telephone": "+91 96000 67611",
-    "email": "info@deepikabuiltech.com",
+    "email": "infoadmin@deepikabuiltech.in",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "New No. 31, 31A, Old No.14, 15, Coromandal Town, SIDCO Industrial Estate, Ambattur",
@@ -164,11 +159,18 @@ const LocationDetail = () => {
       {/* 1. Hero Zone */}
       <section className="relative pt-40 pb-20 overflow-hidden bg-carbon text-white">
         <div className="absolute inset-0 opacity-15">
-          <img 
-            src={locationProfile.image} 
-            alt={`Industrial PEB Erection in ${locationProfile.name}`} 
-            className="w-full h-full object-cover grayscale"
-          />
+          <picture>
+            <source srcSet={locationProfile.webpImage} type="image/webp" />
+            <img 
+              src={locationProfile.image} 
+              alt={`Industrial PEB Erection in ${locationProfile.name} by Deepika Builtech`} 
+              width="1920"
+              height="600"
+              loading="eager"
+              {...{ fetchpriority: "high" }}
+              className="w-full h-full object-cover grayscale"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
         </div>
         
@@ -340,80 +342,107 @@ const LocationDetail = () => {
               <h2 className="text-3xl font-heading font-black text-ink mb-2 tracking-tight">Request an Engineering Quote</h2>
               <p className="text-ink-muted font-sans mb-8">Get custom project pricing for pre-engineered steel buildings in {locationProfile.name}.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Your Name</label>
-                    <input 
-                      type="text" 
-                      required 
-                      value={formData.name}
-                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
-                    />
+              {isSubmitted ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 text-center space-y-4">
+                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
+                    <Send className="w-6 h-6" />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      required 
-                      value={formData.phone}
-                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
-                    />
+                  <h3 className="font-heading font-black text-emerald-900 text-2xl">Enquiry Submitted Successfully!</h3>
+                  <p className="text-emerald-800 text-base font-sans leading-relaxed max-w-lg mx-auto">
+                    Thank you, <span className="font-bold">{formData.name}</span>! We have received your enquiry and our team will contact you within 2 business hours on <span className="font-bold">{formData.phone}</span>.
+                  </p>
+                  <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                    <a 
+                      href="https://wa.me/919600067611?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services.%20Please%20share%20a%20quote." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 uppercase tracking-wider text-xs shadow-md"
+                    >
+                      WhatsApp Us Now
+                    </a>
+                    <button
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setFormData({ name: "", phone: "", service: "", message: "" });
+                      }}
+                      className="border border-emerald-300 hover:border-emerald-500 text-emerald-700 font-bold py-4 px-8 rounded-xl transition-all duration-300 uppercase tracking-wider text-xs"
+                    >
+                      Send another request
+                    </button>
                   </div>
                 </div>
-                
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Email Address</label>
-                  <input 
-                    type="email" 
-                    required 
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
-                  />
-                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="form-name" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Name *</label>
+                      <input 
+                        id="form-name"
+                        type="text" 
+                        required 
+                        placeholder="Your full name"
+                        value={formData.name}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="form-phone" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Phone Number *</label>
+                      <input 
+                        id="form-phone"
+                        type="tel" 
+                        required 
+                        placeholder="+91XXXXXXXXXX"
+                        value={formData.phone}
+                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="form-service" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Service Interested In *</label>
+                    <select
+                      id="form-service"
+                      required
+                      value={formData.service}
+                      onChange={e => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="PEB Building Structure">PEB Building Structure</option>
+                      <option value="Civil & Steel Construction">Civil & Steel Construction</option>
+                      <option value="Cold Storage Construction">Cold Storage Construction</option>
+                      <option value="Mezzanine Floor">Mezzanine Floor</option>
+                      <option value="Warehouse Construction">Warehouse Construction</option>
+                      <option value="EOT Cranes">EOT Cranes</option>
+                      <option value="Steel Structure Fabrication">Steel Structure Fabrication</option>
+                      <option value="Industrial Shed Construction">Industrial Shed Construction</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Project Budget / Size</label>
-                  <select 
-                    value={formData.budget}
-                    onChange={e => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"
+                  <div className="space-y-2">
+                    <label htmlFor="form-message" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Message</label>
+                    <textarea 
+                      id="form-message"
+                      rows={4} 
+                      placeholder="Tell us about your project, timeline, and any specific requirements"
+                      value={formData.message}
+                      onChange={e => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm resize-none"
+                    />
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-carbon hover:bg-carbon-mid text-white font-black py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest text-xs shadow-lg"
                   >
-                    <option value="">Select Range</option>
-                    <option value="Under 10,000 Sq.Ft">Under 10,000 Sq.Ft</option>
-                    <option value="10,000 - 50,000 Sq.Ft">10,000 - 50,000 Sq.Ft</option>
-                    <option value="50,000 - 1,00,000 Sq.Ft">50,000 - 1,00,000 Sq.Ft</option>
-                    <option value="Above 1,00,000 Sq.Ft">Above 1,00,000 Sq.Ft</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-wider text-ink-muted">Requirements Brief</label>
-                  <textarea 
-                    rows={4} 
-                    required 
-                    value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    placeholder={`Details on clear spans, heights, or crane requirements for your ${locationProfile.name} facility.`}
-                    className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm resize-none"
-                  />
-                </div>
-
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-carbon hover:bg-black text-white font-black py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest text-xs shadow-lg"
-                >
-                  {isSubmitting ? "Submitting..." : "Submit Quote Request"} <Send className="w-4 h-4" />
-                </button>
-                
-                {submitMessage && (
-                  <p className="text-xs font-bold text-center text-amber mt-4">{submitMessage}</p>
-                )}
-              </form>
+                    {isSubmitting ? "Submitting..." : "Send My Quote Request →"}
+                  </button>
+                </form>
+              )}
             </div>
             
             {/* Map */}

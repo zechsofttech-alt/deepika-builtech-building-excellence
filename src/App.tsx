@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -76,6 +76,29 @@ const App = () => (
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           
+          {/* Legacy 301 Redirects for SEO Consolidation */}
+          <Route path="/peb-building-solutions" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/peb-building-solutions/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/peb-building-systems-for-durable-and-efficient-steel-structures" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/peb-building-systems-for-durable-and-efficient-steel-structures/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-fabricated-steel-building" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-fabricated-steel-building/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-fabricated-buildings" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-fabricated-buildings/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-engineered-metal-building" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/pre-engineered-metal-building/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/blogs/peb-building-systems-chennai" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          <Route path="/blogs/peb-building-systems-chennai/" element={<Navigate to="/industrial-peb-construction-chennai" replace />} />
+          
+          <Route path="/steel-structure-manufacturer" element={<Navigate to="/steel-structure-fabrication-chennai" replace />} />
+          <Route path="/steel-structure-manufacturer/" element={<Navigate to="/steel-structure-fabrication-chennai" replace />} />
+          
+          <Route path="/steel-workshop-buildings" element={<Navigate to="/industrial-shed-construction-chennai" replace />} />
+          <Route path="/steel-workshop-buildings/" element={<Navigate to="/industrial-shed-construction-chennai" replace />} />
+          
+          <Route path="/steel-building-contractors-for-expert-planning-and-execution" element={<Navigate to="/construction-services-in-chennai" replace />} />
+          <Route path="/steel-building-contractors-for-expert-planning-and-execution/" element={<Navigate to="/construction-services-in-chennai" replace />} />
+
           {/* CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
