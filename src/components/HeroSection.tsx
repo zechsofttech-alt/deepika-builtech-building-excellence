@@ -45,19 +45,30 @@ export default function HeroSection() {
     <section id="home" className="relative w-full lg:min-h-screen bg-white flex flex-col justify-center overflow-hidden pt-32 lg:pt-16 pb-12">
       {/* Mobile Only Background Image - Cinematic Layer */}
       <div className="absolute inset-0 z-0 lg:hidden pointer-events-none">
-        <picture>
-          <source srcSet={pebWebp} type="image/webp" />
-          <img
-            src={peb}
-            alt="Pre-engineered steel building construction site in Chennai by Deepika Builtech mobile background"
-            width={640}
-            height={960}
-            loading="eager"
-            {...{ fetchpriority: "high" }}
-            className="absolute inset-0 w-full h-full object-cover grayscale opacity-[0.35] mix-blend-multiply"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-white" />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.65 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <picture>
+              <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
+              <img
+                src={slides[activeSlide].image}
+                alt={slides[activeSlide].alt}
+                width={640}
+                height={960}
+                loading="eager"
+                {...{ fetchpriority: "high" }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </picture>
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white" />
       </div>
 
       {/* Background Structural Grid */}
