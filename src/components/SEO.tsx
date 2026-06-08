@@ -1,140 +1,74 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
   title: string;
   description: string;
-  robots?: string;
-  ogType?: string;
+  canonical?: string;
   ogImage?: string;
-  ogTitle?: string;
-  ogDescription?: string;
+  ogType?: string;
+  schema?: any;
+  robots?: string;
 }
 
 const SEO = ({
   title,
   description,
-  robots = "index, follow",
-  ogType = "website",
-  ogImage = "https://www.deepikabuiltech.com/assets/peb-building.jpg", // default hero image
-  ogTitle,
-  ogDescription
+  canonical,
+  ogImage = 'https://www.deepikabuiltech.com/images/og-image.jpg',
+  ogType = 'website',
+  schema,
+  robots = 'index, follow',
 }: SEOProps) => {
-  const location = useLocation();
-  const canonicalUrl = `https://www.deepikabuiltech.com${location.pathname}`;
+  const siteUrl = 'https://www.deepikabuiltech.com';
 
-  useEffect(() => {
-    // Set document title
-    document.title = title;
+  // Build a clean canonical URL:
+  // – no canonical arg → homepage URL (siteUrl)
+  // – canonical = "/"   → siteUrl (no trailing slash)
+  // – canonical = "/foo" → siteUrl + "/foo"
+  // – canonical = "foo"  → siteUrl + "/foo"
+  let fullCanonical: string;
+  if (!canonical || canonical === '/') {
+    fullCanonical = siteUrl;
+  } else {
+    const path = canonical.startsWith('/') ? canonical : `/${canonical}`;
+    fullCanonical = `${siteUrl}${path}`;
+  }
 
-    // Set meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute("content", description);
+  return (
+    <Helmet>
+      {/* Primary */}
+      <html lang="en" />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={fullCanonical} />
+      <meta name="robots" content={robots} />
+      <meta name="author" content="Deepika Builtech Engineering" />
 
-    // Set meta robots
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (!metaRobots) {
-      metaRobots = document.createElement("meta");
-      metaRobots.setAttribute("name", "robots");
-      document.head.appendChild(metaRobots);
-    }
-    metaRobots.setAttribute("content", robots);
+      {/* Open Graph */}
+      <meta property="og:type" content={ogType} />
+      <meta property="og:url" content={fullCanonical} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="628" />
+      <meta property="og:locale" content="en_IN" />
+      <meta property="og:site_name" content="Deepika Builtech Engineering" />
 
-    // Set Open Graph tags
-    const ogTags: Record<string, string> = {
-      "og:type": ogType,
-      "og:site_name": "Deepika Builtech Engineering",
-      "og:image": ogImage || "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-og-image.jpg",
-      "og:image:width": "1200",
-      "og:image:height": "628",
-      "og:locale": "en_IN",
-      "og:title": ogTitle || title,
-      "og:description": ogDescription || description,
-      "og:url": canonicalUrl
-    };
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
 
-    Object.entries(ogTags).forEach(([property, content]) => {
-      let metaTag = document.querySelector(`meta[property="${property}"]`);
-      if (!metaTag) {
-        metaTag = document.createElement("meta");
-        metaTag.setAttribute("property", property);
-        document.head.appendChild(metaTag);
-      }
-      metaTag.setAttribute("content", content);
-    });
-
-    // Set Twitter card tags
-    const twitterTags: Record<string, string> = {
-      "twitter:card": "summary_large_image",
-      "twitter:title": ogTitle || title,
-      "twitter:description": ogDescription || description,
-      "twitter:image": ogImage || "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-og-image.jpg"
-    };
-
-    Object.entries(twitterTags).forEach(([name, content]) => {
-      let metaTag = document.querySelector(`meta[name="${name}"]`);
-      if (!metaTag) {
-        metaTag = document.createElement("meta");
-        metaTag.setAttribute("name", name);
-        document.head.appendChild(metaTag);
-      }
-      metaTag.setAttribute("content", content);
-    });
-
-    // Set canonical link element
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement("link");
-      canonicalLink.setAttribute("rel", "canonical");
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute("href", canonicalUrl);
-
-    // Dynamic BreadcrumbList JSON-LD for inner pages
-    if (location.pathname !== "/") {
-      const pageName = title.split(" | ")[0] || "Page";
-      const breadcrumbData = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.deepikabuiltech.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": pageName,
-            "item": canonicalUrl
-          }
-        ]
-      };
-
-      let breadcrumbScript = document.getElementById("dynamic-breadcrumb-schema");
-      if (!breadcrumbScript) {
-        breadcrumbScript = document.createElement("script");
-        breadcrumbScript.setAttribute("type", "application/ld+json");
-        breadcrumbScript.setAttribute("id", "dynamic-breadcrumb-schema");
-        document.head.appendChild(breadcrumbScript);
-      }
-      breadcrumbScript.innerHTML = JSON.stringify(breadcrumbData);
-    } else {
-      const breadcrumbScript = document.getElementById("dynamic-breadcrumb-schema");
-      if (breadcrumbScript) {
-        breadcrumbScript.remove();
-      }
-    }
-
-  }, [title, description, robots, ogType, ogImage, ogTitle, ogDescription, canonicalUrl, location.pathname]);
-
-  return null;
+      {/* Schema JSON-LD */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
+    </Helmet>
+  );
 };
 
 export default SEO;

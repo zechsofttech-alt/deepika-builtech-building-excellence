@@ -174,3 +174,5 @@ const StepCard = ({ step, idx }: { step: any, idx: number }) => {
 };
 
 export default HomeProcess;
+
+

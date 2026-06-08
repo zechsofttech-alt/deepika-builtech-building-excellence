@@ -106,7 +106,7 @@ const AIChatBot = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] font-sans">
+    <div style={{ position: 'fixed', bottom: '28px', right: '28px', zIndex: 100 }} className="font-sans">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -253,3 +253,5 @@ const AIChatBot = () => {
 };
 
 export default AIChatBot;
+
+

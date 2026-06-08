@@ -28,8 +28,8 @@ const Index = () => {
       "name": "Deepika Builtech Engineering",
       "alternateName": "Deepika Builtech",
       "url": "https://www.deepikabuiltech.com",
-      "logo": "https://www.deepikabuiltech.com/wp-content/uploads/deepika-builtech-logo.png",
-      "image": "https://www.deepikabuiltech.com/wp-content/uploads/hero-peb-warehouse-chennai.jpg",
+      "logo": "https://www.deepikabuiltech.com/logo.png",
+      "image": "https://www.deepikabuiltech.com/images/hero-peb-warehouse-chennai.jpg",
       "description": "Chennai's leading Pre-Engineered Building (PEB) contractor specialising in steel structures, warehouses, cold storage, mezzanine floors, and EOT cranes across Tamil Nadu.",
       "telephone": "+919600067611",
       "email": "infoadmin@deepikabuiltech.in",
@@ -172,3 +172,9 @@ const Index = () => {
 };
 
 export default Index;
+
+
+
+
+
+

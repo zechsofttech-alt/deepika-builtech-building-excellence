@@ -272,3 +272,5 @@ export const locations: LocationProfile[] = [
     nearbySlugs: ["peb-construction-sriperumbudur", "peb-construction-kanchipuram", "peb-construction-oragadam"]
   }
 ];
+
+

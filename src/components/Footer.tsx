@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Linkedin, Youtube } from "lucide-react";
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -27,6 +27,17 @@ const Footer = () => {
             <p className="text-surface-subtle/70 text-base leading-relaxed mb-6 max-w-xs font-sans">
               Architecting the industrial future with elite Pre-Engineered Building solutions. Precision, durability, and on-time execution.
             </p>
+            <div className="flex gap-4 mb-6">
+              <a href="https://www.facebook.com/deepikabuiltech" target="_blank" rel="noopener noreferrer" aria-label="Follow Deepika Builtech on Facebook" className="w-10 h-10 rounded-xl bg-carbon-mid hover:bg-amber hover:text-carbon transition-colors duration-300 flex items-center justify-center text-surface-subtle/80">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/deepikabuiltech" target="_blank" rel="noopener noreferrer" aria-label="Follow Deepika Builtech on LinkedIn" className="w-10 h-10 rounded-xl bg-carbon-mid hover:bg-amber hover:text-carbon transition-colors duration-300 flex items-center justify-center text-surface-subtle/80">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://www.youtube.com/@deepikabuiltech" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to Deepika Builtech on YouTube" className="w-10 h-10 rounded-xl bg-carbon-mid hover:bg-amber hover:text-carbon transition-colors duration-300 flex items-center justify-center text-surface-subtle/80">
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
           </div>
           
           <div>
@@ -51,13 +62,11 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: 'PEB Building Structure', href: '/industrial-peb-construction-chennai' },
-                { label: 'Civil & Steel Construction', href: '/construction-services-in-chennai' },
-                { label: 'Cold Storage Construction', href: '/cold-storage-solutions-chennai' },
+                { label: 'Construction', href: '/construction-services-in-chennai' },
+                { label: 'Cold Storage', href: '/cold-storage-solutions-chennai' },
                 { label: 'Mezzanine Floor', href: '/mezzanine-floor-construction-chennai' },
                 { label: 'Warehouse Construction', href: '/warehouse-construction-chennai' },
-                { label: 'EOT Cranes', href: '/eot-crane-manufacturers-in-chennai' },
-                { label: 'Steel Structure Fabrication', href: '/steel-structure-fabrication-chennai' },
-                { label: 'Industrial Shed Construction', href: '/industrial-shed-construction-chennai' }
+                { label: 'EOT Cranes', href: '/eot-crane-manufacturers-in-chennai' }
               ].map((link) => (
                 <li key={link.label}>
                   <Link to={link.href} className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-[13px] font-medium flex items-center gap-2 group/link focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
@@ -94,26 +103,23 @@ const Footer = () => {
  
           <div className="col-span-2 md:col-span-1">
             <h5 className="font-heading font-semibold text-sm uppercase tracking-widest text-amber mb-6">Contact Info</h5>
-            <ul className="space-y-3 text-surface-subtle/70 text-sm font-sans leading-relaxed">
-              <li className="font-bold text-white text-base">Deepika Builtech Engineering</li>
-              <li>
-                New No. 31,31A, Old No.14,15, Coromandal Town,<br />
-                SIDCO Industrial Estate, Ambattur, Chennai - 600098
-              </li>
-              <li>
-                <strong>Phone:</strong> <a href="tel:+919600067611" className="hover:text-amber transition-colors">+91 96000 67611</a> | 044-26256416
-              </li>
-              <li>
-                <strong>Email:</strong> <a href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors">infoadmin@deepikabuiltech.in</a>
-              </li>
-            </ul>
+            <address style={{ fontStyle: 'normal' }} className="space-y-3 text-surface-subtle/70 text-sm font-sans leading-relaxed">
+              <strong>Deepika Builtech Engineering</strong><br />
+              New No. 31,31A, Old No.14,15, Coromandal Town,<br />
+              SIDCO Industrial Estate, Ambattur, Chennai - 600098<br />
+              Phone: <a href="tel:+919600067611" className="hover:text-amber transition-colors font-bold">+91 96000 67611</a>
+                      {' '}| <a href="tel:04426256416" className="hover:text-amber transition-colors">044-26256416</a><br />
+              Email: <a href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors font-medium">
+                       infoadmin@deepikabuiltech.in
+                     </a>
+            </address>
           </div>
         </div>
 
 
         <div className="border-t border-carbon-soft pt-8 flex flex-col md:flex-row justify-between items-center gap-4 mb-12">
           <p className="text-sm text-surface-subtle">
-            &copy; {new Date().getFullYear()} Deepika Builtech. All rights reserved.
+            © 2025–2026 Deepika Builtech Engineering. All Rights Reserved.
           </p>
           <div className="flex gap-6 text-sm text-surface-subtle">
             <a href="#" className="hover:text-surface transition-colors">Privacy Policy</a>
@@ -133,3 +139,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+

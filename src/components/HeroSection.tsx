@@ -95,15 +95,11 @@ export default function HeroSection() {
               Because your project deserves more than just a contractor.
             </motion.span>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "circOut" }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.2rem] font-heading font-black text-ink leading-[1.0] tracking-tighter mb-6"
-            >
-              Chennai's Leading PEB <br />
-              <span className="text-amber">Construction & Steel Building Company</span>
-            </motion.h1>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.2rem] font-heading font-black text-ink leading-[1.0] tracking-tighter mb-6">
+              Chennai's Leading{' '}
+              <span style={{ color: '#e07b39' }}>PEB Construction</span>
+              {' '}&amp; Steel Building Company
+            </h1>
 
             <motion.h2
               initial={{ opacity: 0 }}
@@ -171,7 +167,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "circOut" }}
-            className="hidden lg:block lg:col-span-5 relative lg:mt-2"
+            className="hidden lg:block lg:col-span-5 relative lg:mt-16"
           >
             {/* Background Blue-Frame */}
             <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-8 translate-y-8" />
@@ -245,3 +241,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+

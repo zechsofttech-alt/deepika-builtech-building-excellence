@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ContactForm from "@/components/ContactForm";
 import { useEffect, useState } from "react";
 import { MapPin, Phone, Mail, Building, Factory, Send, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,45 +12,7 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    service: "",
-    location: "",
-    size: "",
-    message: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("https://formspree.io/f/xvgooleq", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          ...formData,
-          subject: `New Quote Request — ${formData.service} — deepikabuiltech.com`
-        })
-      });
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        alert("There was an issue submitting your request. Please try again or connect via WhatsApp.");
-      }
-    } catch (error) {
-      alert("Submission error. Please try again or contact us directly on WhatsApp.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const contactMethods = [
     {
@@ -95,8 +58,7 @@ const Contact = () => {
       title: "Email Us",
       icon: <Mail className="w-6 h-6 text-amber" />,
       lines: [
-        <a key="mail1" href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors font-bold text-sm truncate block">infoadmin@deepikabuiltech.in</a>,
-        <a key="mail2" href="mailto:dbtechengg@gmail.com" className="hover:text-amber transition-colors font-medium text-sm truncate block">dbtechengg@gmail.com</a>
+        <a key="mail1" href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors font-bold text-sm truncate block">infoadmin@deepikabuiltech.in</a>
       ],
       subtext: "Official Communications",
       className: "bg-white border-surface-mid"
@@ -142,8 +104,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-20 bg-surface">
       <SEO 
-        title="Contact Us | Deepika Builtech Engineering Chennai"
-        description="Get in touch with Deepika Builtech for PEB construction quotes, project inquiries, or site visits. Call +91 96000 67611 or email infoadmin@deepikabuiltech.in."
+        title="Contact Us | Get a Free Quote | Deepika Builtech Chennai"
+        description="Contact Deepika Builtech for PEB construction quotes, site visits and enquiries. Call +91 96000 67611 or WhatsApp us. We respond within 2 hours."
+        canonical="/contact"
       />
       <Navbar />
       
@@ -249,165 +212,10 @@ const Contact = () => {
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-heading font-black text-ink tracking-tight mb-3">Request a Free Quote</h2>
               <p className="text-ink-muted text-base font-sans">
-                Fill in your project details and we'll prepare a detailed quote within 24 hours.
+                Fill in your project details and we'll prepare a detailed quote within 2 hours.
               </p>
             </div>
-
-            {isSubmitted ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-3xl p-8 text-center space-y-4">
-                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                  <Send className="w-6 h-6" />
-                </div>
-                <h3 className="font-heading font-black text-emerald-900 text-2xl">Enquiry Submitted Successfully!</h3>
-                <p className="text-emerald-800 text-base font-sans leading-relaxed max-w-lg mx-auto">
-                  Thank you, <span className="font-bold">{formData.name}</span>! We have received your enquiry and our team will contact you within 2 business hours on <span className="font-bold">{formData.phone}</span>.
-                </p>
-                <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-                  <a 
-                    href="https://wa.me/919600067611?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services.%20Please%20share%20a%20quote." 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 uppercase tracking-wider text-xs shadow-md"
-                  >
-                    Urgent? WhatsApp Us Now
-                  </a>
-                  <button
-                    onClick={() => {
-                      setIsSubmitted(false);
-                      setFormData({
-                        name: "",
-                        phone: "",
-                        email: "",
-                        service: "",
-                        location: "",
-                        size: "",
-                        message: ""
-                      });
-                    }}
-                    className="border border-emerald-300 hover:border-emerald-500 text-emerald-700 font-bold py-4 px-8 rounded-xl transition-all duration-300 uppercase tracking-wider text-xs"
-                  >
-                    Submit Another Request
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Name field */}
-                  <div className="space-y-2">
-                    <label htmlFor="full-name" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Name *</label>
-                    <input
-                      id="full-name"
-                      type="text"
-                      required
-                      placeholder="Your full name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    />
-                  </div>
-                  {/* Phone field */}
-                  <div className="space-y-2">
-                    <label htmlFor="phone-num" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Phone Number *</label>
-                    <input
-                      id="phone-num"
-                      type="tel"
-                      required
-                      placeholder="+91XXXXXXXXXX"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Email field */}
-                  <div className="space-y-2">
-                    <label htmlFor="email-addr" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Email Address *</label>
-                    <input
-                      id="email-addr"
-                      type="email"
-                      required
-                      placeholder="e.g. buyer@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    />
-                  </div>
-                  {/* Service dropdown */}
-                  <div className="space-y-2">
-                    <label htmlFor="service-select" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Service Interested In *</label>
-                    <select
-                      id="service-select"
-                      required
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    >
-                      <option value="">Select a service...</option>
-                      <option value="PEB Building Structure">PEB Building Structure</option>
-                      <option value="Civil & Steel Construction">Civil & Steel Construction</option>
-                      <option value="Cold Storage Construction">Cold Storage Construction</option>
-                      <option value="Mezzanine Floor">Mezzanine Floor</option>
-                      <option value="Warehouse Construction">Warehouse Construction</option>
-                      <option value="EOT Cranes">EOT Cranes</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Project Location */}
-                  <div className="space-y-2">
-                    <label htmlFor="proj-loc" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Project Location / City *</label>
-                    <input
-                      id="proj-loc"
-                      type="text"
-                      required
-                      placeholder="e.g. Sriperumbudur, Ambattur"
-                      value={formData.location}
-                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    />
-                  </div>
-                  {/* Approximate Project Size */}
-                  <div className="space-y-2">
-                    <label htmlFor="proj-size" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Approximate Project Size</label>
-                    <input
-                      id="proj-size"
-                      type="text"
-                      placeholder="e.g. 5000 sq.ft or 1 acre"
-                      value={formData.size}
-                      onChange={(e) => setFormData({ ...formData, size: e.target.value })}
-                      className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans focus-visible:outline focus-visible:outline-2"
-                    />
-                  </div>
-                </div>
-
-                {/* Message field */}
-                <div className="space-y-2">
-                  <label htmlFor="proj-details" className="text-xs font-semibold uppercase tracking-wider text-ink-muted block">Message / Project Details</label>
-                  <textarea
-                    id="proj-details"
-                    rows={4}
-                    placeholder="Tell us about your project, timeline, and any specific requirements"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-surface-subtle border border-surface-mid px-5 py-4 rounded-xl focus:outline-none focus:border-amber focus:ring-4 focus:ring-amber/10 transition-all text-ink font-sans resize-none focus-visible:outline focus-visible:outline-2"
-                  />
-                </div>
-
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-carbon hover:bg-carbon-mid text-white font-black py-5 rounded-xl flex items-center justify-center gap-3 transition-all duration-500 shadow-xl uppercase tracking-widest text-sm focus-visible:outline focus-visible:outline-2"
-                >
-                  {isSubmitting ? "Sending..." : "Send My Quote Request →"}
-                </button>
-              </form>
-            )}
+            <ContactForm compact={false} />
           </div>
         </section>
 
@@ -497,3 +305,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
