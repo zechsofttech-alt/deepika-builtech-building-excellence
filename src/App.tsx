@@ -70,20 +70,6 @@ const App = () => (
             
             <Route path="/location/:slug" element={<LocationDetail />} />
 
-            {/* Direct Blog SEO Routes (12 Blogs) */}
-            <Route path="/blog/peb-vs-rcc-construction-cost-chennai" element={<BlogDetail />} />
-            <Route path="/blog/industrial-building-approval-process-tamil-nadu" element={<BlogDetail />} />
-            <Route path="/blog/warehouse-insulation-ventilation-chennai" element={<BlogDetail />} />
-            <Route path="/blog/mezzanine-floor-design-safety-standards" element={<BlogDetail />} />
-            <Route path="/blog/eot-crane-gantry-girder-calculations" element={<BlogDetail />} />
-            <Route path="/blog/cold-storage-construction-cost-factors" element={<BlogDetail />} />
-            <Route path="/blog/pre-engineered-building-manufacturing-process" element={<BlogDetail />} />
-            <Route path="/blog/structural-steel-fabrication-quality-ndt" element={<BlogDetail />} />
-            <Route path="/blog/peb-multi-story-commercial-buildings" element={<BlogDetail />} />
-            <Route path="/blog/preventive-maintenance-industrial-sheds" element={<BlogDetail />} />
-            <Route path="/blog/fire-safety-norms-industrial-warehouses" element={<BlogDetail />} />
-            <Route path="/blog/green-building-benefits-steel-peb" element={<BlogDetail />} />
-            
             <Route path="/blog/:slug" element={<BlogDetail />} />
 
             <Route path="/projects" element={<Projects />} />
