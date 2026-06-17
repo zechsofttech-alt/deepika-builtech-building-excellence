@@ -25,8 +25,8 @@ const REASONS = [
   },
   {
     num: "04",
-    stat: "Pan-TN",
-    title: "Pan-Tamil Nadu Service",
+    stat: "TN",
+    title: "Tamil Nadu Service",
     desc: "We serve all major industrial zones: Chennai, Ambattur, Sriperumbudur, Oragadam, Kanchipuram, Thiruvallur, Hosur, Coimbatore, and beyond. Free site visit anywhere in Tamil Nadu.",
     icon: MapPin,
   },
