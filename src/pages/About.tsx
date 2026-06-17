@@ -9,8 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import TrustedPartners from "@/components/TrustedPartners";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import directorImg from "@/assets/director.jpg";
-import directorImgWebp from "@/assets/director.webp";
+import directorImg from "@/assets/director.jpeg";
 import awardImg from "@/assets/excellence-award-2025.jpg";
 import awardImgWebp from "@/assets/excellence-award-2025.webp";
 import { useEffect } from "react";
@@ -55,10 +54,9 @@ const About = () => {
                 <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-4 translate-y-4" />
                 <div className="relative z-10 aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-surface-subtle border border-surface-mid">
                   <picture>
-                    <source srcSet={directorImgWebp} type="image/webp" />
                     <img 
                       src={directorImg} 
-                      alt="Siva Adithya, Managing Director of Deepika Builtech Engineering" 
+                      alt="B. Sabapathi, Founder of Deepika Builtech Engineering" 
                       width="500"
                       height="625"
                       loading="lazy"
@@ -67,8 +65,8 @@ const About = () => {
                     />
                   </picture>
                   <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
-                    <h3 className="font-heading font-black text-2xl">Siva Adithya</h3>
-                    <p className="text-amber text-xs uppercase tracking-widest font-bold mt-1">Managing Director / Founder</p>
+                    <h3 className="font-heading font-black text-2xl">B. Sabapathi</h3>
+                    <p className="text-amber text-xs uppercase tracking-widest font-bold mt-1">Founder</p>
                   </div>
                 </div>
               </div>
@@ -85,10 +83,10 @@ const About = () => {
 
                 <div className="prose prose-lg text-ink-muted leading-relaxed font-sans space-y-6">
                   <p>
-                    Established in <strong>2015</strong>, Deepika Builtech was founded by <strong>Siva Adithya</strong> with a vision to revolutionize the pre-engineered building (PEB) sector in South India. Over the last decade, we have grown from a local contractor into a premier engineering firm, delivering high-integrity steel sheds, cold storages, industrial warehouses, and crane structures.
+                    Established in <strong>2015</strong>, Deepika Builtech was founded by <strong>B. Sabapathi</strong> with a vision to revolutionize the pre-engineered building (PEB) sector in South India. Over the last decade, we have grown from a local contractor into a premier engineering firm, delivering high-integrity steel sheds, cold storages, industrial warehouses, and crane structures.
                   </p>
                   <p>
-                    Under Siva Adithya's strategic leadership, Deepika Builtech has successfully commissioned over 150+ major projects, serving a diverse client base ranging from local small-scale industries to global third-party logistics firms. We maintain our core corporate philosophy of precision fabrication, absolute site safety, and timely delivery.
+                    Under B. Sabapathi's strategic leadership, Deepika Builtech has successfully commissioned over 150+ major projects, serving a diverse client base ranging from local small-scale industries to global third-party logistics firms. We maintain our core corporate philosophy of precision fabrication, absolute site safety, and timely delivery.
                   </p>
                 </div>
 
