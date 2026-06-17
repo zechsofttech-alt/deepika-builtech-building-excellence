@@ -76,7 +76,7 @@ const Contact = () => {
       title: "Unit I — Kanchipuram",
       address: "Survey No.44/5, Rajakulam Road, Vaiyavur Post, Karur Village, Kanchipuram District - 631561",
       icon: <Factory className="w-5 h-5 text-amber" />,
-      link: "https://maps.google.com/?q=Survey+No.44%2F5,+Rajakulam+Road,+Vaiyavur+Post,+Karur+Village,+Kanchipuram+District+-+631561"
+      link: "https://www.google.com/maps/search/?api=1&query=VQ4C%2B6H4+Deepika+Builtech+Engineering+MDR791+Sittiyambakkam+Tamil+Nadu+631561"
     },
     {
       title: "Unit II — Thiruvallur",
