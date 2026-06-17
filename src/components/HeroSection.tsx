@@ -1,32 +1,34 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
-import peb from "@/assets/peb-building.jpg";
-import pebWebp from "@/assets/peb-building.webp";
+import completedPebDrone from "@/assets/completed-peb-drone.png";
+import completedPebDronePortrait from "@/assets/completed-peb-drone-portrait.png";
 import warehouseImg from "@/assets/warehouse.jpg";
 import warehouseWebp from "@/assets/warehouse.webp";
 import coldStorageImg from "@/assets/cold-storage.jpg";
 import coldStorageWebp from "@/assets/cold-storage.webp";
+import heroBg from "@/assets/hero-bg.jpg";
+import heroBgWebp from "@/assets/hero-bg.webp";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    image: peb,
-    imageWebp: pebWebp,
-    title: "High-Precision PEB Structure",
-    alt: "Pre-engineered steel building construction site completed by Deepika Builtech in Chennai, Tamil Nadu"
+    image: completedPebDrone,
+    imageMobile: completedPebDronePortrait,
+    title: "Completed PEB Structure — Drone View",
+    alt: "Drone view of a completed pre-engineered steel building by Deepika Builtech, Chennai"
   },
   {
     image: warehouseImg,
     imageWebp: warehouseWebp,
-    title: "Column-Free Warehouse Hub",
-    alt: "Pre-engineered steel warehouse construction project completed by Deepika Builtech in Chennai, Tamil Nadu"
+    title: "Interior View — Column-Free Warehouse",
+    alt: "Interior view of a column-free industrial warehouse built by Deepika Builtech, Tamil Nadu"
   },
   {
-    image: coldStorageImg,
-    imageWebp: coldStorageWebp,
-    title: "Insulated Cold Storage Facility",
-    alt: "Pre-engineered steel cold storage construction project completed by Deepika Builtech in Chennai, Tamil Nadu"
+    image: heroBg,
+    imageWebp: heroBgWebp,
+    title: "Aerial View — Under-Construction PEB Site",
+    alt: "Drone aerial shot of a PEB steel structure under construction by Deepika Builtech, Tamil Nadu"
   }
 ];
 
@@ -37,45 +39,134 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="home" className="relative w-full lg:min-h-screen bg-white flex flex-col justify-center overflow-hidden pt-32 lg:pt-16 pb-12">
-      {/* Mobile Only Background Image - Cinematic Layer */}
-      <div className="absolute inset-0 z-0 lg:hidden pointer-events-none">
+    <section id="home" className="relative w-full bg-white overflow-hidden">
+
+      {/* ── MOBILE ONLY: Fullscreen Auto-Rotating Image Carousel with Text Overlay ── */}
+      <div className="lg:hidden relative w-full h-[100svh] pt-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.65 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className="absolute inset-0 w-full h-full"
           >
             <picture>
-              <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
-              <img
-                src={slides[activeSlide].image}
-                alt={slides[activeSlide].alt}
-                width={640}
-                height={960}
-                loading="eager"
-                {...{ fetchpriority: "high" }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+              {slides[activeSlide].imageMobile ? (
+                <img
+                  src={slides[activeSlide].imageMobile}
+                  alt={slides[activeSlide].alt}
+                  width={640}
+                  height={960}
+                  loading="eager"
+                  {...{ fetchpriority: "high" }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <>
+                  {slides[activeSlide].imageWebp && (
+                    <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
+                  )}
+                  <img
+                    src={slides[activeSlide].image}
+                    alt={slides[activeSlide].alt}
+                    width={640}
+                    height={960}
+                    loading="eager"
+                    {...{ fetchpriority: "high" }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </>
+              )}
             </picture>
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white" />
+
+        {/* Dark overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent z-10" />
+
+        {/* Mobile Content Overlay */}
+        <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col justify-end px-6 pb-20 pt-48">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-[10px] font-black uppercase tracking-[0.2em] text-amber mb-2 block"
+          >
+            Winner of Excellence Award 2022 & 2025
+          </motion.span>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-3xl font-heading font-black text-white leading-tight tracking-tight mb-3"
+          >
+            Chennai's Leading <span className="text-amber">PEB Construction</span> & Steel Building Company
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-xs text-white/80 leading-relaxed font-sans font-medium mb-6"
+          >
+            Pre-engineered steel buildings designed, fabricated and erected across Chennai and Tamil Nadu — faster, stronger, at lower cost.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col gap-3 w-full"
+          >
+            <Link
+              to="/contact"
+              className="w-full bg-amber text-carbon px-6 py-4 rounded-xl font-black text-xs uppercase tracking-[0.15em] text-center hover:bg-white hover:text-carbon transition-all duration-300 shadow-lg flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+            >
+              Start Your Project
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+            <Link
+              to="/about"
+              className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.15em] text-center hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+            >
+              Our Story
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`rounded-full transition-all duration-500 ${
+                activeSlide === idx
+                  ? "w-8 h-2 bg-amber"
+                  : "w-2 h-2 bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* ── DESKTOP ONLY: Original full layout ── */}
+      <div className="hidden lg:flex flex-col justify-center lg:min-h-screen pt-36 pb-12 relative">
 
       {/* Background Structural Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.4] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* Massive Vertical Background Text */}
-      <div className="absolute -left-20 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden lg:block">
+      <div className="absolute -left-20 top-1/2 -translate-y-1/2 select-none pointer-events-none">
         <span className="text-[12rem] font-black text-surface-mid/20 rotate-90 inline-block uppercase tracking-widest leading-none">
           ESTD 2015
         </span>
@@ -87,18 +178,11 @@ export default function HeroSection() {
           {/* Left: Content Block (7 Columns) */}
           <div className="lg:col-span-7 flex flex-col items-start">
 
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-amber mb-4 block"
-            >
-              Because your project deserves more than just a contractor.
-            </motion.span>
 
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.2rem] font-heading font-black text-ink leading-[1.0] tracking-tighter mb-6">
               Chennai's Leading{' '}
               <span style={{ color: '#e07b39' }}>PEB Construction</span>
-              {' '}&amp; Steel Building Company
+              {' '}& Steel Building Company
             </h1>
 
             <motion.h2
@@ -162,12 +246,12 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: Architectural Offset Image (5 Columns) - Hidden on Mobile */}
+          {/* Right: Architectural Offset Image (5 Columns) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "circOut" }}
-            className="hidden lg:block lg:col-span-5 relative lg:mt-16"
+            className="lg:col-span-5 relative lg:mt-16"
           >
             {/* Background Blue-Frame */}
             <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-8 translate-y-8" />
@@ -183,7 +267,9 @@ export default function HeroSection() {
                   className="w-full h-full absolute inset-0"
                 >
                   <picture>
-                    <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
+                    {slides[activeSlide].imageWebp && (
+                      <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
+                    )}
                     <img
                       src={slides[activeSlide].image}
                       alt={slides[activeSlide].alt}
@@ -235,8 +321,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Decorative Blueprint Corner (Top Right) */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] border-l border-b border-surface-mid pointer-events-none opacity-20 -translate-y-1/2 translate-x-1/2 rotate-45" />
+      </div>
 
     </section>
   );

@@ -41,24 +41,31 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  const isHomePage = pathname === "/";
+  const isHeroActive = isHomePage && !scrolled;
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } ${
-        // Desktop styles (unchanged)
+        // Desktop styles
         scrolled 
           ? "lg:py-3 lg:bg-white/70 lg:backdrop-blur-xl lg:border-b lg:border-surface-mid lg:shadow-sm" 
-          : "lg:py-6 lg:bg-white"
+          : isHeroActive
+            ? "lg:py-6 lg:bg-transparent"
+            : "lg:py-6 lg:bg-white lg:border-b lg:border-surface-mid"
       } ${
-        // Mobile "Floating Island" design
+        // Mobile styles
         "p-4 lg:p-0"
       }`}
     >
       <div 
         className={`container mx-auto transition-all duration-500 ${
           // Mobile Floating Island container
-          "bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow-xl lg:shadow-none border border-surface-mid lg:border-none px-6 py-4 lg:py-0"
+          isHeroActive
+            ? "bg-transparent border-none shadow-none px-6 py-4 lg:py-0 lg:bg-transparent lg:border-none lg:shadow-none lg:backdrop-blur-none"
+            : "bg-white border border-surface-mid shadow-xl px-6 py-4 lg:py-0 lg:bg-transparent lg:border-none lg:shadow-none rounded-2xl lg:rounded-none"
         } flex items-center justify-between`}
       >
         {/* Logo */}
@@ -98,16 +105,13 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="lg:hidden relative z-10 flex items-center gap-2">
-          <a 
-            href="tel:+919600067611" 
-            className="w-10 h-10 flex items-center justify-center bg-surface-subtle text-amber rounded-full tap-target focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber" 
-            aria-label="Call Deepika Builtech"
-          >
-            <Phone className="w-5 h-5" />
-          </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 flex items-center justify-center text-ink hover:bg-surface-subtle rounded-full tap-target transition-transform active:rotate-90 duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+            className={`w-10 h-10 flex items-center justify-center rounded-full tap-target transition-all duration-300 active:rotate-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber ${
+              isHeroActive
+                ? "bg-white/10 text-white hover:bg-white/20 border border-white/10 shadow-sm"
+                : "bg-surface-subtle text-ink hover:bg-surface-mid"
+            }`}
             aria-label="Toggle Navigation Menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -116,7 +120,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Dropdown - Aligned to Floating Island */}
         <div 
-          className={`absolute top-full left-4 right-4 mt-2 bg-white rounded-3xl border border-surface-mid shadow-2xl transition-all duration-500 ease-in-out lg:hidden overflow-hidden ${
+          className={`absolute top-full left-4 right-4 mt-2 rounded-3xl border shadow-2xl transition-all duration-500 ease-in-out lg:hidden overflow-hidden ${
+            isHeroActive
+              ? "bg-carbon/95 backdrop-blur-xl border-white/10"
+              : "bg-white border-surface-mid"
+          } ${
             isOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           }`}
         >
@@ -129,12 +137,14 @@ const Navbar = () => {
                   className={`block py-4 text-center text-lg font-heading font-bold transition-all active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-md ${
                     pathname === link.href 
                       ? "text-amber" 
-                      : "text-ink"
+                      : isHeroActive
+                        ? "text-white hover:text-amber"
+                        : "text-ink hover:text-amber"
                   }`}
                 >
                   {link.label}
                 </Link>
-                <div className="h-px bg-surface-mid/50 w-full" />
+                <div className={`h-px w-full ${isHeroActive ? "bg-white/10" : "bg-surface-mid/50"}`} />
               </div>
             ))}
             
@@ -142,7 +152,11 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-3 bg-carbon text-white font-black text-sm uppercase tracking-widest py-5 rounded-2xl shadow-xl shadow-carbon/20 active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+                className={`w-full inline-flex items-center justify-center gap-3 font-black text-sm uppercase tracking-widest py-5 rounded-2xl shadow-xl active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber ${
+                  isHeroActive
+                    ? "bg-amber text-carbon shadow-amber/10 hover:bg-white"
+                    : "bg-carbon text-white shadow-carbon/20 hover:bg-amber hover:text-carbon"
+                }`}
               >
                 <Phone className="w-4 h-4" />
                 <span>Request Quotation</span>
@@ -150,8 +164,8 @@ const Navbar = () => {
             </div>
 
             <div className="mt-12 text-center pb-2">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-2">Technical Support</p>
-              <a href="mailto:infoadmin@deepikabuiltech.com" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">infoadmin@deepikabuiltech.com</a>
+              <p className={`text-[10px] font-black uppercase tracking-[0.3em] mb-2 ${isHeroActive ? "text-white/40" : "text-ink-muted"}`}>Technical Support</p>
+              <a href="mailto:infoadmin@deepikabuiltech.com" className={`text-sm font-medium underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber ${isHeroActive ? "text-white/60" : "text-ink/60"}`}>infoadmin@deepikabuiltech.com</a>
             </div>
           </div>
         </div>

@@ -50,11 +50,14 @@ const AboutSection = () => {
               <span className="gradient-text">Scale & Excellence.</span>
             </h3>
             
-            <p className="text-lg text-ink-muted leading-relaxed font-sans mb-6">
+            {/* Desktop Only Paragraph */}
+            <p className="hidden md:block text-lg text-ink-muted leading-relaxed font-sans mb-6">
               Founded in Chennai and operating for over a decade, Deepika Builtech Engineering specialises exclusively in Pre-Engineered Buildings, structural steel fabrication, and industrial construction. We operate three facilities — our main office and fabrication unit in Ambattur, SIDCO Industrial Estate Chennai, Unit I in Kanchipuram District, and Unit II in Thirumullaivoyal, Thiruvallur District — giving us unmatched capacity and coverage across the Chennai Metropolitan Area.
             </p>
+
+            {/* Mobile Only: 1 Paragraph summarizing important details */}
             <p className="block md:hidden text-base text-ink-muted leading-relaxed font-sans mb-10">
-              With 150+ completed projects and 100+ satisfied clients across Chennai, Kanchipuram, Thiruvallur, Sriperumbudur, and beyond, Deepika Builtech brings unmatched technical expertise and on-time delivery to every build. Our CNC-precision manufacturing, IS-code compliant structural engineering, and experienced erection teams ensure your project is completed safely, on schedule, and within budget.
+              Deepika Builtech is Chennai's leading Pre-Engineered Building (PEB) contractor with 10+ years of experience and 150+ completed projects. Operating from facilities in Ambattur, Kanchipuram, and Thiruvallur, we provide precision-engineered warehouses, cold storage, and steel structures safely, on schedule, and within budget.
             </p>
 
             <div className="space-y-4 mb-12">
