@@ -152,13 +152,13 @@ const Index = () => {
       <TrustedPartners />
       <main id="content">
         <AboutSection />
-        <SubsidySection />
         <ServicesSection />
         <FeaturedProjects />
         <PerformanceEdge />
         <SectorExpertise />
         <MidPageCTA />
         <StatsSection />
+        <SubsidySection />
         <WhyChooseUsSection />
         <TestimonialsSection />
         <HomeBlogHighlight />
