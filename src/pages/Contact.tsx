@@ -70,7 +70,7 @@ const Contact = () => {
       title: "Head Office — Chennai",
       address: "New No. 31,31A, Old No.14,15, Coromandal Town, SIDCO Industrial Estate, Ambattur, Chennai - 600098",
       icon: <Building className="w-5 h-5 text-amber" />,
-      link: "https://maps.google.com/?q=SIDCO+Industrial+Estate,+Ambattur,+Chennai+600098"
+      link: "https://www.google.com/maps/search/?api=1&query=Old+No.14%2C15+New+No.31%2C31A+Deepika+Builtech+Engineering+Coromandal+Town+SIDCO+Industrial+Estate+Ambattur+Chennai+Tamil+Nadu+600098"
     },
     {
       title: "Unit I — Kanchipuram",
