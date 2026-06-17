@@ -111,7 +111,7 @@ const BlogDetail = () => {
       }
     } catch (error) {
       // Fallback
-      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=Subscription&body=Email: ${formData.email}`;
+      window.location.href = `mailto:infoadmin@deepikabuiltech.com?subject=Subscription&body=Email: ${formData.email}`;
       setSubmitMessage("Request processed via email.");
     } finally {
       setIsSubmitting(false);

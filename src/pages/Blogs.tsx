@@ -40,7 +40,7 @@ const Blogs = () => {
         throw new Error("Form submission error.");
       }
     } catch (err) {
-      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=Quote Request&body=Name: ${sidebarForm.name}%0APhone: ${sidebarForm.phone}%0AService: ${sidebarForm.service}%0AMessage: ${sidebarForm.message}`;
+      window.location.href = `mailto:infoadmin@deepikabuiltech.com?subject=Quote Request&body=Name: ${sidebarForm.name}%0APhone: ${sidebarForm.phone}%0AService: ${sidebarForm.service}%0AMessage: ${sidebarForm.message}`;
       setFormStatus("Submission redirected via email client.");
     } finally {
       setIsSubmitting(false);

@@ -85,8 +85,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-bold text-ink text-xl mb-1 tracking-tight">Electronic Mail</h4>
-                  <a href="mailto:infoadmin@deepikabuiltech.in" className="text-ink-muted text-base hover:text-amber transition-colors block font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
-                    infoadmin@deepikabuiltech.in
+                  <a href="mailto:infoadmin@deepikabuiltech.com" className="text-ink-muted text-base hover:text-amber transition-colors block font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
+                    infoadmin@deepikabuiltech.com
                   </a>
                 </div>
               </div>

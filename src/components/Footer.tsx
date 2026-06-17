@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
           <div className="col-span-2 lg:col-span-1">
             <div className="mb-8">
-              <Logo className="w-16 h-16" showText={true} />
+              <Logo className="w-16 h-16" showText={true} variant="light" />
             </div>
             <p className="text-surface-subtle/70 text-base leading-relaxed mb-6 max-w-xs font-sans">
               Architecting the industrial future with elite Pre-Engineered Building solutions. Precision, durability, and on-time execution.
@@ -109,8 +109,8 @@ const Footer = () => {
               SIDCO Industrial Estate, Ambattur, Chennai - 600098<br />
               Phone: <a href="tel:+919600067611" className="hover:text-amber transition-colors font-bold">+91 96000 67611</a>
                       {' '}| <a href="tel:04426256416" className="hover:text-amber transition-colors">044-26256416</a><br />
-              Email: <a href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors font-medium">
-                       infoadmin@deepikabuiltech.in
+              Email: <a href="mailto:infoadmin@deepikabuiltech.com" className="hover:text-amber transition-colors font-medium">
+                       infoadmin@deepikabuiltech.com
                      </a>
             </address>
           </div>

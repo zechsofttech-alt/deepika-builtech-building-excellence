@@ -258,7 +258,7 @@ const ServiceDetail = () => {
     } catch (error) {
       const subject = encodeURIComponent(`Project Quote for ${service.title}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nPhone: ${formData.phone}\nMessage: ${formData.message}\nService: ${formData.service}`);
-      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:infoadmin@deepikabuiltech.com?subject=${subject}&body=${body}`;
     } finally {
       setIsSubmitting(false);
     }
@@ -719,7 +719,7 @@ const ServiceDetail = () => {
               </p>
               <p className="text-xs text-ink font-bold flex items-center gap-2">
                 <Mail className="w-4 h-4 text-amber" />
-                <span>infoadmin@deepikabuiltech.in</span>
+                <span>infoadmin@deepikabuiltech.com</span>
               </p>
             </div>
             <div className="space-y-2">

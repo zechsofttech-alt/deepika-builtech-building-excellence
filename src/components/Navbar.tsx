@@ -151,7 +151,7 @@ const Navbar = () => {
 
             <div className="mt-12 text-center pb-2">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-muted mb-2">Technical Support</p>
-              <a href="mailto:infoadmin@deepikabuiltech.in" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">infoadmin@deepikabuiltech.in</a>
+              <a href="mailto:infoadmin@deepikabuiltech.com" className="text-sm font-medium text-ink/60 underline underline-offset-4 decoration-amber/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber">infoadmin@deepikabuiltech.com</a>
             </div>
           </div>
         </div>

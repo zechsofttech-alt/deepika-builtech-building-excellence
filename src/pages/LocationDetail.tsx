@@ -74,7 +74,7 @@ const LocationDetail = () => {
     } catch (error) {
       const subject = encodeURIComponent(`Project Quote for ${locationProfile.name}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nPhone: ${formData.phone}\nMessage: ${formData.message}\nService: ${formData.service}\nLocation: ${locationProfile.name}`);
-      window.location.href = `mailto:infoadmin@deepikabuiltech.in?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:infoadmin@deepikabuiltech.com?subject=${subject}&body=${body}`;
     } finally {
       setIsSubmitting(false);
     }
@@ -106,7 +106,7 @@ const LocationDetail = () => {
     "name": `Deepika Builtech - ${locationProfile.name} Office`,
     "image": "https://www.deepikabuiltech.com/assets/peb-building.jpg",
     "telephone": "+91 96000 67611",
-    "email": "infoadmin@deepikabuiltech.in",
+    "email": "infoadmin@deepikabuiltech.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "New No. 31, 31A, Old No.14, 15, Coromandal Town, SIDCO Industrial Estate, Ambattur",

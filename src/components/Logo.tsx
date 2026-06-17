@@ -29,7 +29,9 @@ const Logo: React.FC<LogoProps> = ({ className = "w-12 h-12", showText = true, v
       
       {showText && (
         <div className="flex flex-col">
-          <span className="font-heading font-black text-lg lg:text-xl tracking-tighter leading-none text-ink uppercase">
+          <span className={`font-heading font-black text-lg lg:text-xl tracking-tighter leading-none uppercase ${
+            variant === 'light' ? 'text-white' : 'text-ink'
+          }`}>
             DEEPIKA
           </span>
           <span className="font-heading font-black text-lg lg:text-xl tracking-tighter leading-none text-amber uppercase">

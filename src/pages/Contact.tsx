@@ -58,7 +58,7 @@ const Contact = () => {
       title: "Email Us",
       icon: <Mail className="w-6 h-6 text-amber" />,
       lines: [
-        <a key="mail1" href="mailto:infoadmin@deepikabuiltech.in" className="hover:text-amber transition-colors font-bold text-sm truncate block">infoadmin@deepikabuiltech.in</a>
+        <a key="mail1" href="mailto:infoadmin@deepikabuiltech.com" className="hover:text-amber transition-colors font-bold text-sm truncate block">infoadmin@deepikabuiltech.com</a>
       ],
       subtext: "Official Communications",
       className: "bg-white border-surface-mid"
@@ -76,13 +76,13 @@ const Contact = () => {
       title: "Unit I — Kanchipuram",
       address: "Survey No.44/5, Rajakulam Road, Vaiyavur Post, Karur Village, Kanchipuram District - 631561",
       icon: <Factory className="w-5 h-5 text-amber" />,
-      link: null
+      link: "https://maps.google.com/?q=Survey+No.44%2F5,+Rajakulam+Road,+Vaiyavur+Post,+Karur+Village,+Kanchipuram+District+-+631561"
     },
     {
       title: "Unit II — Thiruvallur",
       address: "No.349/A, SIDCO Industrial Estate, Thirumullaivoyal, Ambattur Taluk, Thiruvallur District - 600062",
       icon: <Factory className="w-5 h-5 text-amber" />,
-      link: null
+      link: "https://maps.google.com/?q=No.349%2FA,+SIDCO+Industrial+Estate,+Thirumullaivoyal,+Ambattur+Taluk,+Thiruvallur+District+-+600062"
     }
   ];
 

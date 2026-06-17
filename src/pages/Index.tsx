@@ -32,7 +32,7 @@ const Index = () => {
       "image": "https://www.deepikabuiltech.com/images/hero-peb-warehouse-chennai.jpg",
       "description": "Chennai's leading Pre-Engineered Building (PEB) contractor specialising in steel structures, warehouses, cold storage, mezzanine floors, and EOT cranes across Tamil Nadu.",
       "telephone": "+919600067611",
-      "email": "infoadmin@deepikabuiltech.in",
+      "email": "infoadmin@deepikabuiltech.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "New No. 31,31A, Old No.14,15, Coromandal Town, SIDCO Industrial Estate",
