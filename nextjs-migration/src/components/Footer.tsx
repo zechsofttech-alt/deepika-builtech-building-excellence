@@ -46,7 +46,13 @@ const Footer = () => {
               {['Home', 'About Us', 'Services', 'Projects', 'Blogs', 'Contact'].map((item) => (
                 <li key={item}>
                   <Link 
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} 
+                    href={
+                      item === 'Home' 
+                        ? '/' 
+                        : item === 'About Us' 
+                        ? '/about' 
+                        : `/${item.toLowerCase().replace(' ', '')}`
+                    }
                     className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-base font-medium flex items-center gap-2 group/link"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-amber scale-0 group-hover/link:scale-100 transition-transform duration-300" />

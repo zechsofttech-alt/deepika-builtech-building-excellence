@@ -13,32 +13,37 @@ const stats = [
 const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
 
   useEffect(() => {
+    let timer: any = null;
+    let started = false;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
+        if (entry.isIntersecting && !started) {
+          started = true;
           const duration = 2000;
           const steps = 60;
           const increment = target / steps;
           let current = 0;
-          const timer = setInterval(() => {
+          timer = setInterval(() => {
             current += increment;
             if (current >= target) {
               setCount(target);
-              clearInterval(timer);
+              if (timer) clearInterval(timer);
             } else {
               setCount(Math.floor(current));
             }
           }, duration / steps);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (timer) clearInterval(timer);
+    };
   }, [target]);
 
   return (
