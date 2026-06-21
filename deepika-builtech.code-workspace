@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "Next.js Migration",
+      "path": "nextjs-migration"
+    },
+    {
+      "name": "Vite Root (Legacy)",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.preferences.importModuleSpecifier": "non-relative"
+  }
+}
