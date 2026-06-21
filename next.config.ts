@@ -179,6 +179,87 @@ const nextConfig: NextConfig = {
         destination: "/construction-services-in-chennai",
         permanent: true,
       },
+      // 4. Wordpress Blog & Legacy Page Redirects (Google Indexed)
+      {
+        source: "/warehouse-buildings",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/warehouse-buildings/",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/warehouse-construction-chennai-builders",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/warehouse-construction-chennai-builders/",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/industrial-warehouse-solutions-chennai",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/industrial-warehouse-solutions-chennai/",
+        destination: "/warehouse-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/best-construction-company-in-chennai",
+        destination: "/construction-services-in-chennai",
+        permanent: true,
+      },
+      {
+        source: "/best-construction-company-in-chennai/",
+        destination: "/construction-services-in-chennai",
+        permanent: true,
+      },
+      {
+        source: "/best-peb-building-solutions-in-chennai",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/best-peb-building-solutions-in-chennai/",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/peb-building-solutions-in-chennai",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/peb-building-solutions-in-chennai/",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/peb-building-manufacturing-process-guide",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/peb-building-manufacturing-process-guide/",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/innovative-pre-engineered-building-solutions",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
+      {
+        source: "/innovative-pre-engineered-building-solutions/",
+        destination: "/industrial-peb-construction-chennai",
+        permanent: true,
+      },
     ];
   },
   async headers() {
