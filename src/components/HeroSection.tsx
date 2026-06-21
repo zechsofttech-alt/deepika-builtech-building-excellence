@@ -68,7 +68,7 @@ export default function HeroSection() {
                   width={640}
                   height={960}
                   loading="eager"
-                  {...{ fetchpriority: "high" }}
+                  fetchPriority="high"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               ) : (
@@ -82,7 +82,7 @@ export default function HeroSection() {
                     width={640}
                     height={960}
                     loading="eager"
-                    {...{ fetchpriority: "high" }}
+                    fetchPriority="high"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </>
@@ -279,7 +279,7 @@ export default function HeroSection() {
                       width={640}
                       height={800}
                       loading="eager"
-                      {...{ fetchpriority: "high" }}
+                      fetchPriority="high"
                       className="w-full h-full object-cover"
                     />
                   </picture>

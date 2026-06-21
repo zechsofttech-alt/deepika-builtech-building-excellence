@@ -27,7 +27,7 @@ const AboutSection = () => {
                   width="640"
                   height="480"
                   loading="lazy"
-                  {...{ fetchpriority: "low" }}
+                  fetchPriority="low"
                   className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
                 />
               </picture>

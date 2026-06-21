@@ -67,7 +67,7 @@ const ServicesSection = () => {
                       width="640"
                       height="480"
                       loading="lazy"
-                      {...{ fetchpriority: "low" }}
+                      fetchPriority="low"
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
                     />
                   </picture>

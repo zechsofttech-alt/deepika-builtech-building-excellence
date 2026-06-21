@@ -96,7 +96,7 @@ const TargetAudienceSection = () => {
                       width="600"
                       height="600"
                       loading="lazy"
-                      {...{ fetchpriority: "low" }}
+                      fetchPriority="low"
                       className="w-full h-full object-cover" 
                     />
                   </picture>

@@ -44,7 +44,7 @@ const HomeBlogHighlight = () => {
                     width="400"
                     height="400"
                     loading="lazy"
-                    {...{ fetchpriority: "low" }}
+                    fetchPriority="low"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
                   />
                 </picture>

@@ -23,7 +23,7 @@ const MissionVision = () => {
                 width="800"
                 height="500"
                 loading="lazy"
-                {...{ fetchpriority: "low" }}
+                fetchPriority="low"
                 className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
               />
             </picture>
@@ -65,7 +65,7 @@ const MissionVision = () => {
                 width="800"
                 height="500"
                 loading="lazy"
-                {...{ fetchpriority: "low" }}
+                fetchPriority="low"
                 className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
               />
             </picture>

@@ -116,7 +116,7 @@ const SectorExpertise = () => {
                     width="600"
                     height="400"
                     loading="lazy"
-                    {...{ fetchpriority: "low" }}
+                    fetchPriority="low"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                   />
                 </picture>
