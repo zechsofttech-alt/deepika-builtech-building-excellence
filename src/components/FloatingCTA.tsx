@@ -1,15 +1,17 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 
 const FloatingCTA = () => {
-  const location = useLocation();
+  const pathname = usePathname();
   const [isHeroSectionMobile, setIsHeroSectionMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const isMobile = window.innerWidth < 1024; // lg breakpoint in Tailwind is 1024px
-      if (isMobile && location.pathname === "/") {
+      if (isMobile && pathname === "/") {
         if (window.scrollY < 450) {
           setIsHeroSectionMobile(true);
         } else {
@@ -27,7 +29,7 @@ const FloatingCTA = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [location.pathname]);
+  }, [pathname]);
 
   if (isHeroSectionMobile) {
     return (

@@ -1,13 +1,14 @@
-import peb from "@/assets/peb-building.jpg";
-import warehouse from "@/assets/warehouse.jpg";
-import coldStorage from "@/assets/cold-storage.jpg";
-import mezzanine from "@/assets/mezzanine.jpg";
-import eotCrane from "@/assets/eot-crane.jpg";
-import pebWebp from "@/assets/peb-building.webp";
-import warehouseWebp from "@/assets/warehouse.webp";
-import coldStorageWebp from "@/assets/cold-storage.webp";
-import mezzanineWebp from "@/assets/mezzanine.webp";
-import eotCraneWebp from "@/assets/eot-crane.webp";
+const peb = "/assets/peb-building.jpg";
+const warehouse = "/assets/warehouse.jpg";
+const coldStorage = "/assets/cold-storage.jpg";
+const mezzanine = "/assets/mezzanine.jpg";
+const eotCrane = "/assets/eot-crane.jpg";
+const pebWebp = "/assets/peb-building.webp";
+const warehouseWebp = "/assets/warehouse.webp";
+const coldStorageWebp = "/assets/cold-storage.webp";
+const mezzanineWebp = "/assets/mezzanine.webp";
+const eotCraneWebp = "/assets/eot-crane.webp";
+
 
 export interface BlogFAQ {
   question: string;

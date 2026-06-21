@@ -1,9 +1,9 @@
-import pebImg from "@/assets/peb-building.jpg";
-import pebWebp from "@/assets/peb-building.webp";
-import warehouseImg from "@/assets/warehouse.jpg";
-import warehouseWebp from "@/assets/warehouse.webp";
-import coldStorageImg from "@/assets/cold-storage.jpg";
-import coldStorageWebp from "@/assets/cold-storage.webp";
+const pebImg = "/assets/peb-building.jpg";
+const pebWebp = "/assets/peb-building.webp";
+const warehouseImg = "/assets/warehouse.jpg";
+const warehouseWebp = "/assets/warehouse.webp";
+const coldStorageImg = "/assets/cold-storage.jpg";
+const coldStorageWebp = "/assets/cold-storage.webp";
 
 export interface LocationProject {
   title: string;

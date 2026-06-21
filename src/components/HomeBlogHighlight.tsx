@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUpRight, Calendar, User } from "lucide-react";
 import { blogPosts } from "@/data/blogs";
 
@@ -17,7 +19,7 @@ const HomeBlogHighlight = () => {
               Engineering <span className="gradient-text">Intelligence.</span>
             </h2>
           </div>
-          <Link to="/blogs" className="group flex items-center gap-3 font-black text-ink border-b-2 border-amber pb-1 hover:border-carbon transition-all mx-auto lg:mx-0">
+          <Link href="/blogs" className="group flex items-center gap-3 font-black text-ink border-b-2 border-amber pb-1 hover:border-carbon transition-all mx-auto lg:mx-0">
             View Technical Journal
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Link>
@@ -64,7 +66,7 @@ const HomeBlogHighlight = () => {
                 <p className="text-sm text-ink-muted leading-relaxed font-sans line-clamp-2">
                   {post.excerpt}
                 </p>
-                <Link to={`/blog/${post.slug}`} className="mt-6 text-[10px] font-black uppercase tracking-widest text-carbon hover:text-amber flex items-center gap-2">
+                <Link href={`/blog/${post.slug}`} className="mt-6 text-[10px] font-black uppercase tracking-widest text-carbon hover:text-amber flex items-center gap-2">
                   Read Analysis <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </div>

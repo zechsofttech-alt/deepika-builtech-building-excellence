@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import ContactForm from "./ContactForm";

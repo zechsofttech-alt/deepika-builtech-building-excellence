@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { MessageSquare, X, Send, User, Bot, CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 
 interface Message {
   id: string;
@@ -11,7 +13,7 @@ interface Message {
 }
 
 const AIChatBot = () => {
-  const location = useLocation();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [shouldShow, setShouldShow] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
@@ -43,7 +45,7 @@ const AIChatBot = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (location.pathname === "/") {
+      if (pathname === "/") {
         // Hide on homepage if scroll is within the hero section (e.g. less than 450px)
         if (window.scrollY < 450) {
           setShouldShow(false);
@@ -59,7 +61,7 @@ const AIChatBot = () => {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const quickActions = [
     { label: "Get PEB Tech-Quote", action: "I'd like a technical quote for a PEB structure." },

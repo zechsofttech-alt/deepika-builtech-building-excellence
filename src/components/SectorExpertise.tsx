@@ -1,17 +1,19 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Plane, Package, ThermometerSnowflake, Factory, Car, ShoppingBag } from "lucide-react";
-import warehousingImg from "@/assets/sector-warehousing.png";
-import aviationImg from "@/assets/sector-aviation.png";
-import coldStorageImg from "@/assets/sector-cold-storage.png";
-import manufacturingImg from "@/assets/sector-manufacturing.png";
-import automotiveImg from "@/assets/sector-automotive.png";
-import retailImg from "@/assets/sector-retail.png";
-import warehousingImgWebp from "@/assets/sector-warehousing.webp";
-import aviationImgWebp from "@/assets/sector-aviation.webp";
-import coldStorageImgWebp from "@/assets/sector-cold-storage.webp";
-import manufacturingImgWebp from "@/assets/sector-manufacturing.webp";
-import automotiveImgWebp from "@/assets/sector-automotive.webp";
-import retailImgWebp from "@/assets/sector-retail.webp";
+const warehousingImg = "/assets/sector-warehousing.png";
+const aviationImg = "/assets/sector-aviation.png";
+const coldStorageImg = "/assets/sector-cold-storage.png";
+const manufacturingImg = "/assets/sector-manufacturing.png";
+const automotiveImg = "/assets/sector-automotive.png";
+const retailImg = "/assets/sector-retail.png";
+const warehousingImgWebp = "/assets/sector-warehousing.webp";
+const aviationImgWebp = "/assets/sector-aviation.webp";
+const coldStorageImgWebp = "/assets/sector-cold-storage.webp";
+const manufacturingImgWebp = "/assets/sector-manufacturing.webp";
+const automotiveImgWebp = "/assets/sector-automotive.webp";
+const retailImgWebp = "/assets/sector-retail.webp";
 
 const sectors: { icon: any; name: string; desc: string; image: string; webpImage: string; }[] = [
   {

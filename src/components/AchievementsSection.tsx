@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Trophy, Users2, Building, ShieldCheck, Globe2 } from "lucide-react";
 

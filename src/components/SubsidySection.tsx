@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Calculator, FileText, Construction, ClipboardCheck, Wallet, Zap, ShieldCheck, Warehouse } from 'lucide-react';

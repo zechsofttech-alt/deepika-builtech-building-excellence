@@ -1,9 +1,11 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Target, Eye, ArrowUpRight } from "lucide-react";
-import peb from "@/assets/peb-building.jpg";
-import warehouse from "@/assets/warehouse.jpg";
-import pebWebp from "@/assets/peb-building.webp";
-import warehouseWebp from "@/assets/warehouse.webp";
+const peb = "/assets/peb-building.jpg";
+const warehouse = "/assets/warehouse.jpg";
+const pebWebp = "/assets/peb-building.webp";
+const warehouseWebp = "/assets/warehouse.webp";
 
 const MissionVision = () => {
   return (

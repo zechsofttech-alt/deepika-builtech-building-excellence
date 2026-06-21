@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -49,10 +51,10 @@ const ContactForm = ({ compact = false, initialService = '', initialMessage = ''
     setStatus('sending');
     try {
       await emailjs.sendForm(
-        'service_dbtech',    // Replace with your EmailJS service ID
-        'template_quote_req', // Replace with your EmailJS template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_dbtech',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_quote_req',
         formRef.current,
-        'user_public_key'     // Replace with your EmailJS public key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'user_public_key'
       );
       setStatus('success');
       formRef.current.reset();

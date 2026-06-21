@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 
 interface BreadcrumbItem {
@@ -19,7 +19,7 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
       <div className="container mx-auto flex items-center gap-2 flex-wrap text-sm text-ink-muted">
         {/* Home Item */}
         <Link 
-          to="/" 
+          href="/" 
           className="flex items-center gap-1 hover:text-amber transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm"
           aria-label="Home"
         >
@@ -32,7 +32,7 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
             <ChevronRight className="w-3.5 h-3.5 text-ink-muted/40 shrink-0" />
             {item.href ? (
               <Link 
-                to={item.href} 
+                href={item.href} 
                 className="hover:text-amber transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm"
               >
                 {item.label}

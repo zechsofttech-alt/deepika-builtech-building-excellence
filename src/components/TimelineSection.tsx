@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { CheckCircle2, TrendingUp, Award, Building2, Cpu } from "lucide-react";
 

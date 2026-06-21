@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ArrowUpRight, Facebook, Instagram, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
@@ -18,7 +21,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const { pathname } = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +72,7 @@ const Navbar = () => {
         } flex items-center justify-between`}
       >
         {/* Logo */}
-        <Link to="/" className="group relative z-10 transition-all duration-300">
+        <Link href="/" className="group relative z-10 transition-all duration-300">
           <Logo className="w-10 h-10 lg:w-14 lg:h-14" showText={true} />
         </Link>
 
@@ -79,7 +82,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.label}
-                to={link.href}
+                href={link.href}
                 className={`relative px-4 py-2 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 group/link ${
                   pathname === link.href 
                     ? "text-amber" 
@@ -94,7 +97,7 @@ const Navbar = () => {
           
           <div className="w-px h-6 bg-surface-mid/50" />
           
-          <Link to="/contact" className="group">
+          <Link href="/contact" className="group">
             <div className="relative flex items-center justify-center gap-2 bg-carbon text-white font-black text-[11px] uppercase tracking-[0.15em] px-8 py-3.5 rounded-lg overflow-hidden group-hover:bg-amber group-hover:text-carbon transition-all duration-500 shadow-xl shadow-carbon/10">
               <Phone className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
               <span>Get a Quote</span>
@@ -132,7 +135,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <div key={link.label}>
                 <Link
-                  to={link.href}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={`block py-4 text-center text-lg font-heading font-bold transition-all active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-md ${
                     pathname === link.href 
@@ -150,7 +153,7 @@ const Navbar = () => {
             
             <div className="mt-8">
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className={`w-full inline-flex items-center justify-center gap-3 font-black text-sm uppercase tracking-widest py-5 rounded-2xl shadow-xl active:scale-95 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber ${
                   isHeroActive

@@ -1,13 +1,13 @@
-import peb from "@/assets/peb-building.jpg";
-import pebWebp from "@/assets/peb-building.webp";
-import warehouse from "@/assets/warehouse.jpg";
-import warehouseWebp from "@/assets/warehouse.webp";
-import coldStorage from "@/assets/cold-storage.jpg";
-import coldStorageWebp from "@/assets/cold-storage.webp";
-import mezzanine from "@/assets/mezzanine.jpg";
-import mezzanineWebp from "@/assets/mezzanine.webp";
-import eotCrane from "@/assets/eot-crane.jpg";
-import eotCraneWebp from "@/assets/eot-crane.webp";
+const peb = "/assets/peb-building.jpg";
+const pebWebp = "/assets/peb-building.webp";
+const warehouse = "/assets/warehouse.jpg";
+const warehouseWebp = "/assets/warehouse.webp";
+const coldStorage = "/assets/cold-storage.jpg";
+const coldStorageWebp = "/assets/cold-storage.webp";
+const mezzanine = "/assets/mezzanine.jpg";
+const mezzanineWebp = "/assets/mezzanine.webp";
+const eotCrane = "/assets/eot-crane.jpg";
+const eotCraneWebp = "/assets/eot-crane.webp";
 
 export interface Project {
   slug: string;

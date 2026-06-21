@@ -1,3 +1,5 @@
+"use client";
+
 import { Factory, ShieldCheck, Clock, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 

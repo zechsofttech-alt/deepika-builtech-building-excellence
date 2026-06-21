@@ -1,6 +1,8 @@
+"use client";
+
 import { Factory, Award, Shield, CheckCircle2 } from "lucide-react";
-import pebImg from "@/assets/peb-building.jpg";
-import pebImgWebp from "@/assets/peb-building.webp";
+const pebImg = "/assets/peb-building.jpg";
+const pebImgWebp = "/assets/peb-building.webp";
 
 const capabilities = [
   "Advanced PEB Design & Engineering",

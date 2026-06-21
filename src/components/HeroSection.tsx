@@ -1,15 +1,18 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Trophy } from "lucide-react";
-import { Link } from "react-router-dom";
-import completedPebDrone from "@/assets/completed-peb-drone.png";
-import completedPebDronePortrait from "@/assets/completed-peb-drone-portrait.png";
-import warehouseImg from "@/assets/warehouse.jpg";
-import warehouseWebp from "@/assets/warehouse.webp";
-import coldStorageImg from "@/assets/cold-storage.jpg";
-import coldStorageWebp from "@/assets/cold-storage.webp";
-import heroBg from "@/assets/hero-bg.jpg";
-import heroBgWebp from "@/assets/hero-bg.webp";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+
+const completedPebDrone = "/assets/completed-peb-drone.png";
+const completedPebDronePortrait = "/assets/completed-peb-drone-portrait.png";
+const warehouseImg = "/assets/warehouse.jpg";
+const warehouseWebp = "/assets/warehouse.webp";
+const coldStorageImg = "/assets/cold-storage.jpg";
+const coldStorageWebp = "/assets/cold-storage.webp";
+const heroBg = "/assets/hero-bg.jpg";
+const heroBgWebp = "/assets/hero-bg.webp";
 
 const slides = [
   {
@@ -127,14 +130,14 @@ export default function HeroSection() {
             className="flex flex-col gap-3 w-full"
           >
             <Link
-              to="/contact"
+              href="/contact"
               className="w-full bg-amber text-carbon px-6 py-4 rounded-xl font-black text-xs uppercase tracking-[0.15em] text-center hover:bg-white hover:text-carbon transition-all duration-300 shadow-lg flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
             >
               Start Your Project
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
-              to="/about"
+              href="/about"
               className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.15em] text-center hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
             >
               Our Story
@@ -214,14 +217,14 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <Link
-                to="/contact"
+                href="/contact"
                 className="w-full sm:w-auto bg-carbon text-white px-8 py-5 rounded-xl font-black text-xs uppercase tracking-[0.2em] hover:bg-amber hover:text-carbon transition-all duration-500 shadow-xl group flex items-center justify-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
               >
                 Start Your Project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
               <Link
-                to="/about"
+                href="/about"
                 className="w-full sm:w-auto bg-surface border border-surface-mid text-ink px-8 py-5 rounded-xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-surface-subtle transition-all duration-500 flex items-center justify-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
               >
                 Our Story

@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, Variants } from "framer-motion";
 import { Shield, Zap, ThermometerSnowflake, Ruler } from "lucide-react";
 

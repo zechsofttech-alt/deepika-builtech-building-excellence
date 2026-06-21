@@ -1,7 +1,0 @@
-# Force www
-https://deepikabuiltech.com/* https://www.deepikabuiltech.com/:splat 301!
-http://deepikabuiltech.com/*  https://www.deepikabuiltech.com/:splat 301!
-http://www.deepikabuiltech.com/* https://www.deepikabuiltech.com/:splat 301!
-
-# SPA fallback (required for React Router)
-/*  /index.html  200

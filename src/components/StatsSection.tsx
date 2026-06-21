@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { Factory, Building2, Users, Clock } from "lucide-react";
 

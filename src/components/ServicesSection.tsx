@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { motion } from "framer-motion";
@@ -53,7 +55,7 @@ const ServicesSection = () => {
             return (
               <Link
                 key={service.slug}
-                to={`/${service.slug}`}
+                href={`/${service.slug}`}
                 className={`group relative overflow-hidden bg-carbon-mid border border-white/5 rounded-2xl ${colSpan} ${rowSpan} focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber`}
               >
                 <div className="absolute inset-0 w-full h-full">

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Facebook, Linkedin, Youtube } from "lucide-react";
 import Logo from "./Logo";
 
@@ -46,7 +46,7 @@ const Footer = () => {
               {['Home', 'About Us', 'Services', 'Projects', 'Blogs', 'Contact'].map((item) => (
                 <li key={item}>
                   <Link 
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} 
+                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} 
                     className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-base font-medium flex items-center gap-2 group/link"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-amber scale-0 group-hover/link:scale-100 transition-transform duration-300" />
@@ -69,7 +69,7 @@ const Footer = () => {
                 { label: 'EOT Cranes', href: '/eot-crane-manufacturers-in-chennai' }
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-[13px] font-medium flex items-center gap-2 group/link focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
+                  <Link href={link.href} className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-[13px] font-medium flex items-center gap-2 group/link focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-amber scale-0 group-hover/link:scale-100 transition-transform duration-300 shrink-0" />
                     {link.label}
                   </Link>
@@ -92,7 +92,7 @@ const Footer = () => {
                 { label: 'Hosur Machining Plants', href: '/location/peb-construction-hosur' }
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-[13px] font-medium flex items-center gap-2 group/link focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
+                  <Link href={link.href} className="text-surface-subtle/60 hover:text-amber transition-all duration-300 text-[13px] font-medium flex items-center gap-2 group/link focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-amber scale-0 group-hover/link:scale-100 transition-transform duration-300 shrink-0" />
                     {link.label}
                   </Link>

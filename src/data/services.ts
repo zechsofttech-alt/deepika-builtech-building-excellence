@@ -1,13 +1,13 @@
-import pebImg from "@/assets/peb-building.jpg";
-import pebWebp from "@/assets/peb-building.webp";
-import warehouseImg from "@/assets/warehouse.jpg";
-import warehouseWebp from "@/assets/warehouse.webp";
-import coldStorageImg from "@/assets/cold-storage.jpg";
-import coldStorageWebp from "@/assets/cold-storage.webp";
-import mezzanineImg from "@/assets/mezzanine.jpg";
-import mezzanineWebp from "@/assets/mezzanine.webp";
-import eotCraneImg from "@/assets/eot-crane.jpg";
-import eotCraneWebp from "@/assets/eot-crane.webp";
+const pebImg = "/assets/peb-building.jpg";
+const pebWebp = "/assets/peb-building.webp";
+const warehouseImg = "/assets/warehouse.jpg";
+const warehouseWebp = "/assets/warehouse.webp";
+const coldStorageImg = "/assets/cold-storage.jpg";
+const coldStorageWebp = "/assets/cold-storage.webp";
+const mezzanineImg = "/assets/mezzanine.jpg";
+const mezzanineWebp = "/assets/mezzanine.webp";
+const eotCraneImg = "/assets/eot-crane.jpg";
+const eotCraneWebp = "/assets/eot-crane.webp";
 import { 
   Factory, 
   Shield, 

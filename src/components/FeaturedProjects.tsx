@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUpRight, MapPin, Ruler } from "lucide-react";
 import { projects } from "@/data/projects";
 
@@ -18,7 +20,7 @@ const FeaturedProjects = () => {
               <span className="gradient-text">Milestones.</span>
             </h2>
           </div>
-          <Link to="/projects" className="group flex items-center gap-3 bg-carbon text-white px-8 py-4 rounded-xl font-bold hover:bg-amber hover:text-carbon transition-all shadow-xl">
+          <Link href="/projects" className="group flex items-center gap-3 bg-carbon text-white px-8 py-4 rounded-xl font-bold hover:bg-amber hover:text-carbon transition-all shadow-xl">
             Explore All Projects
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Link>
@@ -35,7 +37,7 @@ const FeaturedProjects = () => {
               className="group"
             >
               <Link 
-                to={`/project/${project.slug}`} 
+                href={`/project/${project.slug}`} 
                 className="block overflow-hidden rounded-[2.5rem] relative aspect-[4/5] mb-8 shadow-2xl shadow-carbon/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
               >
                 <picture>
