@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  trailingSlash: false,
   async redirects() {
     return [
       // 1. Domain Redirect: non-www to www (deepikabuiltech.com -> www.deepikabuiltech.com)
@@ -15,6 +16,12 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: "https://www.deepikabuiltech.com/:path*",
+        permanent: true,
+      },
+      // Wildcard Redirect: Trailing slash to non-trailing slash (except homepage)
+      {
+        source: "/:path+/",
+        destination: "/:path+",
         permanent: true,
       },
       // 2. Legacy 301 Redirects for SEO Consolidation
