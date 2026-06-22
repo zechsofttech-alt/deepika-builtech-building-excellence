@@ -52,6 +52,9 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative w-full bg-white overflow-hidden">
+      {/* Preload critical hero LCP images */}
+      <link rel="preload" href="/assets/completed-peb-drone-portrait.webp" as="image" media="(max-width: 1023px)" fetchPriority="high" />
+      <link rel="preload" href="/assets/completed-peb-drone.webp" as="image" media="(min-width: 1024px)" fetchPriority="high" />
 
       {/* ── MOBILE ONLY: Fullscreen Auto-Rotating Image Carousel with Text Overlay ── */}
       <div className="lg:hidden relative w-full h-[100svh] pt-20">

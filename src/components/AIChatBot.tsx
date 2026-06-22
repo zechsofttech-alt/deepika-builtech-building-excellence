@@ -156,8 +156,9 @@ const AIChatBot = () => {
                 {/* Discovery Progress Bar */}
                 <div className="h-1.5 w-full bg-surface-subtle overflow-hidden">
                   <motion.div 
-                    animate={{ width: `${getProgress()}%` }}
-                    className="h-full bg-amber shadow-[0_0_10px_rgba(242,166,0,0.5)] transition-all duration-1000"
+                    initial={{ scaleX: 0.1 }}
+                    animate={{ scaleX: getProgress() / 100 }}
+                    className="h-full bg-amber origin-left w-full shadow-[0_0_10px_rgba(242,166,0,0.5)] transition-all duration-1000"
                   />
                 </div>
 
