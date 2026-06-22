@@ -129,9 +129,9 @@ export const locations: LocationProfile[] = [
   {
     slug: "peb-construction-thiruvallur",
     name: "Thiruvallur",
-    metaTitle: "Industrial Shed & Warehouse Construction in Thiruvallur | Deepika Builtech",
+    metaTitle: "PEB Construction & Industrial Shed Building in Thiruvallur | Deepika Builtech",
     metaDesc: "Leading PEB contractors in Thiruvallur. Deepika Builtech designs and constructs heavy steel structures, warehouses, and factories with high wind resistance. Call +91 96000 67611.",
-    h1: "Industrial Shed & Warehouse Construction in Thiruvallur",
+    h1: "PEB Construction & Industrial Shed Building in Thiruvallur",
     subheading: "Precision steel sheds, mezzanine floors, and heavy storage warehouses in Thiruvallur district.",
     intro: "Thiruvallur's industrial corridors are home to heavy metal fabrication, machinery manufacturing, and extensive logistics hubs. Deepika Builtech is the premier provider for industrial PEB construction in Thiruvallur, specializing in high-load structural steel frames and expansive warehouses. With a clayey loam and sandy silt soil matrix, Thiruvallur sites require solid structural engineering for heavy-capacity pile foundations. Our manufacturing unit in Thirumullaivoyal (Ambattur Taluk, Thiruvallur District) operates with high-precision CNC machinery, fabricating customized columns, rafters, and gantry girders. We ensure all steel frames comply with IS 800 standards, providing absolute structural stability for high-impact industrial operations.",
     image: warehouseImg,
@@ -220,7 +220,7 @@ export const locations: LocationProfile[] = [
     metaDesc: "Deepika Builtech constructs heavy-duty port warehouses, logistics transit sheds, and customs storage units near Chennai Port. Anti-corrosive marine steel. Call +91 96000 67611.",
     h1: "Port Warehousing & Logistics PEB Construction in Chennai Port",
     subheading: "Corrosion-resistant steel warehousing, port transit sheds, and cargo structures near Chennai Port.",
-    intro: "The proximity to Chennai Port makes it the primary export-import logistics hub of Tamil Nadu. The marine environment near Chennai Port is highly corrosive due to salinity, demanding specialized steel coatings and roofing configurations. Deepika Builtech constructs high-performance port warehouses and transit cargo sheds, utilizing advanced anti-corrosive structural steel components. Chennai Port's coastal soils are sandy silt and sand with a high water table, necessitating pile foundations or deep raft foundations. We apply hot-dip galvanizing and high-build polyurethane coatings to our steel frames to prevent rust, ensuring that customs cargo zones, shipping depots, and port warehouses operate safely for decades.",
+    intro: "The proximity to Chennai Port makes it the primary export-import logistics hub of Tamil Nadu. The marine environment near Chennai Port is highly corrosive due to salinity, demanding specialized steel coatings and roofing configurations. To address these challenges, Deepika Builtech specializes in custom pre-engineered building Chennai Port designs, utilizing structural steel frames that endure extreme humidity. Our expertise in PEB construction Chennai Port ensures that high-performance port warehouses, transit cargo sheds, and customs depots are built to withstand heavy operations. Chennai Port's coastal soils are sandy silt and sand with a high water table, necessitating pile foundations or deep raft foundations. We apply hot-dip galvanizing and high-build polyurethane coatings to our steel frames to prevent rust, ensuring that customs cargo zones, shipping depots, and port warehouses operate safely for decades.",
     image: pebImg,
     webpImage: pebWebp,
     stats: [
