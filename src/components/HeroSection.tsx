@@ -6,7 +6,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const completedPebDrone = "/assets/completed-peb-drone.png";
+const completedPebDroneWebp = "/assets/completed-peb-drone.webp";
 const completedPebDronePortrait = "/assets/completed-peb-drone-portrait.png";
+const completedPebDronePortraitWebp = "/assets/completed-peb-drone-portrait.webp";
 const warehouseImg = "/assets/warehouse.jpg";
 const warehouseWebp = "/assets/warehouse.webp";
 const coldStorageImg = "/assets/cold-storage.jpg";
@@ -17,7 +19,9 @@ const heroBgWebp = "/assets/hero-bg.webp";
 const slides = [
   {
     image: completedPebDrone,
+    imageWebp: completedPebDroneWebp,
     imageMobile: completedPebDronePortrait,
+    imageMobileWebp: completedPebDronePortraitWebp,
     title: "Completed PEB Structure — Drone View",
     alt: "Drone view of a completed pre-engineered steel building by Deepika Builtech, Chennai"
   },
@@ -61,32 +65,22 @@ export default function HeroSection() {
             className="absolute inset-0 w-full h-full"
           >
             <picture>
-              {slides[activeSlide].imageMobile ? (
-                <img
-                  src={slides[activeSlide].imageMobile}
-                  alt={slides[activeSlide].alt}
-                  width={640}
-                  height={960}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+              {slides[activeSlide].imageMobileWebp ? (
+                <source srcSet={slides[activeSlide].imageMobileWebp} type="image/webp" />
               ) : (
-                <>
-                  {slides[activeSlide].imageWebp && (
-                    <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
-                  )}
-                  <img
-                    src={slides[activeSlide].image}
-                    alt={slides[activeSlide].alt}
-                    width={640}
-                    height={960}
-                    loading="eager"
-                    fetchPriority="high"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </>
+                slides[activeSlide].imageWebp && (
+                  <source srcSet={slides[activeSlide].imageWebp} type="image/webp" />
+                )
               )}
+              <img
+                src={slides[activeSlide].imageMobile || slides[activeSlide].image}
+                alt={slides[activeSlide].alt}
+                width={640}
+                height={960}
+                loading="eager"
+                fetchPriority="high"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </picture>
           </motion.div>
         </AnimatePresence>
