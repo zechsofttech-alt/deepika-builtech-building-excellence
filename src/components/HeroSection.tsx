@@ -304,9 +304,9 @@ export default function HeroSection() {
                     className="w-8 h-1 bg-white/20 rounded-full overflow-hidden"
                   >
                     <motion.div
-                      className="h-full bg-amber"
-                      initial={{ width: 0 }}
-                      animate={{ width: activeSlide === idx ? "100%" : "0%" }}
+                      className="h-full bg-amber origin-left w-full"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: activeSlide === idx ? 1 : 0 }}
                       transition={{ duration: activeSlide === idx ? 6 : 0, ease: "linear" }}
                     />
                   </div>
