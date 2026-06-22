@@ -82,7 +82,7 @@ export default function AboutPage() {
 
                 <div className="prose prose-lg text-ink-muted leading-relaxed font-sans space-y-6">
                   <p>
-                    Established in <strong>2015</strong>, Deepika Builtech was founded by <strong>B. Sabapathi</strong> with a vision to revolutionize the pre-engineered building (PEB) sector in South India. Over the last decade, we have grown from a local contractor into a premier engineering firm, delivering high-integrity steel sheds, cold storages, industrial warehouses, and crane structures.
+                    Established in <strong>2015</strong>, Deepika Builtech was founded by <strong>B. Sabapathi</strong> with a vision to revolutionize the design and execution of every PEB structure in South India. Over the last decade, we have grown from a local contractor into a premier engineering firm, delivering high-integrity steel sheds, cold storages, industrial warehouses, and crane structures.
                   </p>
                   <p>
                     Under B. Sabapathi's strategic leadership, Deepika Builtech has successfully commissioned over 150+ major projects, serving a diverse client base ranging from local small-scale industries to global third-party logistics firms. We maintain our core corporate philosophy of precision fabrication, absolute site safety, and timely delivery.

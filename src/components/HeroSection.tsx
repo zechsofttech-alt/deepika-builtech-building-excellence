@@ -203,7 +203,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4 }}
               className="text-sm sm:text-base text-ink-muted leading-relaxed font-sans max-w-2xl mb-4"
             >
-              Deepika Builtech is Chennai's most trusted Pre-Engineered Building (PEB) contractor with over 10 years of experience delivering industrial-grade steel structures across Tamil Nadu. From precision-fabricated PEB warehouses and cold storage facilities to mezzanine floors, industrial sheds, and EOT cranes — we handle every project end-to-end, from structural design and factory fabrication to on-site erection and handover.
+              Deepika Builtech is Chennai's most trusted Pre-Engineered Building (PEB) contractor with over 10 years of experience delivering industrial-grade PEB structures across Tamil Nadu. From precision-fabricated PEB warehouses and cold storage facilities to mezzanine floors, industrial sheds, and EOT cranes — we handle every project end-to-end, from structural design and factory fabrication to on-site erection and handover.
             </motion.p>
 
             <motion.p

@@ -81,7 +81,7 @@ const WhyChooseUsSection = () => {
               </div>
 
               <p className="text-lg text-ink-muted leading-relaxed font-sans max-w-sm mt-10 opacity-80">
-                Our structures are more than just steel; they are precisely engineered assets designed to optimize your industrial efficiency for decades.
+                As one of the premier PEB structure manufacturers in Chennai, our structures are more than just steel; they are precisely engineered assets designed to optimize your industrial efficiency for decades.
               </p>
             </div>
           </motion.div>
