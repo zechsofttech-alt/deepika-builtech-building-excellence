@@ -555,7 +555,7 @@ const ServiceDetailClient = ({ slug }: { slug: string }) => {
                       id="form-phone"
                       type="tel" 
                       required 
-                      placeholder="+91XXXXXXXXXX"
+                      placeholder="+919600067611"
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-surface-subtle border border-surface-mid p-4 rounded-xl focus:outline-none focus:border-amber transition-colors font-sans text-sm"

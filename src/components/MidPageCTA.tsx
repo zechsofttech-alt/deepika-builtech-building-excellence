@@ -39,7 +39,7 @@ const MidPageCTA = () => {
               Request a Technical Quote
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="tel:+91XXXXXXXXXX" className="bg-white/20 backdrop-blur-md border-2 border-carbon/20 text-carbon font-black px-10 py-5 rounded-full hover:bg-white transition-all flex items-center gap-3">
+            <a href="tel:+919600067611" className="bg-white/20 backdrop-blur-md border-2 border-carbon/20 text-carbon font-black px-10 py-5 rounded-full hover:bg-white transition-all flex items-center gap-3">
               <PhoneCall className="w-5 h-5" />
               Expert Consultation
             </a>
