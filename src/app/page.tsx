@@ -1,22 +1,24 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustedPartners from "@/components/TrustedPartners";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import FeaturedProjects from "@/components/FeaturedProjects";
-import PerformanceEdge from "@/components/PerformanceEdge";
-import SectorExpertise from "@/components/SectorExpertise";
-import MidPageCTA from "@/components/MidPageCTA";
-import StatsSection from "@/components/StatsSection";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import HomeBlogHighlight from "@/components/HomeBlogHighlight";
-import HomeProcess from "@/components/HomeProcess";
-import ContactSection from "@/components/ContactSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-import SubsidySection from "@/components/SubsidySection";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
+
+const AboutSection = dynamic(() => import("@/components/AboutSection"));
+const ServicesSection = dynamic(() => import("@/components/ServicesSection"));
+const FeaturedProjects = dynamic(() => import("@/components/FeaturedProjects"));
+const PerformanceEdge = dynamic(() => import("@/components/PerformanceEdge"));
+const SectorExpertise = dynamic(() => import("@/components/SectorExpertise"));
+const MidPageCTA = dynamic(() => import("@/components/MidPageCTA"));
+const StatsSection = dynamic(() => import("@/components/StatsSection"));
+const SubsidySection = dynamic(() => import("@/components/SubsidySection"));
+const WhyChooseUsSection = dynamic(() => import("@/components/WhyChooseUsSection"));
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"));
+const HomeBlogHighlight = dynamic(() => import("@/components/HomeBlogHighlight"));
+const HomeProcess = dynamic(() => import("@/components/HomeProcess"));
+const FAQSection = dynamic(() => import("@/components/FAQSection"));
+const ContactSection = dynamic(() => import("@/components/ContactSection"));
 
 export const metadata: Metadata = {
   title: "PEB Building Construction & Steel Structures in Chennai | Deepika Builtech",
