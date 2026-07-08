@@ -52,13 +52,9 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative w-full bg-white overflow-hidden">
-      {/* Preload critical hero LCP images */}
-      <link rel="preload" href="/assets/completed-peb-drone-portrait.webp" as="image" media="(max-width: 1023px)" fetchPriority="high" />
-      <link rel="preload" href="/assets/completed-peb-drone.webp" as="image" media="(min-width: 1024px)" fetchPriority="high" />
-
       {/* ── MOBILE ONLY: Fullscreen Auto-Rotating Image Carousel with Text Overlay ── */}
       <div className="lg:hidden relative w-full h-[100svh] pt-20">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={activeSlide}
             initial={{ opacity: 0 }}
@@ -93,39 +89,19 @@ export default function HeroSection() {
 
         {/* Mobile Content Overlay */}
         <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col justify-end px-6 pb-20 pt-48">
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[10px] font-black uppercase tracking-[0.2em] text-amber mb-2 block"
-          >
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-dark mb-2 block">
             Winner of Excellence Award 2022 & 2025
-          </motion.span>
+          </span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl font-heading font-black text-white leading-tight tracking-tight mb-3"
-          >
+          <h1 className="text-3xl font-heading font-black text-white leading-tight tracking-tight mb-3">
             Chennai's Leading <span className="text-amber">PEB Construction</span> & Steel Building Company
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-xs text-white/80 leading-relaxed font-sans font-medium mb-6"
-          >
+          <p className="text-xs text-white/80 leading-relaxed font-sans font-medium mb-6">
             Pre-engineered steel buildings designed, fabricated and erected across Chennai and Tamil Nadu — faster, stronger, at lower cost.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-col gap-3 w-full"
-          >
+          <div className="flex flex-col gap-3 w-full">
             <Link
               href="/contact"
               className="w-full bg-amber text-carbon px-6 py-4 rounded-xl font-black text-xs uppercase tracking-[0.15em] text-center hover:bg-white hover:text-carbon transition-all duration-300 shadow-lg flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
@@ -139,22 +115,26 @@ export default function HeroSection() {
             >
               Our Story
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30 items-center">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`rounded-full transition-all duration-500 ${
-                activeSlide === idx
-                  ? "w-8 h-2 bg-amber"
-                  : "w-2 h-2 bg-white/60"
-              }`}
-            />
+              className="w-8 h-8 flex items-center justify-center rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber"
+            >
+              <span
+                className={`rounded-full transition-[background-color,opacity] duration-500 ${
+                  activeSlide === idx
+                    ? "w-8 h-2 bg-amber"
+                    : "w-2 h-2 bg-white/60"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>
@@ -257,7 +237,7 @@ export default function HeroSection() {
             <div className="absolute inset-x-4 -inset-y-4 border-2 border-amber/30 z-0 translate-x-8 translate-y-8" />
 
             <div className="relative z-10 w-full aspect-[4/5] bg-carbon-mid overflow-hidden shadow-[40px_40px_0px_rgba(0,0,0,0.05)] border border-white/10 rounded-2xl">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={activeSlide}
                   initial={{ opacity: 0, scale: 1.05 }}

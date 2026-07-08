@@ -72,7 +72,7 @@ const StatsSection = () => {
                 <stat.icon className="w-6 h-6 text-amber group-hover:text-carbon transition-colors" />
               </div>
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <h4 className="font-heading font-bold text-xl text-ink mb-2 tracking-tight">{stat.label}</h4>
+              <h3 className="font-heading font-bold text-xl text-ink mb-2 tracking-tight">{stat.label}</h3>
               <p className="text-sm md:text-base text-ink-muted leading-relaxed font-sans">{stat.desc}</p>
               
               {/* Vertical separator for desktop */}

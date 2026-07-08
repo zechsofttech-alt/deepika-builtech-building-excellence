@@ -30,10 +30,10 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 bg-surface-subtle overflow-hidden border-t border-surface-mid">
       <div className="container mx-auto px-6 lg:px-12 text-center mb-16">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-amber mb-6">
-          <span className="w-8 h-[1px] bg-amber"></span>
+        <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-amber-dark mb-6">
+          <span className="w-8 h-[1px] bg-amber-dark"></span>
           Success Stories
-          <span className="w-8 h-[1px] bg-amber"></span>
+          <span className="w-8 h-[1px] bg-amber-dark"></span>
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-ink leading-[1.1] tracking-tighter">
           What Our Clients Say About Deepika Builtech

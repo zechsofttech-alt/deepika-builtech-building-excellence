@@ -136,6 +136,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Hoisted preloads for critical above-the-fold LCP images */}
+      <link rel="preload" href="/assets/completed-peb-drone-portrait.webp" as="image" media="(max-width: 1023px)" fetchPriority="high" />
+      <link rel="preload" href="/assets/completed-peb-drone.webp" as="image" media="(min-width: 1024px)" fetchPriority="high" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

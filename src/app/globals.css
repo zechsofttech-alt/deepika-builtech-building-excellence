@@ -37,12 +37,12 @@
     /* Brand tokens - Now using Deep Professional Blue */
     --ink: 217 78% 11%;
     --ink-soft: 217 60% 25%;
-    --ink-muted: 217 30% 50%;
+    --ink-muted: 217 24% 40%;
     --surface: 0 0% 100%;
     --surface-subtle: 220 12% 97%;
     --surface-mid: 220 10% 93%;
     --amber: 36 100% 52%;
-    --amber-dark: 32 95% 44%;
+    --amber-dark: 32 95% 30%;
     --amber-light: 42 100% 64%;
     --carbon: 217 78% 11%;
     --carbon-mid: 217 65% 15%;
@@ -185,7 +185,7 @@ footer {
 
   .section-label {
     @apply inline-flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase;
-    color: hsl(var(--amber));
+    color: hsl(var(--amber-dark));
   }
   .section-label::before {
     content: '';
@@ -236,7 +236,7 @@ footer {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #e07b39;
+  background: hsl(var(--carbon));
   color: white;
   padding: 8px 16px;
   text-decoration: none;

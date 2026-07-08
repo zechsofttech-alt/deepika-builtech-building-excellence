@@ -51,8 +51,8 @@ const HomeProcess = () => {
                 viewport={{ once: true }}
                 className="flex items-center gap-3 mb-6"
               >
-                <div className="h-px w-8 bg-amber" />
-                <span className="text-xs font-black uppercase tracking-[0.5em] text-amber">The Workflow Protocol</span>
+                <div className="h-px w-8 bg-amber-dark" />
+                <span className="text-xs font-black uppercase tracking-[0.5em] text-amber-dark">The Workflow Protocol</span>
               </motion.div>
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-black text-ink leading-[0.9] tracking-tighter">
                 Precision <br />
@@ -112,8 +112,8 @@ const HomeProcess = () => {
                   
                   <div className="bg-white border border-surface-mid p-6 rounded-2xl shadow-sm">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber">Phase {step.num}</span>
-                      <span className="text-xs font-heading font-black text-ink-muted/30">{step.num}</span>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-dark">Phase {step.num}</span>
+                      <span className="text-xs font-heading font-black text-ink-muted">{step.num}</span>
                     </div>
                     <h3 className="text-lg font-heading font-black text-ink mb-1 tracking-tight">{step.title}</h3>
                     <p className="text-xs text-ink-muted leading-relaxed font-sans">{step.desc}</p>
@@ -150,8 +150,8 @@ const StepCard = ({ step, idx }: { step: any, idx: number }) => {
               <Icon className="w-5 h-5 md:w-6 md:h-6 text-ink group-hover/card:text-carbon" />
             </div>
             <div className="flex items-center gap-2 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700">
-              <div className="w-4 h-[1px] bg-amber" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-amber">Phase {step.num}</span>
+              <div className="w-4 h-[1px] bg-amber-dark" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-amber-dark">Phase {step.num}</span>
             </div>
           </div>
           <span className="text-4xl md:text-6xl font-heading font-black text-black/[0.03] group-hover/card:text-white/[0.04] transition-colors duration-700 select-none">

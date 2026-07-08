@@ -14,7 +14,7 @@ const FeaturedProjects = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-amber text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Our Portfolio</span>
+            <span className="text-amber-dark text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Our Portfolio</span>
             <h2 className="text-4xl md:text-6xl font-heading font-black text-ink tracking-tighter leading-none mb-6">
               Major Structural <br />
               <span className="gradient-text">Milestones.</span>

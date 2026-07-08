@@ -59,8 +59,8 @@ const WhyChooseUsSection = () => {
           >
             <div className="lg:sticky lg:top-32">
               <div className="flex items-center gap-4 mb-8">
-                <div className="h-[2px] w-10 bg-amber" />
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber">The Deepika Standard</span>
+                <div className="h-[2px] w-10 bg-amber-dark" />
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-dark">The Deepika Standard</span>
               </div>
               
               <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] font-heading font-black text-ink leading-[0.85] tracking-tighter mb-10">
@@ -117,9 +117,9 @@ const WhyChooseUsSection = () => {
 
                     {/* Content */}
                     <div className="max-w-xl">
-                      <h4 className="text-xl md:text-2xl font-heading font-black text-ink group-hover:text-white transition-colors duration-500 mb-2 tracking-tight">
+                      <h3 className="text-xl md:text-2xl font-heading font-black text-ink group-hover:text-white transition-colors duration-500 mb-2 tracking-tight">
                         {reason.title}
-                      </h4>
+                      </h3>
                       <p className="text-sm md:text-base text-ink-muted group-hover:text-surface/60 transition-colors duration-500 leading-relaxed font-sans font-medium">
                         {reason.desc}
                       </p>

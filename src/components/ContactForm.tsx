@@ -75,7 +75,7 @@ const ContactForm = ({ compact = false, initialService = '', initialMessage = ''
         Our team will call you within 2 hours.
         For urgent queries, WhatsApp us on{' '}
         <a href="https://wa.me/919600067611"
-           style={{color:'#25d366', fontWeight:600}}>
+           style={{color:'#15803d', fontWeight:600}}>
           +91 96000 67611
         </a>
       </p>
@@ -190,7 +190,7 @@ const ContactForm = ({ compact = false, initialService = '', initialMessage = ''
         Or WhatsApp us directly:{' '}
         <a href="https://wa.me/919600067611?text=Hi%2C%20I%20need%20a%20quote"
            target="_blank" rel="noopener noreferrer"
-           style={{color:'#25d366', fontWeight:600}}>
+           style={{color:'#15803d', fontWeight:600}}>
           💬 +91 96000 67611
         </a>
       </p>

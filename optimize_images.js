@@ -11,8 +11,9 @@ async function optimizeWebP(filePath) {
   const tempPath = filePath + '.tmp';
   
   try {
-    await sharp(filePath)
-      .webp({ quality: 75, effort: 6 })
+    const buffer = fs.readFileSync(filePath);
+    await sharp(buffer)
+      .webp({ quality: 70, effort: 6 })
       .toFile(tempPath);
       
     const tempStats = fs.statSync(tempPath);

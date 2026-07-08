@@ -61,7 +61,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-heading font-bold text-ink text-xl mb-1 tracking-tight">Corporate HQ</h4>
-                  <p className="text-ink-muted text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                  <p className="text-ink-muted text-base leading-relaxed">
                     New No. 31,31A, Old No.14,15, Coromandal Town,<br />
                     SIDCO Industrial Estate, Ambattur, Chennai - 600098
                   </p>
@@ -77,7 +77,7 @@ const ContactSection = () => {
                   <a href="tel:+919600067611" className="text-ink-muted text-base hover:text-amber transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber rounded-sm">
                     +91 96000 67611
                   </a>
-                  <span className="block text-xs text-ink-muted/60 mt-1">Landline: 044-26256416</span>
+                  <span className="block text-xs text-ink-muted mt-1">Landline: 044-26256416</span>
                 </div>
               </div>
 

@@ -56,7 +56,7 @@ const SubsidySection = () => {
                   <div className="w-14 h-14 bg-surface rounded-2xl flex items-center justify-center mb-6 group-hover:bg-carbon group-hover:text-white transition-all duration-500 shadow-sm">
                     <step.icon className="w-6 h-6 transition-transform group-hover:scale-110" />
                   </div>
-                  <h4 className="font-heading font-bold text-xl text-ink mb-2">{step.title}</h4>
+                  <h3 className="font-heading font-bold text-xl text-ink mb-2">{step.title}</h3>
                   <p className="text-sm text-ink-muted leading-relaxed">{step.desc}</p>
                 </motion.div>
               ))}

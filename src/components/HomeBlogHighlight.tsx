@@ -14,7 +14,7 @@ const HomeBlogHighlight = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8 text-center lg:text-left">
           <div className="max-w-2xl mx-auto lg:mx-0">
-            <span className="text-amber text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Industrial Journal</span>
+            <span className="text-amber-dark text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Industrial Journal</span>
             <h2 className="text-4xl md:text-6xl font-heading font-black text-ink tracking-tighter leading-none mb-6">
               Engineering <span className="gradient-text">Intelligence.</span>
             </h2>
@@ -50,7 +50,7 @@ const HomeBlogHighlight = () => {
                 </picture>
               </div>
               <div className="md:w-2/3 flex flex-col justify-center">
-                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-amber mb-4">
+                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-amber-dark mb-4">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3 h-3" />
                     <span>{post.date}</span>
